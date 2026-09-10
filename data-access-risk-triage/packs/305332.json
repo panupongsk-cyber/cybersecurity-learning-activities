@@ -15,6 +15,10 @@
         "en": "Classify the actors involved in Campus Connect into their correct identity architectural types. Identify what evidence is documented versus unknown.",
         "th": "จัดหมวดหมู่ผู้เกี่ยวข้องในระบบ Campus Connect ตามสถาปัตยกรรมการจัดการตัวตน และระบุว่าส่วนใดมีหลักฐานชัดเจนหรือยังเป็นสิ่งที่ไม่ทราบ (Unknown)"
       },
+      "instructor_prompt": {
+        "en": "Class Discussion: How does a student person identity differ from the transient 'volunteer' role, and what are the security dangers of treating a background script as a human account?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ตัวตนของนิสิตต่างจาก Role อาสาสมัครชั่วคราวอย่างไร และทำไมการตั้งค่าสคริปต์เบื้องหลังให้ใช้บัญชีมนุษย์จึงเป็นอันตราย?"
+      },
       "mapping_tasks": [
         {
           "actor_id": "volunteer",
@@ -67,6 +71,10 @@
         "en": "The event team requests check-in access for 15 student volunteers on Saturday morning for a 2-hour registration window.",
         "th": "ทีมจัดกิจกรรมขอกำหนดสิทธิ์การเช็คอินให้กับอาสาสมัครนิสิต 15 คน ในเช้าวันเสาร์เป็นเวลา 2 ชั่วโมง"
       },
+      "instructor_prompt": {
+        "en": "Class Discussion: If 15 volunteers only check in attendees for 2 hours, what is the blast radius if we grant permanent database read/write access? What if a volunteer's laptop is compromised?",
+        "th": "คำถามชวนคิดในชั้นเรียน: หากอาสาสมัคร 15 คนทำหน้าที่แค่ 2 ชั่วโมง ความเสียหายสูงสุด (Blast Radius) จะเป็นอย่างไรถ้าให้สิทธิ์เขียนอ่านฐานข้อมูลแบบถาวร? ถ้าเครื่องอาสาสมัครติดมัลแวร์จะเกิดอะไรขึ้น?"
+      },
       "decisions": [
         {
           "id": "dec_blanket_admin",
@@ -112,6 +120,10 @@
         "en": "Audit Discovery: 14 days after the event, 15 volunteer accounts still possess active check-in and participant roster viewing permissions.",
         "th": "ผลการตรวจสอบ: 14 วันหลังกิจกรรมเสร็จสิ้น บัญชีอาสาสมัครทั้ง 15 บัญชียังคงมีสิทธิ์เปิดดูรายชื่อและเช็คอินค้างอยู่"
       },
+      "instructor_prompt": {
+        "en": "Class Discussion: What is Privilege Creep? Why does lingering access pose an ongoing risk even if the volunteers are trusted students?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ปัญหาสิทธิ์ค้าง (Privilege Creep) คืออะไร? ทำไมสิทธิ์ที่ตกค้างจึงเป็นความเสี่ยง แม้อาสาสมัครจะเป็นนิสิตที่ไว้ใจได้ก็ตาม?"
+      },
       "risk_dimensions": {
         "event_definition": {
           "en": "Stale transient privilege accumulation due to missing lifecycle deprovisioning",
@@ -138,6 +150,10 @@
     },
     "round4_treat": {
       "title": { "en": "Round 4 — Treat & Govern Account Lifecycle", "th": "รอบที่ 4 — มาตรการจัดการและควบคุมวงจรชีวิตบัญชี" },
+      "instructor_prompt": {
+        "en": "Class Discussion: Why are technical controls (automated TTL & deprovisioning APIs) enforceable, while administrative reminders (asking people to log out) fail in security audits?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ทำไมมาตรการเชิงเทคนิค (TTL หมดอายุอัตโนมัติ) จึงเป็นมาตรการที่มีผลบังคับใช้ได้จริง ขณะที่การเตือนทางธุรการมักล้มเหลวในการตรวจสอบความมั่นคงปลอดภัย?"
+      },
       "treatment_options": [
         {
           "id": "treat_automated_ttl",
@@ -182,15 +198,15 @@
       {
         "concept": { "en": "Role duration vs Role existence", "th": "ระยะเวลาการถือครองสิทธิ์ กับ การคงอยู่ของ Role" },
         "explanation": {
-          "en": "Assigning a role without a revocation lifecycle leaves credentials vulnerable long after the operational need has passed.",
-          "th": "การมอบสิทธิ์โดยไม่มีกระบวนการเพิกถอน ทำให้บัญชีตกค้างเป็นช่องโหว่แม้กิจกรรมจะเสร็จสิ้นไปแล้ว"
+          "en": "Assigning a role without a revocation lifecycle leaves credentials vulnerable long after the operational need has passed. Real-world breaches frequently exploit stale test accounts or dormant contractor privileges.",
+          "th": "การมอบสิทธิ์โดยไม่มีกระบวนการเพิกถอน ทำให้บัญชีตกค้างเป็นช่องโหว่แม้กิจกรรมจะเสร็จสิ้นไปแล้ว การรั่วไหลในโลกจริงมักเกิดจากบัญชีทดสอบหรือบัญชีผู้รับเหมาที่ไม่ได้ถูกลบ"
         }
       },
       {
         "concept": { "en": "Autonomous service approval", "th": "การให้ระบบอัตโนมัติอนุมัติสิทธิ์เอง" },
         "explanation": {
-          "en": "Non-person service identities must never be given authority to elevate user privileges or approve sensitive data sharing.",
-          "th": "Service Identity ไม่ควรได้รับสิทธิ์ในการยกระดับหรืออนุมัติการเข้าถึงข้อมูลสำคัญแทนผู้มีอำนาจตัดสินใจ"
+          "en": "Non-person service identities must never be given authority to elevate user privileges or approve sensitive data sharing. Service accounts should operate under strictly scoped API permissions.",
+          "th": "Service Identity ไม่ควรได้รับสิทธิ์ในการยกระดับหรืออนุมัติการเข้าถึงข้อมูลสำคัญแทนผู้มีอำนาจตัดสินใจ และควรทำงานด้วย API Token ที่จำกัดสิทธิ์เฉพาะทางเท่านั้น"
         }
       }
     ]

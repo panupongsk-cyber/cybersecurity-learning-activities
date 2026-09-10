@@ -14,9 +14,11 @@
         <p id="app-subtitle">Interactive Practice for 305332 & 316332 Cybersecurity</p>
       </div>
       <div class="header-controls">
-        <a href="../" class="btn btn-outline" id="btn-back-portal">← Portal</a>
+        <button type="button" class="btn btn-secondary" id="btn-toggle-projector" title="Toggle large font & high contrast for projector">📽️ Projector View</button>
+        <button type="button" class="btn btn-secondary" id="btn-toggle-instructor" title="Show instructor prompts & classroom timer">🎓 Instructor Guide</button>
         <button type="button" class="btn btn-secondary" id="btn-toggle-glossary">Glossary</button>
         <button type="button" class="btn btn-secondary" id="btn-toggle-lang" aria-label="Toggle language">TH / EN</button>
+        <a href="../" class="btn btn-outline" id="btn-back-portal">← Portal</a>
       </div>
     </div>
   </header>
@@ -33,7 +35,7 @@
       </ol>
     </div>
 
-    <!-- Screen 0: Lens Selection -->
+    <!-- Screen 0: Lens Selection & Scenario Context -->
     <section class="screen active" id="screen-lens">
       <h2 class="screen-title" id="txt-lens-title">Select Your Course Lens</h2>
       <p class="screen-subtitle" id="txt-lens-subtitle">Choose your active learning lens. The core Campus Connect case is shared, but scoring and debriefs remain distinct.</p>
@@ -67,17 +69,38 @@
         </button>
       </div>
 
-      <aside class="safeguard-banner success" style="margin-top: 1.5rem;">
-        <div class="safeguard-icon">ℹ️</div>
-        <div class="safeguard-content">
-          <h4>Scenario Overview: Campus Connect</h4>
-          <p id="txt-scenario-desc">Campus Connect is an event and support platform introducing volunteer on-site check-in and an automated reminder email service.</p>
-        </div>
-      </aside>
+      <!-- Formal Change Request Ticket Box -->
+      <div class="ticket-box">
+        <div class="ticket-header" id="txt-ticket-header">Change Request Ticket: CR-2026-0910-CC</div>
+        <p id="txt-ticket-summary" style="font-weight: 600; margin-bottom: 0.35rem;"></p>
+        <div class="ticket-snippet" id="txt-ticket-snippet"></div>
+      </div>
+
+      <!-- Visual System Architecture & Data Flow Diagram -->
+      <div class="architecture-box">
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.25rem;" id="txt-arch-title">Campus Connect: Architecture & Data Flow</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);" id="txt-arch-subtitle">Interactive map of components, workload identities, and trust boundaries.</p>
+        <div class="arch-nodes-grid" id="arch-nodes-container"></div>
+        <div class="arch-flows-list" id="arch-flows-container"></div>
+      </div>
     </section>
 
     <!-- Screen 1: Round 1 (Map) -->
     <section class="screen" id="screen-round1">
+      <!-- Instructor Facilitation Box -->
+      <div class="instructor-callout" id="r1-instructor-box" style="display: none;">
+        <div class="instructor-callout-header">
+          <div class="instructor-callout-title">🎓 Ask the Room</div>
+          <div class="class-timer-widget">
+            <span class="timer-digits" id="timer-display-r1">01:00</span>
+            <button type="button" class="btn btn-outline" data-timer-set="60">1m</button>
+            <button type="button" class="btn btn-outline" data-timer-set="120">2m</button>
+            <button type="button" class="btn btn-primary" id="btn-timer-toggle-r1">Start</button>
+          </div>
+        </div>
+        <div class="instructor-callout-prompt" id="r1-instructor-prompt"></div>
+      </div>
+
       <h2 class="screen-title" id="r1-title">Round 1 — Map What is at Stake</h2>
       <p class="screen-subtitle" id="r1-instruction">Classify entities and identify verified facts versus explicit unknowns.</p>
 
@@ -100,6 +123,20 @@
 
     <!-- Screen 2: Round 2 (Access) -->
     <section class="screen" id="screen-round2">
+      <!-- Instructor Facilitation Box -->
+      <div class="instructor-callout" id="r2-instructor-box" style="display: none;">
+        <div class="instructor-callout-header">
+          <div class="instructor-callout-title">🎓 Ask the Room</div>
+          <div class="class-timer-widget">
+            <span class="timer-digits" id="timer-display-r2">01:00</span>
+            <button type="button" class="btn btn-outline" data-timer-set="60">1m</button>
+            <button type="button" class="btn btn-outline" data-timer-set="120">2m</button>
+            <button type="button" class="btn btn-primary" id="btn-timer-toggle-r2">Start</button>
+          </div>
+        </div>
+        <div class="instructor-callout-prompt" id="r2-instructor-prompt"></div>
+      </div>
+
       <h2 class="screen-title" id="r2-title">Round 2 — Decide Scoped Access</h2>
       <p class="screen-subtitle" id="r2-scenario-prompt">Evaluate the requested access and choose a proportionate, scoped decision.</p>
 
@@ -120,6 +157,20 @@
 
     <!-- Screen 3: Round 3 (Triage) -->
     <section class="screen" id="screen-round3">
+      <!-- Instructor Facilitation Box -->
+      <div class="instructor-callout" id="r3-instructor-box" style="display: none;">
+        <div class="instructor-callout-header">
+          <div class="instructor-callout-title">🎓 Ask the Room</div>
+          <div class="class-timer-widget">
+            <span class="timer-digits" id="timer-display-r3">01:00</span>
+            <button type="button" class="btn btn-outline" data-timer-set="60">1m</button>
+            <button type="button" class="btn btn-outline" data-timer-set="120">2m</button>
+            <button type="button" class="btn btn-primary" id="btn-timer-toggle-r3">Start</button>
+          </div>
+        </div>
+        <div class="instructor-callout-prompt" id="r3-instructor-prompt"></div>
+      </div>
+
       <h2 class="screen-title" id="r3-title">Round 3 — Triage Risk & Evidence</h2>
       <p class="screen-subtitle" id="r3-incident-prompt">Assess the security event. Evidence quality strictly limits maximum claimable certainty.</p>
 
@@ -167,6 +218,20 @@
 
     <!-- Screen 4: Round 4 (Treat) -->
     <section class="screen" id="screen-round4">
+      <!-- Instructor Facilitation Box -->
+      <div class="instructor-callout" id="r4-instructor-box" style="display: none;">
+        <div class="instructor-callout-header">
+          <div class="instructor-callout-title">🎓 Ask the Room</div>
+          <div class="class-timer-widget">
+            <span class="timer-digits" id="timer-display-r4">01:00</span>
+            <button type="button" class="btn btn-outline" data-timer-set="60">1m</button>
+            <button type="button" class="btn btn-outline" data-timer-set="120">2m</button>
+            <button type="button" class="btn btn-primary" id="btn-timer-toggle-r4">Start</button>
+          </div>
+        </div>
+        <div class="instructor-callout-prompt" id="r4-instructor-prompt"></div>
+      </div>
+
       <h2 class="screen-title" id="r4-title">Round 4 — Treat & Govern</h2>
       <p class="screen-subtitle" id="r4-subtitle">Select a proportionate treatment, assign an accountable owner, and define verification evidence.</p>
 
@@ -217,11 +282,11 @@
       </div>
 
       <div class="choice-card" style="margin: 1.5rem 0;">
-        <h4 style="margin-bottom: 0.75rem;">Key Misconceptions & Takeaways</h4>
-        <ul id="debrief-misconceptions" style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);"></ul>
+        <h4 style="margin-bottom: 0.75rem;">Key Misconceptions & Real-World Context</h4>
+        <ul id="debrief-misconceptions" style="padding-left: 1.25rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;"></ul>
       </div>
 
-      <div style="margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: gap; gap: 1rem;">
+      <div style="margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
         <button type="button" class="btn btn-secondary" id="btn-restart-activity">Restart Activity</button>
         <a href="../" class="btn btn-primary">Return to Activities Portal →</a>
       </div>

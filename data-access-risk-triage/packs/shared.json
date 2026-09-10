@@ -5,8 +5,64 @@
     "th": "Campus Connect: บริการเช็คอินกิจกรรมและแจ้งเตือนผ่านอีเมล"
   },
   "summary": {
-    "en": "Campus Connect is introducing an on-site volunteer check-in desk and an automated email reminder service operated with a third-party vendor.",
-    "th": "Campus Connect กำลังเริ่มใช้ระบบโต๊ะเช็คอินหน้างานโดยอาสาสมัคร และระบบส่งอีเมลแจ้งเตือนอัตโนมัติร่วมกับผู้ให้บริการภายนอก (Vendor)"
+    "en": "Campus Connect is introducing an on-site volunteer check-in desk and an automated email reminder service operated with a third-party vendor for 850 university attendees.",
+    "th": "Campus Connect กำลังเริ่มใช้ระบบโต๊ะเช็คอินหน้างานโดยอาสาสมัคร และระบบส่งอีเมลแจ้งเตือนอัตโนมัติร่วมกับผู้ให้บริการภายนอก (Vendor) สำหรับผู้เข้าร่วมงาน 850 คน"
+  },
+  "change_request_ticket": {
+    "ticket_id": "CR-2026-0910-CC",
+    "requestor": {
+      "en": "Student Affairs & Annual Engineering Symposium Committee",
+      "th": "กองกิจการนิสิตและคณะกรรมการจัดงานสัมมนาวิศวกรรมศาสตร์ประจำปี"
+    },
+    "change_summary": {
+      "en": "Deploy tablet-based check-in app for 15 student volunteers on Saturday (8:00–10:00 AM) and integrate third-party CloudMail API for automated attendee reminders.",
+      "th": "ติดตั้งแอปเช็คอินบนแท็บเล็ตสำหรับอาสาสมัครนิสิต 15 คน ในเช้าวันเสาร์ (8:00–10:00 น.) และเชื่อมต่อ CloudMail API ภายนอกเพื่อส่งอีเมลแจ้งเตือนผู้ลงทะเบียน"
+    },
+    "vendor_email_snippet": {
+      "en": "From: support@cloudmail-vendor.net\nSubject: Re: Bounce rate spike on Campus Connect batches\n'To diagnose why 42 reminder emails bounced, please provide a raw database export of all participant records including registered emails, names, and accommodation flags.'",
+      "th": "จาก: support@cloudmail-vendor.net\nเรื่อง: แจ้งปัญหาอีเมลตีกลับในแบทช์ของ Campus Connect\n'เพื่อวิเคราะห์ว่าเหตุใดอีเมลแจ้งเตือน 42 ฉบับจึงถูกตีกลับ ขอให้ท่านส่งออกไฟล์ดัมป์ฐานข้อมูลของผู้ลงทะเบียนทั้งหมด รวมถึงอีเมล ชื่อ และข้อมูลคำขออำนวยความสะดวกพิเศษมาให้เราวิเคราะห์'"
+    }
+  },
+  "architecture_diagram": {
+    "title": { "en": "Campus Connect System Architecture & Data Flow", "th": "แผนผังสถาปัตยกรรมระบบและการไหลของข้อมูล Campus Connect" },
+    "components": [
+      {
+        "id": "node_attendee",
+        "name": { "en": "850 Attendees", "th": "ผู้ลงทะเบียน 850 คน" },
+        "type": "external_actor",
+        "detail": { "en": "Students registering via university SSO web portal", "th": "นิสิตลงทะเบียนผ่านเว็บพอร์ทัลมหาวิทยาลัย" }
+      },
+      {
+        "id": "node_core_db",
+        "name": { "en": "Campus Connect Core DB", "th": "ฐานข้อมูล Campus Connect" },
+        "type": "database",
+        "detail": { "en": "Stores directory info, attendance states, and sensitive accessibility needs", "th": "จัดเก็บข้อมูลพื้นฐาน สถานะเช็คอิน และคำขออำนวยความสะดวกพิเศษ" }
+      },
+      {
+        "id": "node_volunteer_kiosk",
+        "name": { "en": "Volunteer Check-in Kiosks", "th": "โต๊ะเช็คอินแท็บเล็ตอาสาสมัคร" },
+        "type": "client_app",
+        "detail": { "en": "15 tablets active during 2-hour event window on Saturday", "th": "แท็บเล็ต 15 เครื่อง ใช้งานช่วง 2 ชม. วันเสาร์" }
+      },
+      {
+        "id": "node_reminder_worker",
+        "name": { "en": "Automated Reminder Worker", "th": "เซอร์วิสแจ้งเตือนอัตโนมัติ" },
+        "type": "background_service",
+        "detail": { "en": "Scheduled batch process querying recipient addresses", "th": "สคริปต์เบื้องหลังที่ดึงรายชื่อเพื่อเตรียมส่งอีเมล" }
+      },
+      {
+        "id": "node_vendor_cloud",
+        "name": { "en": "CloudMail Vendor API", "th": "API ผู้ให้บริการอีเมลภายนอก" },
+        "type": "third_party",
+        "detail": { "en": "External SMTP delivery provider (Requested full DB dump!)", "th": "ผู้ให้บริการส่งเมลภายนอก (ร้องขอดัมป์ฐานข้อมูลทั้งหมด!)" }
+      }
+    ],
+    "flows": [
+      { "from": "node_attendee", "to": "node_core_db", "label": { "en": "Registration submission", "th": "ส่งแบบฟอร์มลงทะเบียน" } },
+      { "from": "node_core_db", "to": "node_volunteer_kiosk", "label": { "en": "Roster query & attendance marking", "th": "ดึงรายชื่อและบันทึกเข้างาน" } },
+      { "from": "node_core_db", "to": "node_reminder_worker", "label": { "en": "Reminder batch query", "th": "ดึงข้อมูลทำแบทช์แจ้งเตือน" } },
+      { "from": "node_reminder_worker", "to": "node_vendor_cloud", "label": { "en": "Notification payload transfer", "th": "ส่งข้อมูลข้อความแจ้งเตือน" } }
+    ]
   },
   "service_roles": [
     {

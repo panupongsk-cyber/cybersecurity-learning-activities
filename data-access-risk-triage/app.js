@@ -1,21 +1,30 @@
 /**
  * app.js
- * Browser controller for Data & Access Risk Triage.
+ * Browser controller for Data & Access Risk Triage with Instructor-Guided Projector Mode.
  */
 
 (function () {
   'use strict';
 
   var currentLang = 'th';
+  var isProjectorMode = false;
+  var isInstructorMode = true; // default enabled for facilitator awareness
   var gameState = null;
   var sharedPack = null;
   var currentCoursePack = null;
   var packs = {};
 
+  // Timers
+  var activeTimerInterval = null;
+  var timerSecondsRemaining = 60;
+  var timerRunning = false;
+
   // DOM Elements
   var progressContainer = document.getElementById('progress-container');
   var activeLensBadge = document.getElementById('active-lens-badge');
   var btnToggleLang = document.getElementById('btn-toggle-lang');
+  var btnToggleProjector = document.getElementById('btn-toggle-projector');
+  var btnToggleInstructor = document.getElementById('btn-toggle-instructor');
   var btnToggleGlossary = document.getElementById('btn-toggle-glossary');
   var btnCloseGlossary = document.getElementById('btn-close-glossary');
   var glossaryModal = document.getElementById('glossary-modal');
@@ -37,39 +46,56 @@
       if (savedLang === 'en' || savedLang === 'th') {
         currentLang = savedLang;
       }
-    } catch (e) {
-      // Storage unavailable
-    }
+      var savedProj = localStorage.getItem('dart_projector_mode');
+      if (savedProj === 'true') {
+        isProjectorMode = true;
+      }
+      var savedInst = localStorage.getItem('dart_instructor_mode');
+      if (savedInst !== null) {
+        isInstructorMode = savedInst === 'true';
+      }
+    } catch (e) {}
+
+    updateProjectorClass();
+    updateInstructorClass();
 
     setupEventListeners();
     loadPacks(function () {
       applyLanguage(currentLang);
+      renderArchitectureDiagram();
       showScreen('lens');
     });
   }
 
   function setupEventListeners() {
+    // Language Toggle
     btnToggleLang.addEventListener('click', function () {
       currentLang = currentLang === 'th' ? 'en' : 'th';
-      try {
-        localStorage.setItem('dart_lang', currentLang);
-      } catch (e) {}
+      try { localStorage.setItem('dart_lang', currentLang); } catch (e) {}
       applyLanguage(currentLang);
+      renderArchitectureDiagram();
       renderCurrentScreen();
     });
 
-    btnToggleGlossary.addEventListener('click', function () {
-      openGlossary();
+    // Projector Mode Toggle
+    btnToggleProjector.addEventListener('click', function () {
+      isProjectorMode = !isProjectorMode;
+      try { localStorage.setItem('dart_projector_mode', isProjectorMode.toString()); } catch (e) {}
+      updateProjectorClass();
     });
 
-    btnCloseGlossary.addEventListener('click', function () {
-      closeGlossary();
+    // Instructor Guide Toggle
+    btnToggleInstructor.addEventListener('click', function () {
+      isInstructorMode = !isInstructorMode;
+      try { localStorage.setItem('dart_instructor_mode', isInstructorMode.toString()); } catch (e) {}
+      updateInstructorClass();
     });
 
+    // Glossary Modal
+    btnToggleGlossary.addEventListener('click', openGlossary);
+    btnCloseGlossary.addEventListener('click', closeGlossary);
     glossaryModal.addEventListener('click', function (e) {
-      if (e.target === glossaryModal) {
-        closeGlossary();
-      }
+      if (e.target === glossaryModal) closeGlossary();
     });
 
     window.addEventListener('keydown', function (e) {
@@ -87,25 +113,93 @@
       });
     });
 
-    // Round 1 submit
-    document.getElementById('btn-submit-r1').addEventListener('click', submitRound1Action);
+    // Timers setup
+    setupClassTimers();
 
-    // Round 2 submit
+    // Round submit buttons
+    document.getElementById('btn-submit-r1').addEventListener('click', submitRound1Action);
     document.getElementById('btn-submit-r2').addEventListener('click', function () {
       showScreen('round3');
       renderRound3();
     });
-
-    // Round 3 submit
     document.getElementById('btn-submit-r3').addEventListener('click', submitRound3Action);
-
-    // Round 4 submit
     document.getElementById('btn-submit-r4').addEventListener('click', submitRound4Action);
 
     // Restart button
     document.getElementById('btn-restart-activity').addEventListener('click', function () {
       showScreen('lens');
     });
+  }
+
+  function updateProjectorClass() {
+    if (isProjectorMode) {
+      document.body.classList.add('projector-mode');
+      btnToggleProjector.classList.add('btn-active');
+    } else {
+      document.body.classList.remove('projector-mode');
+      btnToggleProjector.classList.remove('btn-active');
+    }
+  }
+
+  function updateInstructorClass() {
+    var boxes = document.querySelectorAll('.instructor-callout');
+    boxes.forEach(function (box) {
+      box.style.display = isInstructorMode ? 'block' : 'none';
+    });
+    if (isInstructorMode) {
+      btnToggleInstructor.classList.add('btn-active');
+    } else {
+      btnToggleInstructor.classList.remove('btn-active');
+    }
+  }
+
+  function setupClassTimers() {
+    [1, 2, 3, 4].forEach(function (r) {
+      var display = document.getElementById('timer-display-r' + r);
+      var toggleBtn = document.getElementById('btn-timer-toggle-r' + r);
+      if (!toggleBtn) return;
+
+      var presetBtns = document.querySelectorAll('#r' + r + '-instructor-box button[data-timer-set]');
+      presetBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          clearInterval(activeTimerInterval);
+          timerRunning = false;
+          timerSecondsRemaining = parseInt(btn.getAttribute('data-timer-set'), 10);
+          updateTimerDisplay(display, timerSecondsRemaining);
+          toggleBtn.textContent = 'Start';
+          toggleBtn.className = 'btn btn-primary';
+        });
+      });
+
+      toggleBtn.addEventListener('click', function () {
+        if (timerRunning) {
+          clearInterval(activeTimerInterval);
+          timerRunning = false;
+          toggleBtn.textContent = 'Resume';
+          toggleBtn.className = 'btn btn-secondary';
+        } else {
+          timerRunning = true;
+          toggleBtn.textContent = 'Pause';
+          toggleBtn.className = 'btn btn-outline';
+          activeTimerInterval = setInterval(function () {
+            timerSecondsRemaining--;
+            if (timerSecondsRemaining <= 0) {
+              clearInterval(activeTimerInterval);
+              timerRunning = false;
+              toggleBtn.textContent = 'Time Up!';
+              toggleBtn.className = 'btn btn-active';
+            }
+            updateTimerDisplay(display, Math.max(0, timerSecondsRemaining));
+          }, 1000);
+        }
+      });
+    });
+  }
+
+  function updateTimerDisplay(el, seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = seconds % 60;
+    el.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
   }
 
   function loadPacks(callback) {
@@ -170,6 +264,8 @@
     btnToggleLang.textContent = lang === 'th' ? 'EN' : 'TH';
     document.getElementById('app-title').textContent = I18N.get(lang, 'appName');
     document.getElementById('app-subtitle').textContent = I18N.get(lang, 'appSubtitle');
+    btnToggleProjector.textContent = I18N.get(lang, 'btnProjectorMode');
+    btnToggleInstructor.textContent = I18N.get(lang, 'btnInstructorMode');
     document.getElementById('btn-toggle-glossary').textContent = I18N.get(lang, 'btnGlossary');
     document.getElementById('btn-back-portal').textContent = I18N.get(lang, 'backToPortal');
 
@@ -183,11 +279,47 @@
     document.getElementById('txt-lens-shared-title').textContent = I18N.get(lang, 'lensSharedTitle');
     document.getElementById('txt-lens-shared-desc').textContent = I18N.get(lang, 'lensSharedDesc');
 
-    if (sharedPack && sharedPack.summary) {
-      document.getElementById('txt-scenario-desc').textContent = sharedPack.summary[lang] || sharedPack.summary.en;
+    // Ticket box
+    document.getElementById('txt-ticket-header').textContent = I18N.get(lang, 'ticketTitle') + ': CR-2026-0910-CC';
+    if (sharedPack && sharedPack.change_request_ticket) {
+      var cr = sharedPack.change_request_ticket;
+      document.getElementById('txt-ticket-summary').textContent = (cr.requestor[lang] || cr.requestor.en) + ' — ' + (cr.change_summary[lang] || cr.change_summary.en);
+      document.getElementById('txt-ticket-snippet').textContent = cr.vendor_email_snippet[lang] || cr.vendor_email_snippet.en;
     }
 
     renderGlossary();
+  }
+
+  function renderArchitectureDiagram() {
+    if (!sharedPack || !sharedPack.architecture_diagram) return;
+    var arch = sharedPack.architecture_diagram;
+    document.getElementById('txt-arch-title').textContent = arch.title[currentLang] || arch.title.en;
+
+    var nodesContainer = document.getElementById('arch-nodes-container');
+    nodesContainer.innerHTML = arch.components.map(function (node) {
+      var name = node.name[currentLang] || node.name.en;
+      var detail = node.detail[currentLang] || node.detail.en;
+      return '<div class="arch-node">' +
+        '<div class="arch-node-title">' + name + '</div>' +
+        '<div class="arch-node-detail">' + detail + '</div>' +
+        '</div>';
+    }).join('');
+
+    var flowsContainer = document.getElementById('arch-flows-container');
+    flowsContainer.innerHTML = arch.flows.map(function (flow) {
+      var fromNode = arch.components.find(function (c) { return c.id === flow.from; });
+      var toNode = arch.components.find(function (c) { return c.id === flow.to; });
+      var fromName = (fromNode && (fromNode.name[currentLang] || fromNode.name.en)) || flow.from;
+      var toName = (toNode && (toNode.name[currentLang] || toNode.name.en)) || flow.to;
+      var label = flow.label[currentLang] || flow.label.en;
+
+      return '<div class="arch-flow-item">' +
+        '<strong>' + fromName + '</strong>' +
+        '<span class="arch-flow-arrow">➔</span>' +
+        '<strong>' + toName + ':</strong> ' +
+        '<span>' + label + '</span>' +
+        '</div>';
+    }).join('');
   }
 
   function openGlossary() {
@@ -227,6 +359,11 @@
     document.getElementById('r1-title').textContent = r1.title[currentLang] || r1.title.en;
     document.getElementById('r1-instruction').textContent = r1.instruction[currentLang] || r1.instruction.en;
 
+    // Instructor prompt
+    if (r1.instructor_prompt) {
+      document.getElementById('r1-instructor-prompt').textContent = r1.instructor_prompt[currentLang] || r1.instructor_prompt.en;
+    }
+
     var container = document.getElementById('r1-tasks-container');
     container.innerHTML = r1.mapping_tasks.map(function (task, idx) {
       var key = task.actor_id || task.asset_id;
@@ -234,7 +371,7 @@
       var displayName = (nameObj && (nameObj[currentLang] || nameObj.en)) || key;
 
       var optionsHtml = task.options.map(function (opt) {
-        return '<label style="margin-right: 1rem; cursor: pointer;">' +
+        return '<label style="margin-right: 1.25rem; cursor: pointer; font-size: 0.95rem;">' +
           '<input type="radio" name="r1_task_' + idx + '" value="' + opt + '"> ' +
           opt.replace('_', ' ') +
           '</label>';
@@ -242,7 +379,7 @@
 
       return '<div class="choice-card">' +
         '<div class="choice-title">' + displayName + '</div>' +
-        '<div style="margin-top: 0.5rem;">' + optionsHtml + '</div>' +
+        '<div style="margin-top: 0.6rem;">' + optionsHtml + '</div>' +
         '</div>';
     }).join('');
 
@@ -259,6 +396,7 @@
     }).join('');
 
     document.getElementById('r1-feedback').style.display = 'none';
+    updateInstructorClass();
   }
 
   function findEntityName(id) {
@@ -276,9 +414,7 @@
     r1.mapping_tasks.forEach(function (task, idx) {
       var key = task.actor_id || task.asset_id;
       var checked = document.querySelector('input[name="r1_task_' + idx + '"]:checked');
-      if (checked) {
-        mappings[key] = checked.value;
-      }
+      if (checked) mappings[key] = checked.value;
     });
 
     var evChecked = document.querySelector('input[name="r1_evidence_opt"]:checked');
@@ -307,6 +443,11 @@
     document.getElementById('r2-title').textContent = r2.title[currentLang] || r2.title.en;
     document.getElementById('r2-scenario-prompt').textContent = r2.scenario_prompt[currentLang] || r2.scenario_prompt.en;
 
+    // Instructor prompt
+    if (r2.instructor_prompt) {
+      document.getElementById('r2-instructor-prompt').textContent = r2.instructor_prompt[currentLang] || r2.instructor_prompt.en;
+    }
+
     var container = document.getElementById('r2-decisions-container');
     container.innerHTML = r2.decisions.map(function (dec) {
       var title = dec.title[currentLang] || dec.title.en;
@@ -329,6 +470,7 @@
 
     document.getElementById('r2-safeguard-banner').style.display = 'none';
     document.getElementById('btn-submit-r2').disabled = true;
+    updateInstructorClass();
   }
 
   function evaluateRound2Decision(decisionId) {
@@ -352,7 +494,7 @@
     } else {
       banner.className = 'safeguard-banner success';
       icon.textContent = '✓';
-      title.textContent = currentLang === 'th' ? 'การตัดสินใจได้รับอนุมัติ' : 'Decision Approved';
+      title.textContent = currentLang === 'th' ? 'การตัดสินใจได้รับอนุมัติ (Approved)' : 'Decision Approved';
       desc.textContent = reason;
     }
 
@@ -366,7 +508,13 @@
     document.getElementById('r3-title').textContent = r3.title[currentLang] || r3.title.en;
     document.getElementById('r3-incident-prompt').textContent = r3.incident_prompt[currentLang] || r3.incident_prompt.en;
 
+    // Instructor prompt
+    if (r3.instructor_prompt) {
+      document.getElementById('r3-instructor-prompt').textContent = r3.instructor_prompt[currentLang] || r3.instructor_prompt.en;
+    }
+
     document.getElementById('r3-limiter-banner').style.display = 'none';
+    updateInstructorClass();
   }
 
   function submitRound3Action() {
@@ -404,6 +552,11 @@
     var r4 = currentCoursePack.rounds.round4_treat;
     document.getElementById('r4-title').textContent = r4.title[currentLang] || r4.title.en;
 
+    // Instructor prompt
+    if (r4.instructor_prompt) {
+      document.getElementById('r4-instructor-prompt').textContent = r4.instructor_prompt[currentLang] || r4.instructor_prompt.en;
+    }
+
     // Treatments
     var tContainer = document.getElementById('r4-treatments-container');
     tContainer.innerHTML = r4.treatment_options.map(function (t) {
@@ -435,6 +588,7 @@
     }).join('');
 
     document.getElementById('r4-residual-banner').style.display = 'none';
+    updateInstructorClass();
   }
 
   function submitRound4Action() {
@@ -492,7 +646,7 @@
     miscContainer.innerHTML = debriefData.key_misconceptions.map(function (m) {
       var concept = m.concept[currentLang] || m.concept.en;
       var expl = m.explanation[currentLang] || m.explanation.en;
-      return '<li style="margin-bottom: 0.75rem;"><strong>' + concept + ':</strong> ' + expl + '</li>';
+      return '<li style="margin-bottom: 0.85rem;"><strong>' + concept + ':</strong> ' + expl + '</li>';
     }).join('');
   }
 

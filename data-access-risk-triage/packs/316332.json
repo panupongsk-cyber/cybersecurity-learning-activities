@@ -15,6 +15,10 @@
         "en": "Classify data assets processed in Campus Connect by sensitivity and purpose. Identify missing governance evidence.",
         "th": "จำแนกประเภทข้อมูลที่ประมวลผลในระบบตามระดับความอ่อนไหวและวัตถุประสงค์ พร้อมระบุหลักฐานด้านธรรมาภิบาลที่ยังขาดหายไป"
       },
+      "instructor_prompt": {
+        "en": "Class Discussion: Why are special accommodation requests (mobility, medical, accessibility) classified as highly sensitive compared to basic student directory emails?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ทำไมข้อมูลคำขออำนวยความสะดวกพิเศษ (ความช่วยเหลือด้านสุขภาพ การเคลื่อนไหว) จึงถือเป็นข้อมูลอ่อนไหวสูงเมื่อเทียบกับอีเมลทั่วไป?"
+      },
       "mapping_tasks": [
         {
           "asset_id": "directory_info",
@@ -57,6 +61,10 @@
       "scenario_prompt": {
         "en": "The third-party email delivery vendor requests a raw database export of all participant records to diagnose an elevated email bounce rate.",
         "th": "ผู้ให้บริการส่งอีเมลภายนอกขอดัมป์ฐานข้อมูลการลงทะเบียนทั้งหมด เพื่อนำไปวิเคราะห์หาสาเหตุที่อีเมลส่งไม่ถึงผู้รับ"
+      },
+      "instructor_prompt": {
+        "en": "Class Discussion: The vendor claims they 'need a full DB dump' to fix email bounce rates. Why is this an overbroad request, and what is the legitimate minimum telemetry actually needed?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ผู้ให้บริการอ้างว่า 'ขอดัมป์ฐานข้อมูลทั้งหมดเพื่อแก้ปัญหาอีเมลตีกลับ' ทำไมจึงเป็นการขอเกินจำเป็น และข้อมูลขั้นต่ำที่เพียงพอต่อการแก้ปัญหาจริง ๆ คืออะไร?"
       },
       "decisions": [
         {
@@ -103,6 +111,10 @@
         "en": "Privacy Threat Scenario: An unreviewed reminder template change queries student accessibility notes and attaches them to a mass reminder sent to general volunteers.",
         "th": "สถานการณ์ความเสี่ยง: การแก้ไขเทมเพลตแจ้งเตือนโดยไม่มีการรีวิว ดึงข้อมูลคำขอช่วยเหลือพิเศษแนบไปกับอีเมลที่ส่งให้อาสาสมัครทั่วไป"
       },
+      "instructor_prompt": {
+        "en": "Class Discussion: If student accommodation details are exposed in an email blast, how does the impact compare to a public directory leak? Why must we differentiate likelihood from impact?",
+        "th": "คำถามชวนคิดในชั้นเรียน: หากข้อมูลความช่วยเหลือพิเศษหลุดไปในอีเมล ผลกระทบจะต่างจากการรั่วไหลของรายชื่อทั่วไปอย่างไร? ทำไมเราจึงต้องแยกประเมินโอกาสเกิด (Likelihood) ออกจากความรุนแรง (Impact)?"
+      },
       "risk_dimensions": {
         "event_definition": {
           "en": "Unlawful disclosure of sensitive accommodation data to unauthorized peers via misconfigured notification template",
@@ -129,6 +141,10 @@
     },
     "round4_treat": {
       "title": { "en": "Round 4 — Privacy Treatment & Governance Controls", "th": "รอบที่ 4 — การจัดการความเสี่ยงและมาตรการธรรมาภิบาล" },
+      "instructor_prompt": {
+        "en": "Class Discussion: Why does adding a disclaimer sentence ('Please delete if received in error') fail to satisfy privacy regulations or protect affected individuals?",
+        "th": "คำถามชวนคิดในชั้นเรียน: ทำไมการใส่ข้อความท้ายอีเมลว่า 'หากได้รับผิดพลาดโปรดลบ' จึงไม่ถือเป็นมาตรการคุ้มครองข้อมูลที่ชอบด้วยกฎหมาย?"
+      },
       "treatment_options": [
         {
           "id": "treat_data_segregation_dpa",
@@ -173,15 +189,15 @@
       {
         "concept": { "en": "Troubleshooting necessity vs Data minimization", "th": "ความจำเป็นในการแก้ปัญหา กับ การลดทอนข้อมูล" },
         "explanation": {
-          "en": "Operational urgency (such as fixing email bounces) does not justify sharing full databases or sensitive attributes with external parties.",
-          "th": "ความจำเป็นในการแก้ปัญหาทางเทคนิค ไม่สามารถใช้เป็นข้ออ้างในการส่งข้อมูลส่วนบุคคลหรือข้อมูลอ่อนไหวให้บุคคลภายนอก"
+          "en": "Operational urgency (such as fixing email bounces) does not justify sharing full databases or sensitive attributes with external parties. Real-world privacy fines often penalize unvetted vendor data dumping during technical support escalations.",
+          "th": "ความจำเป็นในการแก้ปัญหาทางเทคนิค ไม่สามารถใช้เป็นข้ออ้างในการส่งข้อมูลส่วนบุคคลหรือข้อมูลอ่อนไหวให้บุคคลภายนอก ในโลกจริงบทลงโทษด้านการคุ้มครองข้อมูลมักเกิดจากการส่งไฟล์ดัมป์ให้ Vendor ขณะแก้ปัญหาด่วน"
         }
       },
       {
-        "concept": { "en": "Zero-risk fallacy", "th": "มายาคติเรื่องความเสี่ยงเป็นศูนย์" },
+        "concept": { "en": "Zero-risk fallacy & Disclaimers", "th": "มายาคติเรื่องความเสี่ยงเป็นศูนย์ และการใช้ข้อความปฏิเสธ" },
         "explanation": {
-          "en": "Controls do not eliminate all risk completely; sound governance identifies and monitors the acceptable residual risk.",
-          "th": "มาตรการควบคุมไม่สามารถขจัดความเสี่ยงให้หมดไป 100% ธรรมาภิบาลที่ดีคือการระบุและเฝ้าระวังความเสี่ยงตกค้าง"
+          "en": "Controls do not eliminate all risk completely; sound governance identifies and monitors the acceptable residual risk. Relying on legal disclaimers rather than technical boundary controls provides zero protection against data leakage.",
+          "th": "มาตรการควบคุมไม่สามารถขจัดความเสี่ยงให้หมดไป 100% ธรรมาภิบาลที่ดีคือการระบุและเฝ้าระวังความเสี่ยงตกค้าง และการพึ่งพาข้อความ Disclaimer ท้ายเมลไม่สามารถทดแทนการควบคุมเชิงเทคนิคที่ต้นทางได้"
         }
       }
     ]
