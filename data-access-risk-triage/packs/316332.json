@@ -1,0 +1,189 @@
+{
+  "course_code": "316332",
+  "lens_title": {
+    "en": "316332 Lens: Privacy, Risk & Governance",
+    "th": "มุมมอง 316332: ความเป็นส่วนตัว การประเมินความเสี่ยง และธรรมาภิบาลข้อมูล"
+  },
+  "learning_focus": {
+    "en": "Data minimisation, personal data protection, likelihood/impact triage reasoning, proportionate treatment, and governance oversight.",
+    "th": "การลดทอนการใช้ข้อมูล (Data Minimisation), การคุ้มครองข้อมูลส่วนบุคคล, การวิเคราะห์ Likelihood/Impact, และมาตรการธรรมาภิบาล"
+  },
+  "rounds": {
+    "round1_map": {
+      "title": { "en": "Round 1 — Map Personal Data & Privacy Sensitivity", "th": "รอบที่ 1 — จำแนกข้อมูลส่วนบุคคลและความอ่อนไหว" },
+      "instruction": {
+        "en": "Classify data assets processed in Campus Connect by sensitivity and purpose. Identify missing governance evidence.",
+        "th": "จำแนกประเภทข้อมูลที่ประมวลผลในระบบตามระดับความอ่อนไหวและวัตถุประสงค์ พร้อมระบุหลักฐานด้านธรรมาภิบาลที่ยังขาดหายไป"
+      },
+      "mapping_tasks": [
+        {
+          "asset_id": "directory_info",
+          "correct_sensitivity": "low",
+          "options": ["low", "medium", "high"],
+          "rationale": {
+            "en": "Basic directory information is generally available for university communications but still subject to purpose limitations.",
+            "th": "ข้อมูลไดเรกทอรีพื้นฐานมีความอ่อนไหวทั่วไปสำหรับการติดต่อสื่อสาร แต่ยังต้องอยู่ภายใต้กรอบวัตถุประสงค์"
+          }
+        },
+        {
+          "asset_id": "accessibility_details",
+          "correct_sensitivity": "high",
+          "options": ["low", "medium", "high"],
+          "rationale": {
+            "en": "Special accommodation requests can reveal health, mobility, or disability attributes, making it highly sensitive personal data.",
+            "th": "คำขอความช่วยเหลือพิเศษอาจบ่งชี้ภาวะสุขภาพหรือความพิการ จัดเป็นข้อมูลที่มีความอ่อนไหวสูงมาก"
+          }
+        }
+      ],
+      "evidence_check": {
+        "question": {
+          "en": "What is the documented status of the vendor Data Processing Agreement (DPA)?",
+          "th": "สถานะสัญญาการประมวลผลข้อมูล (DPA) กับผู้ให้บริการภายนอกเป็นอย่างไร?"
+        },
+        "options": [
+          { "id": "ev_dpa_signed_compliant", "label": { "en": "Verified complete compliance under all regional privacy laws", "th": "ยืนยันว่าถูกต้องครบถ้วนตามกฎหมายคุ้มครองข้อมูลทุกฉบับ" } },
+          { "id": "ev_dpa_unknown", "label": { "en": "Unknown: No documented evidence that an updated DPA covers sensitive campus attributes", "th": "ไม่ทราบ (Unknown): ไม่มีหลักฐานว่ามีสัญญา DPA ที่ครอบคลุมข้อมูลความช่วยเหลือพิเศษ" } },
+          { "id": "ev_dpa_unnecessary", "label": { "en": "DPA not needed because vendor is a reputable cloud provider", "th": "ไม่จำเป็นต้องมีสัญญาเพราะเป็นบริษัทคลาวด์ขนาดใหญ่" } }
+        ],
+        "correct_id": "ev_dpa_unknown",
+        "feedback_reason": {
+          "en": "Correct. We cannot declare legal compliance without verified contractual evidence. Acknowledging unknown gaps is fundamental to risk governance.",
+          "th": "ถูกต้อง เราไม่สามารถสรุปการปฏิบัติตามกฎหมายได้หากปราศจากสัญญาที่ตรวจสอบแล้ว การตระหนักถึงสิ่งที่ไม่ทราบเป็นหัวใจของธรรมาภิบาล"
+        }
+      }
+    },
+    "round2_access": {
+      "title": { "en": "Round 2 — Data Minimisation & Vendor Export Decision", "th": "รอบที่ 2 — การตัดสินใจลดทอนข้อมูลและการส่งออกให้ Vendor" },
+      "scenario_prompt": {
+        "en": "The third-party email delivery vendor requests a raw database export of all participant records to diagnose an elevated email bounce rate.",
+        "th": "ผู้ให้บริการส่งอีเมลภายนอกขอดัมป์ฐานข้อมูลการลงทะเบียนทั้งหมด เพื่อนำไปวิเคราะห์หาสาเหตุที่อีเมลส่งไม่ถึงผู้รับ"
+      },
+      "decisions": [
+        {
+          "id": "dec_vendor_full_dump",
+          "type": "overbroad_export",
+          "title": { "en": "Approve Full Database Dump Export to Vendor", "th": "อนุมัติการส่งออกไฟล์ดัมป์ฐานข้อมูลทั้งหมดให้ผู้ให้บริการ" },
+          "description": { "en": "Send all participant records, including names, emails, attendance, and accessibility notes.", "th": "ส่งข้อมูลทั้งหมด รวมถึงชื่อ อีเมล สถานะการเข้าร่วม และคำขอช่วยเหลือพิเศษ" },
+          "score_impact": { "scope": 0, "proportionality": 0, "evidence": 5, "accountability": 0 },
+          "safeguard_triggered": "scope_gate",
+          "feedback_reason": {
+            "en": "Rejected by Scope Gate: Severe violation of data minimisation. Diagnosing bounce rates does not require participant health or accessibility context.",
+            "th": "ถูกปฏิเสธโดย Scope Gate: ขัดต่อหลัก Data Minimisation อย่างรุนแรง การแก้ปัญหาอีเมลตีกลับไม่จำเป็นต้องใช้ข้อมูลสุขภาพหรือความช่วยเหลือพิเศษ"
+          }
+        },
+        {
+          "id": "dec_vendor_anonymized_telemetry",
+          "type": "valid_scoped",
+          "title": { "en": "Provide Field-Limited, Anonymized Bounce Telemetry Only", "th": "ส่งเฉพาะข้อมูล Telemetry การส่งอีเมลที่ตัดข้อมูลระบุตัวตนออกแล้ว" },
+          "description": { "en": "Export only SMTP error response codes, domain names (e.g., @nu.ac.th), and delivery timestamps, with zero personal data.", "th": "ส่งเฉพาะรหัสข้อผิดพลาดของเมลเซิร์ฟเวอร์ ชื่อโดเมน และเวลาที่ส่ง โดยไม่มีข้อมูลส่วนบุคคลใดๆ" },
+          "score_impact": { "scope": 25, "proportionality": 25, "evidence": 25, "accountability": 25 },
+          "safeguard_triggered": null,
+          "feedback_reason": {
+            "en": "Optimal: Proportionately addresses the technical troubleshooting requirement while maintaining zero leakage of sensitive personal data.",
+            "th": "เหมาะสมที่สุด: ตอบโจทย์การแก้ไขปัญหาทางเทคนิคได้อย่างตรงจุดโดยไม่เกิดการรั่วไหลของข้อมูลส่วนบุคคล"
+          }
+        },
+        {
+          "id": "dec_worker_auto_stream",
+          "type": "unsafe_automation",
+          "title": { "en": "Configure Automated Worker to Stream Raw Data on Vendor Demand", "th": "ตั้งค่าให้ Worker ส่งข้อมูลสดตามที่ Vendor ร้องขอผ่าน Webhook" },
+          "description": { "en": "Allow background service to pipe registration data directly to external vendor without staff review.", "th": "เปิดให้ระบบเบื้องหลังส่งข้อมูลการลงทะเบียนไปยังระบบภายนอกโดยไม่มีเจ้าหน้าที่ตรวจสอบ" },
+          "score_impact": { "scope": 0, "proportionality": 0, "evidence": 5, "accountability": 0 },
+          "safeguard_triggered": "human_approval_gate",
+          "feedback_reason": {
+            "en": "Rejected by Human-Approval Gate: External data transfer pipelines require explicit human authorization and boundary enforcement.",
+            "th": "ถูกปฏิเสธโดย Human-Approval Gate: การส่งถ่ายข้อมูลออกภายนอกต้องผ่านการอนุมัติและมีมาตรการควบคุมจากมนุษย์"
+          }
+        }
+      ]
+    },
+    "round3_triage": {
+      "title": { "en": "Round 3 — Privacy Impact & Risk Triage", "th": "รอบที่ 3 — การประเมินผลกระทบและความเสี่ยงด้านความเป็นส่วนตัว" },
+      "incident_prompt": {
+        "en": "Privacy Threat Scenario: An unreviewed reminder template change queries student accessibility notes and attaches them to a mass reminder sent to general volunteers.",
+        "th": "สถานการณ์ความเสี่ยง: การแก้ไขเทมเพลตแจ้งเตือนโดยไม่มีการรีวิว ดึงข้อมูลคำขอช่วยเหลือพิเศษแนบไปกับอีเมลที่ส่งให้อาสาสมัครทั่วไป"
+      },
+      "risk_dimensions": {
+        "event_definition": {
+          "en": "Unlawful disclosure of sensitive accommodation data to unauthorized peers via misconfigured notification template",
+          "th": "การเปิดเผยข้อมูลความช่วยเหลือพิเศษให้แก่เพื่อนนิสิตโดยไม่ชอบด้วยกฎหมายผ่านเทมเพลตแจ้งเตือนที่ผิดพลาด"
+        },
+        "likelihood_options": ["Low", "Moderate", "High"],
+        "expected_likelihood": "Moderate",
+        "impact_options": ["Minor", "Moderate", "Critical"],
+        "expected_impact": "Critical",
+        "confidence_levels": [
+          { "id": "low", "name": { "en": "Low (Unverified claim)", "th": "ต่ำ (การคาดการณ์ที่ยังไม่มีหลักฐาน)" } },
+          { "id": "medium", "name": { "en": "Medium (Grounded in architecture analysis with contractual unknowns)", "th": "ปานกลาง (วิเคราะห์ตามโครงสร้างระบบแต่ยังมีส่วนที่ยังไม่ทราบ)" } },
+          { "id": "high", "name": { "en": "High (Definitive legal verdict)", "th": "สูง (มั่นใจสมบูรณ์เสมือนมีคำพิพากษาทางกฎหมาย)" } }
+        ],
+        "expected_confidence": "medium",
+        "limiter_rule": {
+          "blocked_level": "high",
+          "trigger_reason": {
+            "en": "Evidence Limiter Gate: Educational exercises must not state definitive legal verdicts without verified jurisdiction-specific case law and binding contracts.",
+            "th": "Evidence Limiter Gate: กิจกรรมการเรียนรู้ต้องไม่ฟันธงข้อสรุปทางกฎหมายที่แน่นอนโดยไม่มีหลักฐานสัญญาและข้อกฎหมายเฉพาะที่ตรวจสอบแล้ว"
+          }
+        }
+      }
+    },
+    "round4_treat": {
+      "title": { "en": "Round 4 — Privacy Treatment & Governance Controls", "th": "รอบที่ 4 — การจัดการความเสี่ยงและมาตรการธรรมาภิบาล" },
+      "treatment_options": [
+        {
+          "id": "treat_data_segregation_dpa",
+          "name": { "en": "Architectural Segregation of Sensitive Data + Mandatory Vendor DPA & Pre-Send Schema Validation", "th": "แยกส่วนเก็บข้อมูลอ่อนไหวทางสถาปัตยกรรม + บังคับทำสัญญา DPA + ตรวจสอบ Schema ก่อนส่ง" },
+          "is_valid": true,
+          "owner_required": "privacy_officer_and_system_lead",
+          "residual_risk": {
+            "level": { "en": "Low (Residual risk of human error during coordinator one-on-one assistance)", "th": "ต่ำ (ยังคงมีความเสี่ยงจากความผิดพลาดของมนุษย์ขณะเจ้าหน้าที่ดูแลหน้างาน)" },
+            "explanation": {
+              "en": "Technical segregation and DPA reduce systemic risk, but operational human factors remain as an acknowledged residual risk.",
+              "th": "การแยกส่วนข้อมูลและสัญญา DPA ขจัดความเสี่ยงเชิงระบบ แต่ยังมีความเสี่ยงตกค้างจากการปฏิบัติงานของมนุษย์"
+            }
+          }
+        },
+        {
+          "id": "treat_disclaimer_only",
+          "name": { "en": "Add a disclaimer sentence at the bottom of the email asking recipients to ignore sensitive data", "th": "ใส่ข้อความท้ายอีเมลว่าหากได้รับข้อมูลผิดพลาดให้เพิกเฉย" },
+          "is_valid": false,
+          "feedback_reason": {
+            "en": "Disclaimers do not remedy privacy violations or prevent unauthorized exposure.",
+            "th": "ข้อความปฏิเสธความรับผิดชอบไม่สามารถเยียวยาการละเมิดความเป็นส่วนตัวหรือป้องกันข้อมูลรั่วไหลได้"
+          }
+        }
+      ],
+      "accountable_owner_options": [
+        { "id": "vendor_support", "label": { "en": "Vendor Cloud Support Engineer", "th": "วิศวกรซัพพอร์ตของผู้ให้บริการภายนอก" }, "valid": false },
+        { "id": "automated_reminder_worker", "label": { "en": "Automated Reminder Worker", "th": "ระบบแจ้งเตือนอัตโนมัติ" }, "valid": false },
+        { "id": "privacy_officer_and_system_lead", "label": { "en": "University Privacy Officer & Lead Application Architect", "th": "เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคลและสถาปนิกดูแลระบบ" }, "valid": true }
+      ],
+      "verification_evidence_options": [
+        { "id": "verbal_assurance", "label": { "en": "Informal chat message from vendor saying 'looks good'", "th": "ข้อความแชทอย่างไม่เป็นทางการจากผู้ให้บริการ" }, "valid": false },
+        { "id": "privacy_impact_audit_evidence", "label": { "en": "Verified Privacy Impact Assessment (PIA) report and payload test logs showing zero accessibility fields", "th": "รายงานผลการประเมินผลกระทบ (PIA) และผลตรวจ Log ที่ยืนยันว่าไม่มีข้อมูลอ่อนไหวในชุดส่ง" }, "valid": true }
+      ]
+    }
+  },
+  "debrief": {
+    "summary_template": {
+      "en": "316332 Privacy, Risk & Governance Debrief: You applied data minimisation to prevent overbroad vendor data exposure. You structured risk triage with explicit evidence boundaries and established enforceable governance controls with residual risk awareness.",
+      "th": "สรุปผลการเรียนรู้ 316332: คุณได้ประยุกต์ใช้หลัก Data Minimisation ป้องกันการส่งออกข้อมูลเกินจำเป็น ตระหนักถึงขอบเขตของหลักฐานในการประเมินความเสี่ยง และกำหนดมาตรการธรรมาภิบาลพร้อมระบุความเสี่ยงตกค้างอย่างชัดเจน"
+    },
+    "key_misconceptions": [
+      {
+        "concept": { "en": "Troubleshooting necessity vs Data minimization", "th": "ความจำเป็นในการแก้ปัญหา กับ การลดทอนข้อมูล" },
+        "explanation": {
+          "en": "Operational urgency (such as fixing email bounces) does not justify sharing full databases or sensitive attributes with external parties.",
+          "th": "ความจำเป็นในการแก้ปัญหาทางเทคนิค ไม่สามารถใช้เป็นข้ออ้างในการส่งข้อมูลส่วนบุคคลหรือข้อมูลอ่อนไหวให้บุคคลภายนอก"
+        }
+      },
+      {
+        "concept": { "en": "Zero-risk fallacy", "th": "มายาคติเรื่องความเสี่ยงเป็นศูนย์" },
+        "explanation": {
+          "en": "Controls do not eliminate all risk completely; sound governance identifies and monitors the acceptable residual risk.",
+          "th": "มาตรการควบคุมไม่สามารถขจัดความเสี่ยงให้หมดไป 100% ธรรมาภิบาลที่ดีคือการระบุและเฝ้าระวังความเสี่ยงตกค้าง"
+        }
+      }
+    ]
+  }
+}

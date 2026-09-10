@@ -1,0 +1,198 @@
+{
+  "course_code": "305332",
+  "lens_title": {
+    "en": "305332 Lens: Identity & Accountable Access",
+    "th": "มุมมอง 305332: การจัดการตัวตนและการเข้าถึงที่มีความรับผิดชอบ"
+  },
+  "learning_focus": {
+    "en": "Least privilege, scoped role-based access control (RBAC), authentication dependency, and account lifecycle deprovisioning.",
+    "th": "หลักสิทธิการใช้งานน้อยที่สุด (Least Privilege), RBAC ตามขอบเขต, การพิสูจน์ตัวตน, และวงจรชีวิตการเพิกถอนบัญชี (Deprovisioning)"
+  },
+  "rounds": {
+    "round1_map": {
+      "title": { "en": "Round 1 — Map Identity & Workload Classification", "th": "รอบที่ 1 — จำแนกประเภทตัวตนและเวิร์กโหลด" },
+      "instruction": {
+        "en": "Classify the actors involved in Campus Connect into their correct identity architectural types. Identify what evidence is documented versus unknown.",
+        "th": "จัดหมวดหมู่ผู้เกี่ยวข้องในระบบ Campus Connect ตามสถาปัตยกรรมการจัดการตัวตน และระบุว่าส่วนใดมีหลักฐานชัดเจนหรือยังเป็นสิ่งที่ไม่ทราบ (Unknown)"
+      },
+      "mapping_tasks": [
+        {
+          "actor_id": "volunteer",
+          "correct_type": "role",
+          "options": ["person", "role", "service", "delegated_vendor"],
+          "rationale": {
+            "en": "Volunteers hold a transient scoped role assigned to student identities, not a permanent personal administrative position.",
+            "th": "อาสาสมัครเป็น Role ชั่วคราวที่ผูกกับตัวตนนาย/นางสาว ไม่ใช่สิทธิ์ถาวรส่วนบุคคล"
+          }
+        },
+        {
+          "actor_id": "automated_reminder_worker",
+          "correct_type": "service",
+          "options": ["person", "role", "service", "delegated_vendor"],
+          "rationale": {
+            "en": "The reminder worker is a non-person workload/service identity executing scheduled background jobs.",
+            "th": "ระบบแจ้งเตือนอัตโนมัติเป็น Service Identity (Non-person entity) ทำงานในเบื้องหลัง"
+          }
+        },
+        {
+          "actor_id": "vendor_support",
+          "correct_type": "delegated_vendor",
+          "options": ["person", "role", "service", "delegated_vendor"],
+          "rationale": {
+            "en": "Third-party vendor personnel represent delegated external access requiring independent federation and strict boundary oversight.",
+            "th": "ทีมซัพพอร์ตภายนอกเป็น Delegated Vendor Access ต้องควบคุมขอบเขตอย่างเข้มงวด"
+          }
+        }
+      ],
+      "evidence_check": {
+        "question": {
+          "en": "What is the status of the automated reminder worker's identity credentials?",
+          "th": "สถานะการถือครอง Credential ของเซอร์วิสส่งอีเมลแจ้งเตือนเป็นอย่างไร?"
+        },
+        "options": [
+          { "id": "ev_verified_least_privilege", "label": { "en": "Verified to run with least-privilege token", "th": "มีหลักฐานยืนยันว่าใช้ Token สิทธิ์ต่ำสุด" } },
+          { "id": "ev_unknown_credential_scope", "label": { "en": "Unknown: No evidence verifying whether it uses a dedicated or shared admin account", "th": "ไม่ทราบ (Unknown): ไม่มีหลักฐานยืนยันว่าใช้ Service Principal เฉพาะหรือใช้บัญชีแอดมินร่วม" } },
+          { "id": "ev_assumed_secure", "label": { "en": "Assumed secure because it runs inside university network", "th": "สันนิษฐานว่าปลอดภัยเพราะอยู่ในเครือข่ายมหาวิทยาลัย" } }
+        ],
+        "correct_id": "ev_unknown_credential_scope",
+        "feedback_reason": {
+          "en": "Documented evidence never mentions the worker's token scope. Treating missing evidence as unknown prevents false security assumptions.",
+          "th": "ในชุดข้อมูลไม่มีบันทึกขอบเขต Token ของ worker การระบุว่าเป็น Unknown ช่วยป้องกันการด่วนสรุปความปลอดภัย"
+        }
+      }
+    },
+    "round2_access": {
+      "title": { "en": "Round 2 — Scoped Access Decision", "th": "รอบที่ 2 — การตัดสินใจกำหนดสิทธิ์การเข้าถึง" },
+      "scenario_prompt": {
+        "en": "The event team requests check-in access for 15 student volunteers on Saturday morning for a 2-hour registration window.",
+        "th": "ทีมจัดกิจกรรมขอกำหนดสิทธิ์การเช็คอินให้กับอาสาสมัครนิสิต 15 คน ในเช้าวันเสาร์เป็นเวลา 2 ชั่วโมง"
+      },
+      "decisions": [
+        {
+          "id": "dec_blanket_admin",
+          "type": "overprivileged",
+          "title": { "en": "Grant Full Staff Access to Campus Connect", "th": "มอบสิทธิ์เจ้าหน้าที่เต็มรูปแบบในระบบ Campus Connect" },
+          "description": { "en": "Give volunteers read/write access to all event databases and student rosters indefinitely.", "th": "ให้อาสาสมัครเข้าถึงฐานข้อมูลกิจกรรมและรายชื่อนิสิตทั้งหมดได้ไม่จำกัดเวลา" },
+          "score_impact": { "scope": 0, "proportionality": 0, "evidence": 5, "accountability": 0 },
+          "safeguard_triggered": "scope_gate",
+          "feedback_reason": {
+            "en": "Rejected by Scope Gate: Violates least privilege. Volunteers do not need permanent or database-wide access.",
+            "th": "ถูกปฏิเสธโดย Scope Gate: ขัดต่อหลัก Least Privilege อาสาสมัครไม่จำเป็นต้องเข้าถึงฐานข้อมูลทั้งหมดหรือมีสิทธิ์ถาวร"
+          }
+        },
+        {
+          "id": "dec_scoped_timebound",
+          "type": "valid_scoped",
+          "title": { "en": "Time-Bounded, Session-Scoped Check-in Role (MFA Required)", "th": "บทบาทเช็คอินเฉพาะเซสชัน จำกัดเวลา 2 ชั่วโมง (บังคับยืนยันตัวตนผ่าน SSO)" },
+          "description": { "en": "Assign a dedicated check-in permission (mark attendance only) restricted to the active event session and expiring automatically.", "th": "กำหนดสิทธิ์เฉพาะการทำเครื่องหมายเข้าร่วมงาน (Check-in only) เฉพาะช่วงเวลากิจกรรมและหมดอายุอัตโนมัติ" },
+          "score_impact": { "scope": 25, "proportionality": 25, "evidence": 25, "accountability": 25 },
+          "safeguard_triggered": null,
+          "feedback_reason": {
+            "en": "Optimal: Aligns with least privilege, RBAC time-boxing, and identity verification dependency.",
+            "th": "เหมาะสมที่สุด: สอดคล้องกับหลัก Least Privilege, การจำกัดเวลาของ RBAC และการพึ่งพาการยืนยันตัวตนที่ถูกต้อง"
+          }
+        },
+        {
+          "id": "dec_worker_autonomous",
+          "type": "unsafe_automation",
+          "title": { "en": "Delegate Approval and Role Assignment to Automated Reminder Worker", "th": "ให้ระบบส่งการแจ้งเตือนอัตโนมัติอนุมัติและแจกจ่ายสิทธิ์ให้แทน" },
+          "description": { "en": "Let the reminder background script dynamically grant check-in access based on email replies.", "th": "ให้สคริปต์แจ้งเตือนอนุมัติและปรับสิทธิ์ให้ผู้ใช้เองโดยอัตโนมัติตามอีเมลตอบกลับ" },
+          "score_impact": { "scope": 5, "proportionality": 0, "evidence": 5, "accountability": 0 },
+          "safeguard_triggered": "human_approval_gate",
+          "feedback_reason": {
+            "en": "Rejected by Human-Approval Gate: Automated non-person entities must never modify user roles or approve elevated access.",
+            "th": "ถูกปฏิเสธโดย Human-Approval Gate: บริการอัตโนมัติห้ามปรับแก้ Role ของผู้ใช้หรืออนุมัติสิทธิ์แทนมนุษย์"
+          }
+        }
+      ]
+    },
+    "round3_triage": {
+      "title": { "en": "Round 3 — Access Risk Triage", "th": "รอบที่ 3 — การประเมินและจัดลำดับความเสี่ยงด้านการเข้าถึง" },
+      "incident_prompt": {
+        "en": "Audit Discovery: 14 days after the event, 15 volunteer accounts still possess active check-in and participant roster viewing permissions.",
+        "th": "ผลการตรวจสอบ: 14 วันหลังกิจกรรมเสร็จสิ้น บัญชีอาสาสมัครทั้ง 15 บัญชียังคงมีสิทธิ์เปิดดูรายชื่อและเช็คอินค้างอยู่"
+      },
+      "risk_dimensions": {
+        "event_definition": {
+          "en": "Stale transient privilege accumulation due to missing lifecycle deprovisioning",
+          "th": "การสะสมของสิทธิ์ค้าง (Privilege Creep) เนื่องจากการขาดกระบวนการเพิกถอนสิทธิ์เมื่อจบกิจกรรม"
+        },
+        "likelihood_options": ["Low", "Moderate", "High"],
+        "expected_likelihood": "High",
+        "impact_options": ["Minor", "Moderate", "Critical"],
+        "expected_impact": "Moderate",
+        "confidence_levels": [
+          { "id": "low", "name": { "en": "Low (Intuition / Speculation)", "th": "ต่ำ (การคาดเดา)" } },
+          { "id": "medium", "name": { "en": "Medium (Grounded in case facts with known gaps)", "th": "ปานกลาง (อิงตามข้อเท็จจริงแต่ยังมีข้อมูลที่ยังไม่ทราบ)" } },
+          { "id": "high", "name": { "en": "High (Complete forensic certainty)", "th": "สูง (มั่นใจสมบูรณ์แบบเสมือนมีผลฟอเรนสิก)" } }
+        ],
+        "expected_confidence": "medium",
+        "limiter_rule": {
+          "blocked_level": "high",
+          "trigger_reason": {
+            "en": "Evidence Limiter Gate: You cannot claim high forensic certainty because audit log retention and post-event token usage were marked as unknown in the case facts.",
+            "th": "Evidence Limiter Gate: ไม่สามารถเลือกระดับความมั่นใจสูงได้ เนื่องจากประวัติการใช้งาน Token หลังจบงานเป็นข้อมูลที่ยังไม่ปรากฏในหลักฐาน"
+          }
+        }
+      }
+    },
+    "round4_treat": {
+      "title": { "en": "Round 4 — Treat & Govern Account Lifecycle", "th": "รอบที่ 4 — มาตรการจัดการและควบคุมวงจรชีวิตบัญชี" },
+      "treatment_options": [
+        {
+          "id": "treat_automated_ttl",
+          "name": { "en": "Automated Expiration (TTL) & Deprovisioning Closeout Trigger", "th": "กำหนดอายุสิทธิ์อัตโนมัติ (TTL) พร้อมคำสั่งเพิกถอนสิทธิ์ทันทีที่ปิดงาน" },
+          "is_valid": true,
+          "owner_required": "event_lead_and_identity_admin",
+          "residual_risk": {
+            "level": { "en": "Low (Residual risk of credential misuse during active event window)", "th": "ต่ำ (ยังคงมีความเสี่ยงระหว่าง 2 ชั่วโมงที่จัดกิจกรรม)" },
+            "explanation": {
+              "en": "The residual risk is contained to active session hours. Security controls reduce risk but do not produce a zero-risk state.",
+              "th": "ความเสี่ยงตกค้างถูกจำกัดอยู่เฉพาะช่วงจัดกิจกรรม การควบคุมช่วยลดความเสี่ยงแต่ไม่สามารถทำให้ความเสี่ยงเป็นศูนย์ได้อย่างสิ้นเชิง"
+            }
+          }
+        },
+        {
+          "id": "treat_manual_reminder",
+          "name": { "en": "Send a calendar reminder to volunteers asking them not to log in again", "th": "ส่งปฏิทินเตือนอาสาสมัครว่าไม่ต้องล็อกอินเข้าระบบอีก" },
+          "is_valid": false,
+          "feedback_reason": {
+            "en": "Administrative advice is not an enforceable technical control. Privileges remain active.",
+            "th": "การขอความร่วมมือไม่ใช่มาตรการควบคุมทางเทคนิค สิทธิ์ยังคงค้างอยู่ในระบบ"
+          }
+        }
+      ],
+      "accountable_owner_options": [
+        { "id": "automated_reminder_worker", "label": { "en": "Automated Reminder Worker", "th": "ระบบส่งการแจ้งเตือนอัตโนมัติ" }, "valid": false },
+        { "id": "volunteer", "label": { "en": "Volunteers themselves", "th": "อาสาสมัครเอง" }, "valid": false },
+        { "id": "event_lead_and_identity_admin", "label": { "en": "Event Operations Lead & Identity Admin", "th": "หัวหน้าผู้จัดกิจกรรมและผู้ดูแลระบบระบุตัวตน" }, "valid": true }
+      ],
+      "verification_evidence_options": [
+        { "id": "verbal_confirmation", "label": { "en": "Verbal confirmation from student volunteers", "th": "คำบอกเล่าด้วยวาจาจากอาสาสมัคร" }, "valid": false },
+        { "id": "audit_log_zero_active_tokens", "label": { "en": "Directory audit log showing role de-assignment and 0 active session tokens", "th": "บันทึก Audit Log ของไดเรกทอรีที่แสดงการปลด Role และไม่มี Token คงเหลือ" }, "valid": true }
+      ]
+    }
+  },
+  "debrief": {
+    "summary_template": {
+      "en": "305332 Identity & Accountable Access Debrief: You correctly applied least privilege and time-bounding to transient volunteer roles. Stale permissions were triaged and mitigated via automated deprovisioning, maintaining verifiable accountability.",
+      "th": "สรุปผลการเรียนรู้ 305332: คุณได้ประยุกต์ใช้หลัก Least Privilege และการกำหนดอายุสิทธิ์สำหรับอาสาสมัคร จัดการความเสี่ยงสิทธิ์ค้างด้วยกระบวนการ Deprovisioning ที่มีหลักฐาน Audit Log ตรวจสอบได้"
+    },
+    "key_misconceptions": [
+      {
+        "concept": { "en": "Role duration vs Role existence", "th": "ระยะเวลาการถือครองสิทธิ์ กับ การคงอยู่ของ Role" },
+        "explanation": {
+          "en": "Assigning a role without a revocation lifecycle leaves credentials vulnerable long after the operational need has passed.",
+          "th": "การมอบสิทธิ์โดยไม่มีกระบวนการเพิกถอน ทำให้บัญชีตกค้างเป็นช่องโหว่แม้กิจกรรมจะเสร็จสิ้นไปแล้ว"
+        }
+      },
+      {
+        "concept": { "en": "Autonomous service approval", "th": "การให้ระบบอัตโนมัติอนุมัติสิทธิ์เอง" },
+        "explanation": {
+          "en": "Non-person service identities must never be given authority to elevate user privileges or approve sensitive data sharing.",
+          "th": "Service Identity ไม่ควรได้รับสิทธิ์ในการยกระดับหรืออนุมัติการเข้าถึงข้อมูลสำคัญแทนผู้มีอำนาจตัดสินใจ"
+        }
+      }
+    ]
+  }
+}

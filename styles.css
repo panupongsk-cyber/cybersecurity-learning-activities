@@ -23,6 +23,7 @@ h1 { margin: .45rem 0 .7rem; font-size: clamp(2.2rem, 6vw, 4.5rem); line-height:
 .activities { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
 .card { display: flex; flex-direction: column; min-height: 360px; padding: 1.75rem; border: 1px solid #31516f; border-radius: 1.25rem; background: rgba(11, 31, 51, .88); box-shadow: 0 18px 45px rgba(0, 0, 0, .22); }
 .card-quiz { border-color: #3b8072; background: rgba(10, 44, 47, .87); }
+.card-triage { border-color: #5b5490; background: rgba(22, 19, 45, .88); }
 .card h2 { margin: .4rem 0 .15rem; font-size: 1.75rem; }
 .card p { line-height: 1.55; color: #c7d9ea; }
 .card ul { margin: .45rem 0 1.6rem; padding-left: 1.2rem; color: #aac2d9; line-height: 1.7; }

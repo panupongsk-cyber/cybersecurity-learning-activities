@@ -1,0 +1,141 @@
+{
+  "scenario_id": "campus-connect-v1",
+  "title": {
+    "en": "Campus Connect: Event Check-in & Reminder Service",
+    "th": "Campus Connect: บริการเช็คอินกิจกรรมและแจ้งเตือนผ่านอีเมล"
+  },
+  "summary": {
+    "en": "Campus Connect is introducing an on-site volunteer check-in desk and an automated email reminder service operated with a third-party vendor.",
+    "th": "Campus Connect กำลังเริ่มใช้ระบบโต๊ะเช็คอินหน้างานโดยอาสาสมัคร และระบบส่งอีเมลแจ้งเตือนอัตโนมัติร่วมกับผู้ให้บริการภายนอก (Vendor)"
+  },
+  "service_roles": [
+    {
+      "id": "attendee",
+      "name": { "en": "Attendee", "th": "ผู้เข้าร่วมกิจกรรม" },
+      "type": "person",
+      "description": { "en": "Student registering and attending campus events", "th": "นิสิตที่ลงทะเบียนและเข้าร่วมกิจกรรมในมหาวิทยาลัย" }
+    },
+    {
+      "id": "volunteer",
+      "name": { "en": "Check-in Volunteer", "th": "อาสาสมัครจุดเช็คอิน" },
+      "type": "role",
+      "description": { "en": "Assisting on event day with badge scanning and attendance mark", "th": "ช่วยสแกนบัตรและบันทึกการเข้าร่วมงานในวันกิจกรรม" }
+    },
+    {
+      "id": "event_lead",
+      "name": { "en": "Event Lead", "th": "หัวหน้าผู้จัดกิจกรรม" },
+      "type": "role",
+      "description": { "en": "Staff member managing event operations and roster oversight", "th": "เจ้าหน้าที่ผู้รับผิดชอบดูแลภาพรวมกิจกรรมและรายชื่อ" }
+    },
+    {
+      "id": "accessibility_coordinator",
+      "name": { "en": "Accessibility Coordinator", "th": "ผู้ประสานงานความช่วยเหลือพิเศษ" },
+      "type": "role",
+      "description": { "en": "Staff authorized to view and fulfill special accommodation needs", "th": "เจ้าหน้าที่ที่ได้รับมอบหมายให้จัดการคำขออำนวยความสะดวกพิเศษ" }
+    },
+    {
+      "id": "support_desk",
+      "name": { "en": "Campus Support Desk", "th": "ฝ่ายบริการช่วยเหลือนิสิต" },
+      "type": "role",
+      "description": { "en": "Handles student inquiries and account unlock requests", "th": "ดูแลคำถามของนิสิตและประสานงานปัญหาบัญชีผู้ใช้" }
+    },
+    {
+      "id": "automated_reminder_worker",
+      "name": { "en": "Automated Reminder Worker", "th": "บริการส่งการแจ้งเตือนอัตโนมัติ" },
+      "type": "service",
+      "description": { "en": "Background batch service dispatching scheduled email notices", "th": "เซอร์วิสเบื้องหลังที่ส่งอีเมลแจ้งเตือนตามรอบเวลาที่กำหนด" }
+    },
+    {
+      "id": "vendor_support",
+      "name": { "en": "Vendor Cloud Support", "th": "ทีมซัพพอร์ตของผู้ให้บริการภายนอก" },
+      "type": "delegated_vendor",
+      "description": { "en": "Third-party cloud infrastructure technical support engineer", "th": "วิศวกรสนับสนุนระบบคลาวด์ภายนอกที่ดูแลระบบส่งอีเมล" }
+    }
+  ],
+  "data_assets": [
+    {
+      "id": "directory_info",
+      "name": { "en": "Directory Information (Name, Univ Email)", "th": "ข้อมูลไดเรกทอรีพื้นฐาน (ชื่อ, อีเมลมหาวิทยาลัย)" },
+      "sensitivity": "low",
+      "purpose": { "en": "Participant identification and notification delivery", "th": "การระบุตัวตนและส่งข้อความแจ้งเตือน" }
+    },
+    {
+      "id": "attendance_state",
+      "name": { "en": "Attendance & Check-in Timestamp", "th": "สถานะการเช็คอินและเวลาเข้างาน" },
+      "sensitivity": "medium",
+      "purpose": { "en": "Event verification and participation records", "th": "การบันทึกยืนยันการเข้าร่วมกิจกรรม" }
+    },
+    {
+      "id": "accessibility_details",
+      "name": { "en": "Special Accessibility Requests", "th": "ข้อมูลคำขอการอำนวยความสะดวกพิเศษ" },
+      "sensitivity": "high",
+      "purpose": { "en": "Arranging ramps, seating, or assistive support on event day", "th": "การจัดทางลาด ที่นั่งพิเศษ หรืออุปกรณ์ช่วยเหลือในวันงาน" }
+    },
+    {
+      "id": "emergency_flag",
+      "name": { "en": "Emergency Contact Indicator (Yes/No flag)", "th": "สถานะการมีผู้ติดต่อฉุกเฉิน (มี/ไม่มี)" },
+      "sensitivity": "medium",
+      "purpose": { "en": "Safety verification before field activities", "th": "ตรวจสอบความพร้อมด้านความปลอดภัยก่อนทำกิจกรรมภาคสนาม" }
+    }
+  ],
+  "documented_facts": [
+    {
+      "id": "fact_volunteer_window",
+      "statement": {
+        "en": "Volunteers only need check-in access during the 2-hour event session window.",
+        "th": "อาสาสมัครมีความจำเป็นต้องเข้าถึงหน้าเช็คอินเฉพาะช่วง 2 ชั่วโมงของกิจกรรมเท่านั้น"
+      },
+      "category": "access_scope"
+    },
+    {
+      "id": "fact_worker_fields",
+      "statement": {
+        "en": "The reminder worker only requires recipient email, first name, and session start time to send notices.",
+        "th": "เซอร์วิสแจ้งเตือนต้องการเพียงอีเมลผู้รับ ชื่อ และเวลาเริ่มกิจกรรมในการส่งข้อความ"
+      },
+      "category": "data_minimization"
+    },
+    {
+      "id": "fact_accessibility_scope",
+      "statement": {
+        "en": "Special accessibility details are restricted strictly to the Accessibility Coordinator and excluded from public volunteer rosters.",
+        "th": "ข้อมูลคำขอความช่วยเหลือพิเศษจำกัดเฉพาะผู้ประสานงานความช่วยเหลือพิเศษ และต้องไม่ปรากฏในรายชื่อสำหรับอาสาสมัคร"
+      },
+      "category": "privacy_boundary"
+    },
+    {
+      "id": "fact_vendor_request",
+      "statement": {
+        "en": "The email vendor requested a database dump containing full registration records to diagnose bounce rates.",
+        "th": "ผู้ให้บริการส่งอีเมลร้องขอไฟล์ดัมป์ฐานข้อมูลทั้งหมดที่มีข้อมูลการลงทะเบียนเต็มรูปแบบเพื่อวิเคราะห์อัตราอีเมลตีกลับ"
+      },
+      "category": "vendor_governance"
+    }
+  ],
+  "explicit_unknowns": [
+    {
+      "id": "unknown_vendor_dpa",
+      "statement": {
+        "en": "Whether the third-party email vendor has signed an updated data processing agreement covering sensitive campus attributes.",
+        "th": "ไม่มีหลักฐานว่าผู้ให้บริการอีเมลภายนอกได้ลงนามในสัญญาประมวลผลข้อมูล (DPA) ที่ครอบคลุมข้อมูลพิเศษหรือไม่"
+      },
+      "evidence_rule": "cannot_claim_compliance_without_evidence"
+    },
+    {
+      "id": "unknown_worker_identity",
+      "statement": {
+        "en": "Whether the automated reminder worker runs as a dedicated scoped service principal or shares an administrative service account.",
+        "th": "ไม่ปรากฏหลักฐานว่าเซอร์วิสแจ้งเตือนทำงานด้วย Service Principal เฉพาะที่มีสิทธิ์จำกัด หรือใช้บัญชีผู้ดูแลร่วมกัน"
+      },
+      "evidence_rule": "cannot_claim_least_privilege_without_audit"
+    },
+    {
+      "id": "unknown_post_event_lifecycle",
+      "statement": {
+        "en": "Whether the volunteer roster accounts are systematically disabled immediately when the event concludes.",
+        "th": "ไม่มีหลักฐานหรือนโยบายอัตโนมัติในการปิดสิทธิ์บัญชีอาสาสมัครทันทีหลังเสร็จสิ้นกิจกรรม"
+      },
+      "evidence_rule": "must_triage_residual_lifecycle_risk"
+    }
+  ]
+}

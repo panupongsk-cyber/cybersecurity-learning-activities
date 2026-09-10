@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data & Access Risk Triage | NU Cybersecurity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="app-title-group">
+        <h1 id="app-title">Data & Access Risk Triage</h1>
+        <p id="app-subtitle">Interactive Practice for 305332 & 316332 Cybersecurity</p>
+      </div>
+      <div class="header-controls">
+        <a href="../" class="btn btn-outline" id="btn-back-portal">← Portal</a>
+        <button type="button" class="btn btn-secondary" id="btn-toggle-glossary">Glossary</button>
+        <button type="button" class="btn btn-secondary" id="btn-toggle-lang" aria-label="Toggle language">TH / EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress-bar-container" id="progress-container" style="display: none;">
+      <div class="lens-badge" id="active-lens-badge">Course Lens: 305332</div>
+      <ol class="progress-steps" aria-label="Game progress">
+        <li class="progress-step active" id="step-nav-1"><div class="step-number">1</div><span>Map</span></li>
+        <li class="progress-step" id="step-nav-2"><div class="step-number">2</div><span>Access</span></li>
+        <li class="progress-step" id="step-nav-3"><div class="step-number">3</div><span>Triage</span></li>
+        <li class="progress-step" id="step-nav-4"><div class="step-number">4</div><span>Treat</span></li>
+        <li class="progress-step" id="step-nav-5"><div class="step-number">5</div><span>Debrief</span></li>
+      </ol>
+    </div>
+
+    <!-- Screen 0: Lens Selection -->
+    <section class="screen active" id="screen-lens">
+      <h2 class="screen-title" id="txt-lens-title">Select Your Course Lens</h2>
+      <p class="screen-subtitle" id="txt-lens-subtitle">Choose your active learning lens. The core Campus Connect case is shared, but scoring and debriefs remain distinct.</p>
+      
+      <div class="lens-grid">
+        <button type="button" class="lens-card" data-lens="305332">
+          <div>
+            <div class="lens-badge">CPE 305332</div>
+            <h3 id="txt-lens-305-title">305332 Lens: Identity & Access</h3>
+            <p id="txt-lens-305-desc">Focus on least privilege, scoped RBAC, authentication dependencies, and account lifecycle deprovisioning.</p>
+          </div>
+          <span class="btn btn-primary">Start 305332 Lens →</span>
+        </button>
+
+        <button type="button" class="lens-card" data-lens="316332">
+          <div>
+            <div class="lens-badge">IIE 316332</div>
+            <h3 id="txt-lens-316-title">316332 Lens: Privacy & Governance</h3>
+            <p id="txt-lens-316-desc">Focus on personal data sensitivity, data minimisation, likelihood/impact triage, and governance controls.</p>
+          </div>
+          <span class="btn btn-primary">Start 316332 Lens →</span>
+        </button>
+
+        <button type="button" class="lens-card" data-lens="shared">
+          <div>
+            <div class="lens-badge">Shared Practice</div>
+            <h3 id="txt-lens-shared-title">Shared Practice Mode</h3>
+            <p id="txt-lens-shared-desc">Experience both identity and privacy viewpoints in sequence with separate debriefs.</p>
+          </div>
+          <span class="btn btn-secondary">Start Shared Mode →</span>
+        </button>
+      </div>
+
+      <aside class="safeguard-banner success" style="margin-top: 1.5rem;">
+        <div class="safeguard-icon">ℹ️</div>
+        <div class="safeguard-content">
+          <h4>Scenario Overview: Campus Connect</h4>
+          <p id="txt-scenario-desc">Campus Connect is an event and support platform introducing volunteer on-site check-in and an automated reminder email service.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Screen 1: Round 1 (Map) -->
+    <section class="screen" id="screen-round1">
+      <h2 class="screen-title" id="r1-title">Round 1 — Map What is at Stake</h2>
+      <p class="screen-subtitle" id="r1-instruction">Classify entities and identify verified facts versus explicit unknowns.</p>
+
+      <div id="r1-tasks-container" class="card-list"></div>
+
+      <div class="choice-card" style="margin-top: 1.5rem;">
+        <h4 id="r1-ev-question" style="margin-bottom: 0.75rem;">Evidence & Unknowns Check</h4>
+        <div id="r1-ev-options" class="card-list"></div>
+      </div>
+
+      <div id="r1-feedback" style="display: none;" class="safeguard-banner success">
+        <div class="safeguard-icon">✓</div>
+        <div class="safeguard-content" id="r1-feedback-text"></div>
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btn-submit-r1">Submit Round 1 →</button>
+      </div>
+    </section>
+
+    <!-- Screen 2: Round 2 (Access) -->
+    <section class="screen" id="screen-round2">
+      <h2 class="screen-title" id="r2-title">Round 2 — Decide Scoped Access</h2>
+      <p class="screen-subtitle" id="r2-scenario-prompt">Evaluate the requested access and choose a proportionate, scoped decision.</p>
+
+      <div id="r2-decisions-container" class="card-list"></div>
+
+      <div id="r2-safeguard-banner" style="display: none;" class="safeguard-banner">
+        <div class="safeguard-icon" id="r2-safeguard-icon">⚠️</div>
+        <div class="safeguard-content">
+          <h4 id="r2-safeguard-title">Safeguard Alert</h4>
+          <p id="r2-safeguard-desc"></p>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btn-submit-r2" disabled>Next: Round 3 →</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Round 3 (Triage) -->
+    <section class="screen" id="screen-round3">
+      <h2 class="screen-title" id="r3-title">Round 3 — Triage Risk & Evidence</h2>
+      <p class="screen-subtitle" id="r3-incident-prompt">Assess the security event. Evidence quality strictly limits maximum claimable certainty.</p>
+
+      <div class="triage-grid">
+        <div class="triage-field">
+          <label for="r3-select-likelihood">Likelihood</label>
+          <select id="r3-select-likelihood" class="triage-select">
+            <option value="Low">Low</option>
+            <option value="Moderate" selected>Moderate</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <div class="triage-field">
+          <label for="r3-select-impact">Impact</label>
+          <select id="r3-select-impact" class="triage-select">
+            <option value="Minor">Minor</option>
+            <option value="Moderate" selected>Moderate</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </div>
+
+        <div class="triage-field">
+          <label for="r3-select-confidence">Confidence Level</label>
+          <select id="r3-select-confidence" class="triage-select">
+            <option value="low">Low (Speculation)</option>
+            <option value="medium" selected>Medium (Grounded in facts with unknowns)</option>
+            <option value="high">High (Certainty / Definitive)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="r3-limiter-banner" style="display: none;" class="safeguard-banner blocked">
+        <div class="safeguard-icon">⛔</div>
+        <div class="safeguard-content">
+          <h4>Evidence Limiter Activated</h4>
+          <p id="r3-limiter-desc"></p>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btn-submit-r3">Evaluate Triage →</button>
+      </div>
+    </section>
+
+    <!-- Screen 4: Round 4 (Treat) -->
+    <section class="screen" id="screen-round4">
+      <h2 class="screen-title" id="r4-title">Round 4 — Treat & Govern</h2>
+      <p class="screen-subtitle" id="r4-subtitle">Select a proportionate treatment, assign an accountable owner, and define verification evidence.</p>
+
+      <h4 style="margin: 1rem 0 0.5rem 0;">1. Treatment Control</h4>
+      <div id="r4-treatments-container" class="card-list"></div>
+
+      <h4 style="margin: 1.5rem 0 0.5rem 0;">2. Accountable Owner</h4>
+      <div id="r4-owners-container" class="card-list"></div>
+
+      <h4 style="margin: 1.5rem 0 0.5rem 0;">3. Verification Evidence</h4>
+      <div id="r4-evidence-container" class="card-list"></div>
+
+      <div id="r4-residual-banner" style="display: none;" class="safeguard-banner success">
+        <div class="safeguard-icon">🛡️</div>
+        <div class="safeguard-content">
+          <h4 id="r4-residual-title">Residual Risk State</h4>
+          <p id="r4-residual-desc"></p>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btn-submit-r4">View Debrief →</button>
+      </div>
+    </section>
+
+    <!-- Screen 5: Debrief -->
+    <section class="screen" id="screen-debrief">
+      <h2 class="screen-title" id="debrief-title">Activity Debrief & Evidence Summary</h2>
+      <p class="screen-subtitle" id="debrief-summary-text"></p>
+
+      <div class="debrief-scores">
+        <div class="score-box">
+          <div class="score-label" id="lbl-score-scope">Scope</div>
+          <div class="score-val" id="val-score-scope">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label" id="lbl-score-prop">Proportionality</div>
+          <div class="score-val" id="val-score-prop">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label" id="lbl-score-ev">Evidence</div>
+          <div class="score-val" id="val-score-ev">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label" id="lbl-score-acc">Accountability</div>
+          <div class="score-val" id="val-score-acc">0</div>
+        </div>
+      </div>
+
+      <div class="choice-card" style="margin: 1.5rem 0;">
+        <h4 style="margin-bottom: 0.75rem;">Key Misconceptions & Takeaways</h4>
+        <ul id="debrief-misconceptions" style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);"></ul>
+      </div>
+
+      <div style="margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: gap; gap: 1rem;">
+        <button type="button" class="btn btn-secondary" id="btn-restart-activity">Restart Activity</button>
+        <a href="../" class="btn btn-primary">Return to Activities Portal →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Glossary Modal -->
+  <div class="modal-overlay" id="glossary-modal" role="dialog" aria-modal="true" aria-labelledby="glossary-dialog-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="glossary-dialog-title">Key Concepts & Glossary</h2>
+        <button type="button" class="btn btn-outline" id="btn-close-glossary">✕</button>
+      </div>
+      <div id="glossary-list"></div>
+    </div>
+  </div>
+
+  <script src="game-core.js"></script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
