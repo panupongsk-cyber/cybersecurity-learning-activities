@@ -1,0 +1,3510 @@
+{
+  "schemaVersion": 1,
+  "packId": "316332-cybersecurity",
+  "title": {
+    "en": "Cybersecurity",
+    "th": "ความมั่นคงปลอดภัยไซเบอร์"
+  },
+  "course": "316332",
+  "generatedFrom": "courses/NU/2569-1/316332-Cybersecurity/quizzes/",
+  "sourceHash": "sha256:c92bf9267ee7a36cc28acc16cb69612e18b2f259f0efb922ea13fbc0f66c81a6",
+  "groups": [
+    {
+      "id": "w01",
+      "label": {
+        "en": "Week 1 — Cybersecurity as a Shared Responsibility",
+        "th": "สัปดาห์ที่ 1 — Cybersecurity as a Shared Responsibility"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w02",
+      "label": {
+        "en": "Week 2 — Identity Lifecycle and Accountability",
+        "th": "สัปดาห์ที่ 2 — Identity Lifecycle and Accountability"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w03",
+      "label": {
+        "en": "Week 3 — Policy, Ethics, and Human Behaviour",
+        "th": "สัปดาห์ที่ 3 — Policy, Ethics, and Human Behaviour"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w04",
+      "label": {
+        "en": "Week 4 — Privacy Expectations and Context",
+        "th": "สัปดาห์ที่ 4 — Privacy Expectations and Context"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w05",
+      "label": {
+        "en": "Week 5 — Personal Data and Data Flows",
+        "th": "สัปดาห์ที่ 5 — Personal Data and Data Flows"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w06",
+      "label": {
+        "en": "Week 6 — Privacy Impact and Design Choices",
+        "th": "สัปดาห์ที่ 6 — Privacy Impact and Design Choices"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w07",
+      "label": {
+        "en": "Week 7 — Risk Fundamentals and Scenarios",
+        "th": "สัปดาห์ที่ 7 — Risk Fundamentals and Scenarios"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w08",
+      "label": {
+        "en": "Week 8 — Risk Analysis and Treatment",
+        "th": "สัปดาห์ที่ 8 — Risk Analysis and Treatment"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w09",
+      "label": {
+        "en": "Week 9 — Risk Ownership and Escalation",
+        "th": "สัปดาห์ที่ 9 — Risk Ownership and Escalation"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w10",
+      "label": {
+        "en": "Week 10 — Cybersecurity Governance and Decision Rights",
+        "th": "สัปดาห์ที่ 10 — Cybersecurity Governance and Decision Rights"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w11",
+      "label": {
+        "en": "Week 11 — Policy, Controls, and Compliance Evidence",
+        "th": "สัปดาห์ที่ 11 — Policy, Controls, and Compliance Evidence"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w12",
+      "label": {
+        "en": "Week 12 — Security Culture and Behaviour Change",
+        "th": "สัปดาห์ที่ 12 — Security Culture and Behaviour Change"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w13",
+      "label": {
+        "en": "Week 13 — Project Integration and Evidence Traceability",
+        "th": "สัปดาห์ที่ 13 — Project Integration and Evidence Traceability"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w14",
+      "label": {
+        "en": "Week 14 — Verification, Peer Review, and Improvement",
+        "th": "สัปดาห์ที่ 14 — Verification, Peer Review, and Improvement"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    },
+    {
+      "id": "w15",
+      "label": {
+        "en": "Week 15 — Responsible Communication and Individual Defence",
+        "th": "สัปดาห์ที่ 15 — Responsible Communication and Individual Defence"
+      },
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "316332-w01-q1",
+      "group": "w01",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "What does modern cybersecurity protect, according to this course?",
+        "th": "ตามกรอบของรายวิชานี้ modern cybersecurity ปกป้องอะไร?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Only technical systems",
+            "th": "เฉพาะระบบเทคนิคเท่านั้น"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "People, information, services, and trust",
+            "th": "ผู้คน ข้อมูล บริการ และความไว้วางใจ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Only an organisation's reputation",
+            "th": "เฉพาะชื่อเสียงขององค์กรเท่านั้น"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Only data covered by law",
+            "th": "เฉพาะข้อมูลที่กฎหมายครอบคลุมเท่านั้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Modern cybersecurity protects people, information, services, and trust.",
+        "th": "cybersecurity ในรายวิชานี้ปกป้องผู้คน ข้อมูล บริการ และความไว้วางใจ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m1-foundations/01-what-is-cybersecurity.md"
+    },
+    {
+      "id": "316332-w01-q2",
+      "group": "w01",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A \"secondary\" or \"non-user\" stakeholder is best described as:",
+        "th": "stakeholder แบบ \"secondary\" หรือ \"non-user\" หมายถึงข้อใดดีที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Someone who never matters to a decision",
+            "th": "คนที่ไม่เกี่ยวข้องกับการตัดสินใจเลย"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Someone who is affected by or accountable for a decision without using the interface directly",
+            "th": "คนที่ได้รับผลกระทบหรือมีความรับผิดชอบต่อการตัดสินใจ แม้ไม่ได้ใช้หน้าจอระบบโดยตรง"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Any student member of a service",
+            "th": "นักศึกษาทุกคนที่เป็นสมาชิกของบริการ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "A stakeholder who has been removed from the system",
+            "th": "stakeholder ที่ถูกลบออกจากระบบแล้ว"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A non-user stakeholder can be affected by, responsible for, or accountable for a decision without using the interface directly.",
+        "th": "non-user stakeholder อาจได้รับผลกระทบ มีหน้าที่ หรือมีความรับผิดชอบต่อการตัดสินใจ แม้ไม่ได้ใช้หน้าจอระบบโดยตรง"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m1-foundations/04-stakeholder-analysis.md"
+    },
+    {
+      "id": "316332-w01-q3",
+      "group": "w01",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Cybersecurity is only an IT department problem.\"*",
+        "th": "True or False และแก้ไขหากเป็น False: *\"Cybersecurity เป็นปัญหาของ IT department เท่านั้น\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Cybersecurity is a shared responsibility across roles, choices, and accountable decisions, not only an IT department problem.",
+        "th": "cybersecurity เป็นความรับผิดชอบร่วมกันผ่านบทบาท การตัดสินใจ และ accountability ไม่ใช่ปัญหาของ IT เท่านั้น"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w01-q4",
+      "group": "w01",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"The safest system collects every possible detail.\"*",
+        "th": "True or False และแก้ไขหากเป็น False: *\"ระบบที่ปลอดภัยที่สุดคือระบบที่เก็บรายละเอียดทุกอย่างเท่าที่เป็นไปได้\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Collecting everything increases exposure, privacy obligations, and possible harm. A safer design asks what data is necessary for a stated purpose.",
+        "th": "การเก็บทุกอย่างเพิ่มการเปิดเผยข้อมูล ภาระด้าน privacy และความเสียหายที่อาจเกิดขึ้น ระบบที่ดีควรถามว่าข้อมูลใดจำเป็นต่อวัตถุประสงค์ที่ระบุไว้"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w01-q5",
+      "group": "w01",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A Campus Club officer proposes collecting each member's home address \"just in case it's useful later.\" This request should first be checked against:",
+        "th": "officer ของ Campus Club เสนอให้เก็บที่อยู่บ้านของสมาชิกทุกคน \"เผื่อมีประโยชน์ภายหลัง\" คำขอนี้ควรถูกตรวจสอบกับเรื่องใดเป็นอันดับแรก?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "The strongest available encryption",
+            "th": "การเข้ารหัสที่แข็งแรงที่สุดที่มี"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Whether the data is necessary for a stated purpose",
+            "th": "ข้อมูลนั้นจำเป็นต่อวัตถุประสงค์ที่ระบุไว้หรือไม่"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Whether the member is a paying member",
+            "th": "สมาชิกคนนั้นจ่ายค่าสมาชิกหรือไม่"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "How much storage the service has available",
+            "th": "ระบบมีพื้นที่เก็บข้อมูลมากแค่ไหน"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "\"Just in case\" is not a stated purpose; see the data-minimisation idea introduced this week and developed fully in m5-personal-data-privacy/05-minimisation-and-purpose-limitation.md.",
+        "th": "\"เผื่อมีประโยชน์\" ยังไม่ใช่วัตถุประสงค์ที่ชัดเจน จึงต้องตรวจว่าข้อมูลจำเป็นต่อวัตถุประสงค์ที่ระบุไว้หรือไม่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/05-minimisation-and-purpose-limitation.md"
+    },
+    {
+      "id": "316332-w02-q1",
+      "group": "w02",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which pair is correctly matched?",
+        "th": "ข้อใดจับคู่ถูกต้อง?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Authentication — deciding what an identity may do",
+            "th": "Authentication — การตัดสินใจว่าตัวตนนั้นสามารถทำอะไรได้บ้าง"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Authorisation — verifying a claimed identity",
+            "th": "Authorisation — การยืนยันตัวตนที่อ้างสิทธิ์"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Authentication — verifying a claimed identity",
+            "th": "Authentication — การยืนยันตัวตนที่อ้างสิทธิ์"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Accountability — a set of permitted actions",
+            "th": "Accountability — ชุดของสิทธิ์การกระทำที่ได้รับอนุญาต"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Authentication verifies identity; authorisation decides what is permitted.",
+        "th": "Authentication คือการยืนยันตัวตน ส่วน Authorisation คือการอนุมัติสิทธิ์การใช้งาน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m2-identity-management/02-authentication-vs-authorisation.md"
+    },
+    {
+      "id": "316332-w02-q2",
+      "group": "w02",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"Give only the access needed for a legitimate task, for only the period it is needed\" defines:",
+        "th": "\"ให้สิทธิ์การเข้าถึงเฉพาะเท่าที่จำเป็นต่อภารกิจที่ได้รับมอบหมาย และเฉพาะในช่วงเวลาที่จำเป็นเท่านั้น\" คือนิยามของข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Separation of duties",
+            "th": "Separation of duties (การแบ่งแยกหน้าที่)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Least privilege",
+            "th": "Least privilege (การให้สิทธิ์เท่าที่จำเป็น)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Auditability",
+            "th": "Auditability (ความสามารถในการตรวจสอบ)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Authorisation",
+            "th": "Authorisation (การให้อำนาจ/สิทธิ์)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Least privilege balances task requirements against exposure risk.",
+        "th": "Least privilege คือการให้สิทธิ์ขั้นต่ำเท่าที่จำเป็นต่อการทำภารกิจ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m2-identity-management/05-least-privilege-and-separation-of-duties.md"
+    },
+    {
+      "id": "316332-w02-q3",
+      "group": "w02",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Authentication and authorisation are the same.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"Authentication และ Authorisation คือสิ่งเดียวกัน\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Authentication checks a claim; authorisation decides the permitted action — two separate steps.",
+        "th": "Authentication ตรวจสอบการอ้างสิทธิ์ตัวตน ส่วน Authorisation ตัดสินสิทธิ์ในการปฏิบัติการ เป็น 2 ขั้นตอนที่ต่างกัน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w02-q4",
+      "group": "w02",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Audit logs solve everything.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"Audit logs สามารถแก้ปัญหาทุกอย่างได้\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Logs are evidence after/around an action; they do not replace careful access decisions.",
+        "th": "Logs เป็นหลักฐานร่องรอยการทำงาน ไม่สามารถทดแทนการออกแบบและจำกัดสิทธิ์ที่ระมัดระวังได้"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w02-q5",
+      "group": "w02",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Mai's term as Robotics Club officer ends and Narin is elected to replace her. Which action is most important to take **together** with granting Narin's new access?",
+        "th": "วาระตำแหน่งกรรมการชมรมหุ่นยนต์ของไหมสิ้นสุดลง และนรินทร์ได้รับเลือกตั้งแทน การกระทำใดสำคัญที่สุดที่ต้องทำ**ควบคู่**ไปกับการให้สิทธิ์ใหม่แก่นรินทร์?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Nothing else is needed",
+            "th": "ไม่ต้องทำอะไรเพิ่มเติม"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Removing Mai's officer access for that club",
+            "th": "ยกเลิกสิทธิ์กรรมการชมรมนั้นของไหม"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Giving Narin access to every club's historical reports",
+            "th": "ให้สิทธิ์นรินทร์เข้าถึงรายงานย้อนหลังของทุกชมรม"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Deleting Mai's entire account immediately",
+            "th": "ลบบัญชีผู้ใช้ของไหมออกจากระบบทั้งหมดทันที"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A role change requires revoking previous access alongside provisioning new access.",
+        "th": "การเปลี่ยนบทบาทต้องถอนสิทธิ์เดิมออกทันทีควบคู่กับการให้สิทธิ์ใหม่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m2-identity-management/06-role-changes-as-security-events.md"
+    },
+    {
+      "id": "316332-w03-q1",
+      "group": "w03",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "In the policy-to-evidence chain, a \"standard\" is best described as:",
+        "th": "ในห่วงโซ่นโยบายสู่หลักฐาน คำว่า \"Standard\" (มาตรฐาน) อธิบายได้ดีที่สุดด้วยข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "A recommended practice that is not mandatory",
+            "th": "แนวปฏิบัติที่แนะนำแต่ไม่บังคับ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "A required, consistent minimum",
+            "th": "ข้อกำหนดขั้นต่ำที่ต้องปฏิบัติตามอย่างสม่ำเสมอ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "A high-level organisational commitment",
+            "th": "ความมุ่งมั่นระดับสูงขององค์กร"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "A record showing an action occurred",
+            "th": "บันทึกที่แสดงว่าเกิดการปฏิบัติขึ้นจริง"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A standard sets a required, consistent minimum baseline.",
+        "th": "Standard คือข้อกำหนดขั้นต่ำสม่ำเสมอที่ต้องปฏิบัติตาม"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m3-compliance-policy-and-ethics/02-policy-to-evidence-chain.md"
+    },
+    {
+      "id": "316332-w03-q2",
+      "group": "w03",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which ethical norm asks \"is this restriction or data collection necessary for the stated purpose?\"",
+        "th": "บรรทัดฐานทางจริยธรรมใดที่ตั้งคำถามว่า \"ข้อจำกัดหรือการเก็บรวบรวมข้อมูลนี้จำเป็นต่อวัตถุประสงค์ที่ระบุไว้หรือไม่?\""
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Transparency",
+            "th": "Transparency (ความโปร่งใส)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Fairness",
+            "th": "Fairness (ความเป็นธรรม)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Proportionality",
+            "th": "Proportionality (ความสมรูปสมส่วน)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Respect for persons",
+            "th": "Respect for persons (การเคารพบุคคล)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Proportionality balances safety controls against burden and purpose.",
+        "th": "Proportionality ตรวจสอบความสมรูปสมส่วนของมาตรการกับวัตถุประสงค์"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m3-compliance-policy-and-ethics/04-ethical-norms-in-policy.md"
+    },
+    {
+      "id": "316332-w03-q3",
+      "group": "w03",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Policy is just paperwork.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"นโยบายเป็นเพียงแค่เอกสารบนกระดาษ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Policy shapes purpose, decision rights, limits, and evidence review.",
+        "th": "นโยบายคือโครงสร้างการตัดสินใจและควบคุม ไม่ใช่แค่เอกสาร"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w03-q4",
+      "group": "w03",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"A strict rule is always a better rule.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"กฎที่เข้มงวดกว่าคือซื่อที่เป็นกฎที่ดีกว่าเสมอ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "A rule must be proportionate and usable; excessively strict rules lead to workarounds.",
+        "th": "กฎที่ดีต้องสมรูปสมส่วนและนำไปปฏิบัติได้จริง กฎที่เข้มงวดเกินไปนำไปสู่การแอบฝ่าฝืน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w03-q5",
+      "group": "w03",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "At a busy event, volunteers suggest everyone use the officer's login to speed up check-in. The most effective response is to:",
+        "th": "ในงานกิจกรรมที่มีคนหนาแน่น อาสาสมัครเสนอให้ทุกคนใช้ล็อกอินของกรรมการร่วมกันเพื่อเร่งการเช็คอิน การตอบสนองที่มีประสิทธิภาพที่สุดคือข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Repeat \"never share accounts\" and take no other action",
+            "th": "พูดซ้ำว่า \"ห้ามแชร์บัญชี\" โดยไม่ดำเนินการอื่นใด"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Prepare individually assigned, time-bounded volunteer access before the event",
+            "th": "จัดเตรียมสิทธิ์รายบุคคลที่มีกำหนดเวลาสำหรับอาสาสมัครล่วงหน้าก่อนเริ่มงาน"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Cancel the event",
+            "th": "ยกเลิกงานกิจกรรม"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Assume the volunteers are acting maliciously",
+            "th": "สรุปว่าอาสาสมัครมีเจตนาร้าย"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Provide a safe, usable path with pre-provisioned volunteer accounts.",
+        "th": "ทางแก้คือการปรับปรุงระบบและเตรียมบัญชีล่วงหน้า ไม่ใช่แค่ต่อว่าพนักงาน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m3-compliance-policy-and-ethics/05-why-people-do-not-comply.md"
+    },
+    {
+      "id": "316332-w04-q1",
+      "group": "w04",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which lens concerns what a pattern of activity over time can reveal about a person, even if no single event is sensitive?",
+        "th": "มุมมองด้าน Privacy ใดที่ให้ความสนใจกับรูปแบบพฤติกรรมข้ามช่วงเวลาที่สามารถเผยข้อมูลส่วนบุคคลได้ แม้เหตุการณ์เดี่ยวๆ จะไม่ใช่ข้อมูลอ่อนไหว?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Informational privacy",
+            "th": "Informational privacy (ความเป็นส่วนตัวทางข้อมูล)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Contextual privacy",
+            "th": "Contextual privacy (ความเป็นส่วนตัวตามบริบท)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Behavioural privacy",
+            "th": "Behavioural privacy (ความเป็นส่วนตัวทางพฤติกรรม)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Social privacy",
+            "th": "Social privacy (ความเป็นส่วนตัวทางสังคม)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Behavioural privacy focuses on patterns over time revealing routines and habits.",
+        "th": "Behavioural privacy เน้นพฤติกรรมสะสมข้ามช่วงเวลาที่สะท้อนนิสัยและชีวิตประจำวัน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m4-social-and-behavioural-privacy/02-four-privacy-lenses.md"
+    },
+    {
+      "id": "316332-w04-q2",
+      "group": "w04",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Privacy is best defined in this course as:",
+        "th": "คำว่า Privacy (ความเป็นส่วนตัว) ให้นิยามได้ดีที่สุดในวิชานี้ด้วยข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Keeping all data completely secret",
+            "th": "การเก็บข้อมูลทุกอย่างเป็นความลับอย่างสมบูรณ์"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Appropriate information and activity boundaries in context",
+            "th": "การกำหนดขอบเขตข้อมูลและกิจกรรมที่เหมาะสมตามบริบท"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "A synonym for security",
+            "th": "คำที่มีความหมายเหมือนกับคำว่า Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Only relevant to identifiable data",
+            "th": "เกี่ยวข้องเฉพาะกับข้อมูลระบุตัวบุคคลได้เท่านั้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Privacy is appropriate boundaries in context, not absolute secrecy.",
+        "th": "Privacy คือการตั้งขอบเขตที่เหมาะสมตามบริบท ไม่ใช่ความลับสมบูรณ์"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m4-social-and-behavioural-privacy/01-privacy-is-not-secrecy.md"
+    },
+    {
+      "id": "316332-w04-q3",
+      "group": "w04",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"If a person volunteered information once, it can be used for anything.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"หากบุคคลใดสมัครใจให้ข้อมูลไว้หนึ่งครั้ง ข้อมูลนั้นสามารถนำไปใช้กับอะไรก็ได้\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Volunteering data for one context does not grant unlimited reuse for other purposes.",
+        "th": "การยินยอมในวัตถุประสงค์หนึ่ง ไม่ใช่อนุญาตให้นำไปใช้ซ้ำในวัตถุประสงค์อื่น"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w04-q4",
+      "group": "w04",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Only sensitive data creates privacy risk.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"เฉพาะข้อมูลอ่อนไหว (Sensitive Data) เท่านั้นที่สร้างความเสี่ยงด้าน Privacy\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Non-sensitive data can become revealing through aggregation across sources.",
+        "th": "ข้อมูลทั่วไปสามารถระบุตัวตนและสร้างความเสี่ยงได้เมื่อถูกรวบรวมประกอบกัน (Aggregation)"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m4-social-and-behavioural-privacy/05-aggregation.md"
+    },
+    {
+      "id": "316332-w04-q5",
+      "group": "w04",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Alice's accessibility note (a request for a sign-language interpreter) was collected for event planning. A new feature would show it to every officer browsing all registrations, not just the officer preparing her event. This is best analysed as a failure of:",
+        "th": "บันทึกความต้องการพิเศษของอลิซ (คำขอส่งล่ามภาษามือ) ถูกจัดเก็บเพื่อการวางแผนจัดงาน แต่อินเทอร์เฟซใหม่แสดงข้อมูลนี้ให้กรรมการทุกคนเห็น ไม่ใช่เฉพาะกรรมการที่เตรียมงานให้อลิซ กรณีนี้วิเคราะห์ว่าเป็นความล้มเหลวของเรื่องใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Authentication",
+            "th": "Authentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Purpose limitation and contextual privacy",
+            "th": "Purpose limitation และ Contextual privacy"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Least privilege only, unrelated to privacy",
+            "th": "Least privilege เท่านั้น โดยไม่เกี่ยวกับ privacy"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Separation of duties",
+            "th": "Separation of duties"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The data was exposed beyond its collected purpose and expected context.",
+        "th": "ละเมิด Purpose limitation และ Contextual privacy เนื่องจากเปิดเผยเกินบริบทวัตถุประสงค์ที่เก็บรวบรวม"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m4-social-and-behavioural-privacy/04-from-expectation-to-requirement.md"
+    },
+    {
+      "id": "316332-w05-q1",
+      "group": "w05",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"Collect and expose no more data than is needed for the legitimate purpose\" defines:",
+        "th": "\"เก็บรวบรวมและเปิดเผยข้อมูลเฉพาะเท่าที่จำเป็นต่อวัตถุประสงค์ที่ชอบด้วยกฎหมายเท่านั้น\" คือนิยามของข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Purpose limitation",
+            "th": "Purpose limitation (การจำกัดวัตถุประสงค์)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Data minimisation",
+            "th": "Data minimisation (การลดการใช้ข้อมูลให้มากที่สุด)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Aggregation",
+            "th": "Aggregation (การรวบรวมข้อมูล)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Retention",
+            "th": "Retention (การจัดเก็บรักษา)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Data minimisation requires limiting collection to what is strictly necessary.",
+        "th": "Data minimisation คือหลักการจัดเก็บและเปิดเผยข้อมูลเท่าที่จำเป็นจริงๆ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/05-minimisation-and-purpose-limitation.md"
+    },
+    {
+      "id": "316332-w05-q2",
+      "group": "w05",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A data-flow arrow with no purpose label is best treated as:",
+        "th": "เส้นกระแสข้อมูล (Data-flow arrow) ที่ปราศจากการระบุวัตถุประสงค์กำกับ ควรได้รับการปฏิบัติต่างจากข้อใดดีที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Acceptable, since purpose is implied",
+            "th": "ยอมรับได้ เนื่องจากวัตถุประสงค์เข้าใจได้โดยนัย"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "A candidate for elimination",
+            "th": "เป็นส่วนที่ควรพิจารณาลบออกหรือยกเลิก"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Evidence the flow is secure",
+            "th": "เป็นหลักฐานว่ากระแสข้อมูลนั้นปลอดภัย"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Irrelevant to the analysis",
+            "th": "ไม่เกี่ยวข้องกับการวิเคราะห์"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A flow without a clear purpose creates exposure risk without justification.",
+        "th": "กระแสข้อมูลที่ไม่มีวัตถุประสงค์ชัดเจนควรถูกพิจารณาลบออกจากระบบ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/04-three-questions-per-flow.md"
+    },
+    {
+      "id": "316332-w05-q3",
+      "group": "w05",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"A data-flow map is a technical network diagram.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"แผนผัง Data-flow map คือผังเครือข่ายทางเทคนิค (Technical Network Diagram)\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "A DFD maps information decisions, boundaries, and accountability, not network topology.",
+        "th": "DFD คือแผนผังขอบเขตข้อมูลและความรับผิดชอบ ไม่ใช่ผังโครงสร้างเครือข่ายทางเทคนิค"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/01-purpose-before-diagram.md"
+    },
+    {
+      "id": "316332-w05-q4",
+      "group": "w05",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"More data always means a better service.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การเก็บข้อมูลจำนวนมากขึ้นหมายถึงบริการที่ดีขึ้นเสมอ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "More data creates more obligations, exposure, and potential liability.",
+        "th": "การเก็บข้อมูลมากเกินจำเป็นเพิ่มภาระความรับผิดชอบและความเสี่ยงรั่วไหล"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w05-q5",
+      "group": "w05",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Ploy (event organiser) needs to know how many people will attend, for room capacity. Which design best fits her actual need?",
+        "th": "พลอย (ผู้จัดงาน) ต้องการทราบจำนวนผู้เข้าร่วมเพื่อเตรียมขนาดห้องจัดงาน การออกแบบใดสอดคล้องกับความต้องการที่แท้จริงของพลอยมากที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "A full list of names, IDs, and contact details",
+            "th": "รายชื่อ เลขประจำตัว และข้อมูลติดต่อฉบับเต็มทุกคน"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "A single aggregate count of registrations",
+            "th": "ยอดรวมจำนวนผู้ลงทะเบียน (Single Aggregate Count)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Every registrant's accessibility notes",
+            "th": "บันทึกความต้องการพิเศษของผู้ลงทะเบียนทุกคน"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Access to the entire membership database",
+            "th": "สิทธิ์เข้าถึงฐานข้อมูลสมาชิกทั้งหมด"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "An aggregate count fulfills the room capacity purpose without exposing personal identifiers.",
+        "th": "สรุปยอดรวมจำนวนตอบโจทย์วัตถุประสงค์การเตรียมห้อง โดยไม่ต้องเปิดเผยรายชื่อระบุตัวบุคคล"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/05-minimisation-and-purpose-limitation.md"
+    },
+    {
+      "id": "316332-w06-q1",
+      "group": "w06",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A privacy-impact assessment (PIA) is best described as:",
+        "th": "การประเมินผลกระทบด้านความเป็นส่วนตัว (PIA) อธิบายได้ดีที่สุดด้วยข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "A form completed after the design is already fixed",
+            "th": "แบบฟอร์มที่กรอกหลังจากสรุปการออกแบบเสร็จสิ้นแล้ว"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Structured anticipation of harm before a decision is finalised",
+            "th": "การคาดการณ์ผลกระทบความเสียหายอย่างเป็นระบบก่อนสรุปการตัดสินใจ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "A guarantee that no privacy risk remains",
+            "th": "การรับประกันว่าไม่มีความเสี่ยงด้านความเป็นส่วนตัวเหลืออยู่เลย"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Only relevant to technical safeguards",
+            "th": "เกี่ยวข้องเฉพาะมาตรการป้องกันทางเทคนิคเท่านั้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "PIA is structured anticipation before decisions are finalized.",
+        "th": "PIA คือกระบวนการคาดการณ์ผลกระทบอย่างเป็นระบบก่อนตัดสินใจ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/07-privacy-impact-assessment.md"
+    },
+    {
+      "id": "316332-w06-q2",
+      "group": "w06",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which of these is **not** one of the safeguard types discussed this week?",
+        "th": "ข้อใด**ไม่ใช่**ประเภทของมาตรการป้องกัน (Safeguards) ที่หารือกันในสัปดาห์นี้?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Reduce collection",
+            "th": "การลดการเก็บรวบรวมข้อมูล (Reduce collection)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Shorten retention",
+            "th": "การลดระยะเวลาจัดเก็บ (Shorten retention)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Ignore the concern until someone complains",
+            "th": "การละเลยความกังวลจนกว่าจะมีคนร้องเรียน (Ignore until complain)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Add meaningful review",
+            "th": "การเพิ่มขั้นตอนการทบทวนอย่างมีนัยสำคัญ (Add review)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Ignoring concerns until complaints arise is a failure, not a safeguard.",
+        "th": "การละเลยความกังวลไม่ใช่มาตรการป้องกัน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/11-safeguards-as-design-choices.md"
+    },
+    {
+      "id": "316332-w06-q3",
+      "group": "w06",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Impact assessment guarantees zero risk.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การประเมินผลกระทบรับประกันความเสี่ยงเป็นศูนย์\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "PIA informs decision making; residual risk may remain and require ongoing review.",
+        "th": "PIA ช่วยในการตัดสินใจแต่ไม่ได้ขจัดความเสี่ยงเป็นศูนย์ ความเสี่ยงคงเหลือยังคงต้องได้รับการทบทวน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w06-q4",
+      "group": "w06",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"A technical safeguard fixes every privacy concern.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"มาตรการทางเทคนิคแก้ปัญหา Privacy ได้ทุกเรื่อง\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Privacy issues often require governance, policy, or process changes rather than encryption alone.",
+        "th": "ปัญหา Privacy หลายเรื่องต้องการการแก้ที่นโยบายและสิทธิ์การเข้าถึง ไม่ใช่แค่เทคโนโลยี"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w06-q5",
+      "group": "w06",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A team responds to an over-collection concern by proposing \"we'll encrypt the database.\" Encryption is unlikely to solve this concern because:",
+        "th": "ทีมงานตอบสนองต่อข้อกังวลเรื่องการเก็บข้อมูลมากเกินไปด้วยการเสนอว่า \"เราจะเข้ารหัสฐานข้อมูล\" การเข้ารหัสไม่น่าจะแก้ปัญหานี้ได้เนื่องจากเหตุผลใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Encryption is never useful",
+            "th": "การเข้ารหัสไม่มีประโยชน์เลย"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "The real problem is over-collection or an over-broad audience, which encryption does not address",
+            "th": "ปัญหาที่แท้จริงคือการเก็บข้อมูลมากเกินไปหรือให้สิทธิ์ผู้ดู broad เกินไป ซึ่งการเข้ารหัสไม่ได้แก้ไขเรื่องนี้"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Encryption is too expensive",
+            "th": "การเข้ารหัสมีราคาแพงเกินไป"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Encryption always requires new hardware",
+            "th": "การเข้ารหัสต้องใช้อุปกรณ์ใหม่เสมอ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Encryption protects confidentiality against unauthorized external access, but does not fix over-collection or unauthorized internal access.",
+        "th": "การเข้ารหัสไม่ได้ช่วยลดการเก็บข้อมูลที่เกินจำเป็น หรือป้องกันผู้ได้รับอนุญาตที่แอบดูข้อมูลเกินหน้าที่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m5-personal-data-privacy/11-safeguards-as-design-choices.md"
+    },
+    {
+      "id": "316332-w07-q1",
+      "group": "w07",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"A weakness or condition that makes an unwanted event more plausible\" defines:",
+        "th": "\"จุดอ่อนหรือเงื่อนไขที่ทำให้เหตุการณ์ที่ไม่พึงประสงค์มีความเป็นไปได้มากขึ้น\" คือนิยามของข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Threat",
+            "th": "Threat (ภัยคุกคาม)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Vulnerability",
+            "th": "Vulnerability (ช่องโหว่)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Risk",
+            "th": "Risk (ความเสี่ยง)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Impact",
+            "th": "Impact (ผลกระทบ)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Vulnerability is a condition or weakness that enables a threat.",
+        "th": "Vulnerability คือช่องโหว่หรือเงื่อนไขที่ทำให้ภัยคุกคามเกิดผลกระทบได้"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/02-core-vocabulary.md"
+    },
+    {
+      "id": "316332-w07-q2",
+      "group": "w07",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which of the following is a well-formed risk scenario?",
+        "th": "ข้อใดคือการเขียนสถานการณ์ความเสี่ยง (Risk Scenario) ที่มีไวยากรณ์สมบูรณ์ถูกต้อง?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "\"Data may leak.\"",
+            "th": "\"ข้อมูลอาจรั่วไหล\""
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "\"Because room-override permissions are not reviewed after staff leave, a former assistant could access booking records, causing inappropriate disclosure.\"",
+            "th": "\"เนื่องจากไม่มีการทบทวนสิทธิ์ยกเว้นห้องหลังจากพนักงานลาออก อดีตผู้ช่วยจึงอาจเข้าถึงบันทึกการจอง ส่งผลให้เกิดการเปิดเผยข้อมูลที่ไม่เหมาะสม\""
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "\"Security is important.\"",
+            "th": "\"ความปลอดภัยเป็นสิ่งสำคัญ\""
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "\"The service should be more secure.\"",
+            "th": "\"บริการควรจะมีความปลอดภัยมากขึ้น\""
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A complete risk scenario states condition, threat actor/event, asset, and impact.",
+        "th": "เขียนด้วยไวยากรณ์มาตรฐาน 5 ส่วน (เงื่อนไข $\\rightarrow$ ภัยคุกคาม $\\rightarrow$ สินทรัพย์ $\\rightarrow$ ผลกระทบ)"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/03-risk-scenario-grammar.md"
+    },
+    {
+      "id": "316332-w07-q3",
+      "group": "w07",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Risk equals vulnerability.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ความเสี่ยง (Risk) เท่ากับ ช่องโหว่ (Vulnerability)\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Vulnerability is one factor; risk includes likelihood, context, and impact.",
+        "th": "ช่องโหว่เป็นเพียงปัจจัยหนึ่ง ความเสี่ยงต้องรวมโอกาสเกิดและผลกระทบด้วย"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w07-q4",
+      "group": "w07",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Likelihood is objective fact.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"โอกาสเกิด (Likelihood) คือข้อเท็จจริงวัตถุประสงค์\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Likelihood involves reasoned estimation based on evidence and assumptions.",
+        "th": "โอกาสเกิดคือการประมาณการอย่างมีเหตุผลอ้างอิงหลักฐาน ไม่ใช่ข้อเท็จจริงตายตัว"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w07-q5",
+      "group": "w07",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A student risk register contains five scenarios, all about server hacking, with none about staff workflow or unclear ownership. This register is best diagnosed as:",
+        "th": "ทะเบียนความเสี่ยงของนิสิตประกอบด้วย 5 สถานการณ์ ซึ่งทั้งหมดเกี่ยวกับ Server Hacking โดยไม่มีเรื่องพฤติกรรมเจ้าหน้าที่หรือขาดความรับผิดชอบเลย ทะเบียนนี้ประเมินได้ว่าอย่างไร?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Complete and well-balanced",
+            "th": "สมบูรณ์และสมดุลดีแล้ว"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Missing socio-technical (human/process) risk factors",
+            "th": "ขาดปัจจัยความเสี่ยงด้าน Socio-technical (คนและกระบวนการ)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Too short",
+            "th": "สั้นเกินไป"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Correctly scoped, since technology is what matters most",
+            "th": "กำหนดขอบเขตถูกต้องแล้ว เพราะเทคโนโลยีสำคัญที่สุด"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Real-world risk registers must cover human, process, and technical vectors.",
+        "th": "ขาดมุมมอง Socio-technical ซึ่งเป็นสาเหตุหลักของเหตุการณ์ไซเบอร์ส่วนใหญ่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/04-include-people-and-process.md"
+    },
+    {
+      "id": "316332-w08-q1",
+      "group": "w08",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"The risk that remains after a treatment is applied\" defines:",
+        "th": "\"ความเสี่ยงที่ยังคงเหลืออยู่หลังจากได้ลงมือปรับปรุงตามมาตรการแล้ว\" คือนิยามของข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Inherent risk",
+            "th": "Inherent risk (ความเสี่ยงดั้งเดิม)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Residual risk",
+            "th": "Residual risk (ความเสี่ยงคงเหลือ)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Risk appetite",
+            "th": "Risk appetite (เกณฑ์ยอมรับความเสี่ยง)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Vulnerability",
+            "th": "Vulnerability (ช่องโหว่)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Residual risk is what remains after controls are in place.",
+        "th": "Residual risk คือความเสี่ยงที่เหลืออยู่หลังจัดทำมาตรการควบคุม"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/08-inherent-and-residual-risk.md"
+    },
+    {
+      "id": "316332-w08-q2",
+      "group": "w08",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which of the four treatment choices means \"formally accept a proportionate residual risk, with a named owner and a review date\"?",
+        "th": "ข้อใดใน 4 ทางเลือกการจัดการความเสี่ยงหมายถึง \"การอนุมัติยอมรับความเสี่ยงคงเหลืออย่างเป็นทางการ โดยมีชื่อผู้รับผิดชอบและกำหนดวันทบทวน\"?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Avoid",
+            "th": "Avoid (การหลีกเลี่ยงความเสี่ยง)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Reduce/mitigate",
+            "th": "Reduce/mitigate (การลด/บรรเทาความเสี่ยง)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Share/transfer",
+            "th": "Share/transfer (การแบ่งปัน/โอนความเสี่ยง)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Accept",
+            "th": "Accept (การยอมรับความเสี่ยง)"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Accept requires a formal, owned, and reviewed decision.",
+        "th": "Accept คือการยอมรับความเสี่ยงที่มีกระบวนการและผู้รับผิดชอบเป็นทางการ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/10-four-treatment-choices.md"
+    },
+    {
+      "id": "316332-w08-q3",
+      "group": "w08",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Accept means ignore.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การยอมรับความเสี่ยง (Accept) หมายถึงการปล่อยปละละเลย (Ignore)\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Acceptance must be explicit, documented, and reviewed — not ignored.",
+        "th": "การยอมรับความเสี่ยงต้องมีการบันทึก ลงชื่อผู้รับผิดชอบ และตั้งรอบทบทวน ไม่ใช่การปล่อยปละละเลย"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w08-q4",
+      "group": "w08",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"The strongest control is always best.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"มาตรการควบคุมที่เข้มงวดที่สุดคือมาตรการที่ดีที่สุดเสมอ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Controls must be proportionate to the risk and operational context.",
+        "th": "มาตรการต้องสมรูปสมส่วนกับความเสี่ยง บริบทการทำงานไม่ได้แปลว่าเข้มที่สุดจะดีที่สุด"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w08-q5",
+      "group": "w08",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A risk's stated cause is \"no one is assigned to review room-override permissions.\" Which treatment best fits the cause?",
+        "th": "สาเหตุของความเสี่ยงระบุว่า \"ไม่มีใครได้รับมอบหมายให้ทบทวนสิทธิ์การอนุมัติห้อง\" การจัดการความเสี่ยงใดตรงกับสาเหตุมากที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Buy an expensive new access-control system",
+            "th": "ซื้อระบบควบคุมการเข้าถึงใหม่ราคาแพง"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Assign an accountable role to review overrides on a schedule",
+            "th": "มอบหมายบทบาทรับผิดชอบ (Accountable Role) ให้ทบทวนสิทธิ์ตามรอบเวลา"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Encrypt the booking database",
+            "th": "เข้ารหัสฐานข้อมูลการจอง"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Add a warning banner to the login page",
+            "th": "เพิ่มข้อความเตือนบนหน้าจอล็อกอิน"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The cause is a process/governance gap; assigning a clear role fits the cause directly.",
+        "th": "ปัญหาเกิดจากขาดกระบวนการและผู้รับผิดชอบ การแก้ตรงสาเหตุคือการมอบหมายบทบาทและรอบทบทวน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/11-controls-fit-the-cause.md"
+    },
+    {
+      "id": "316332-w09-q1",
+      "group": "w09",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which best distinguishes a risk owner from a control owner?",
+        "th": "ข้อใดแยกแยะความแตกต่างระหว่าง Risk owner กับ Control owner ได้ถูกต้องที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "They are always the same role",
+            "th": "ทั้งสองคือบทบาทเดียวกันเสมอ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "The risk owner decides if residual risk is acceptable; the control owner operates the safeguard",
+            "th": "Risk owner ตัดสินใจว่าความเสี่ยงคงเหลือยอมรับได้หรือไม่ ส่วน Control owner เป็นผู้ดูแลระบบมาตรการควบคุม"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "The control owner decides if residual risk is acceptable; the risk owner operates the safeguard",
+            "th": "Control owner ตัดสินใจว่าความเสี่ยงคงเหลือยอมรับได้หรือไม่ ส่วน Risk owner เป็นผู้ดูแลระบบมาตรการควบคุม"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Neither role is accountable for anything",
+            "th": "ทั้งสองบทบาทไม่มีความรับผิดชอบใดๆ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Risk owner holds accountability for residual risk; control owner executes safeguards.",
+        "th": "Risk owner รับผิดชอบการอนุมัติความเสี่ยงคงเหลือ ส่วน Control owner ลงมือดูแลมาตรการ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/12-risk-ownership.md"
+    },
+    {
+      "id": "316332-w09-q2",
+      "group": "w09",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "The appropriate **immediate** action during an unfolding incident with incomplete facts should be:",
+        "th": "การดำเนินการ**ทันที**ที่เหมาะสมระหว่างเกิดเหตุการณ์ความไม่ปลอดภัยที่ข้อยังไม่ครบถ้วน ควรเป็นอย่างไร?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "A final judgement naming who is responsible",
+            "th": "การตัดสินชี้ขาดขั้นสุดท้ายโดยระบุชื่อผู้ทำผิด"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Reversible, blame-free, and limiting ongoing exposure",
+            "th": "สามารถย้อนคืนได้ ไม่มุ่งโทษ และจำกัดขอบเขตความเสียหายที่กำลังเกิดขึ้น"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "No action until every fact is confirmed",
+            "th": "ไม่ดำเนินการใดๆ จนกว่าจะยืนยันข้อเท็จจริงได้ทุกข้อ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "A public announcement naming the affected people",
+            "th": "การประกาศสาธารณะระบุรายชื่อผู้ได้รับผลกระทบ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Immediate action aims to contain exposure while remaining blame-free and reversible.",
+        "th": "การตอบสนองทันทีเน้นยับยั้งความเสียหาย โดยไม่มุ่งโทษและย้อนคืนได้"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/14-immediate-action-vs-final-judgement.md"
+    },
+    {
+      "id": "316332-w09-q3",
+      "group": "w09",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"The person who notices a problem must solve every part.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"คนที่พบปัญหาต้องเป็นผู้แก้ปัญหาทุกส่วนด้วยตนเอง\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Finding an issue requires escalation and reporting; ownership belongs to designated roles.",
+        "th": "ผู้พบปัญหามีหน้าที่แจ้งรายงานการส่งต่อ (Escalation) ไม่ใช่ต้องแก้คนเดียวทุกส่วน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w09-q4",
+      "group": "w09",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Residual risk is a mistake.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ความเสี่ยงคงเหลือ (Residual Risk) คือความผิดพลาด\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Residual risk is a normal outcome of proportionate risk decisions when documented and reviewed.",
+        "th": "ความเสี่ยงคงเหลือเป็นผลลัพธ์ปกติของการตัดสินใจอย่างสมรูปสมส่วนที่มีการบันทึกทบทวน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w09-q5",
+      "group": "w09",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A detailed attendance report is found in an unintended shared folder. What is the most appropriate first step?",
+        "th": "พบรายงานการเช็คอินอย่างละเอียดอยู่ในโฟลเดอร์แชร์ที่ไม่ตั้งใจ ขั้นตอนแรกที่เหมาะสมที่สุดคือข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Publicly announce who is responsible",
+            "th": "ประกาศสาธารณะระบุตัวผู้รับผิดชอบ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Restrict the folder and preserve the access history",
+            "th": "จำกัดสิทธิ์เข้าถึงโฟลเดอร์และเก็บรักษาประวัติ Log การเข้าถึงไว้"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Delete the folder entirely, including logs",
+            "th": "ลบโฟลเดอร์ทิ้งทั้งหมด รวมถึง Log บันทึก"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Take no action until the organiser is interviewed",
+            "th": "ไม่ดำเนินการใดๆ จนกว่าจะสอบสัมภาษณ์ผู้จัดงานเสร็จ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Restrict access immediately and preserve logs as evidence for final analysis.",
+        "th": "ปิดการเข้าถึงเพื่อยับยั้งความเสียหายทันที และเก็บรักษา Log ไว้เป็นหลักฐานตรวจสอบ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m6-risk-management/15-tabletop-and-incomplete-information.md"
+    },
+    {
+      "id": "316332-w10-q1",
+      "group": "w10",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "In a RACI map, which letter should normally appear **exactly once** per decision?",
+        "th": "ในผัง RACI ตัวอักษรใดควรปรากฏ**เพียงหนึ่งเดียว**ต่อแถวการตัดสินใจ?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "R",
+            "th": "R (Responsible)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "A",
+            "th": "A (Accountable)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "C",
+            "th": "C (Consulted)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "I",
+            "th": "I (Informed)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Exactly one 'A' (Accountable) per decision ensures clear ownership.",
+        "th": "แต่ละแถวใน RACI ต้องมี 'A' เพียง 1 เดียวเท่านั้น"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/03-raci.md"
+    },
+    {
+      "id": "316332-w10-q2",
+      "group": "w10",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Governance is best distinguished from management and operations as:",
+        "th": "Governance (การกำกับดูแล) แยกแยะความต่างจากการบริหารจัดการและการปฏิบัติการได้ดีที่สุดด้วยข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "The same thing under a different name",
+            "th": "คือสิ่งเดียวกันภายใต้ชื่อเรียกต่างกัน"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Setting direction, accountability, decision rights, and oversight",
+            "th": "การกำหนดทิศทาง ความรับผิดชอบ สิทธิ์การตัดสินใจ และการกำกับติดตาม"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Only about day-to-day task execution",
+            "th": "เกี่ยวข้องเฉพาะการลงมือปฏิบัติงานรายวันเท่านั้น"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Only relevant to large organisations",
+            "th": "เกี่ยวข้องเฉพาะกับองค์กรขนาดใหญ่เท่านั้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Governance sets decision rights and direction, distinct from day-to-day management.",
+        "th": "Governance กำหนดสิทธิ์และทิศทาง แยกจากงานบริหารจัดการรายวัน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/01-governance-answers-who-decides.md"
+    },
+    {
+      "id": "316332-w10-q3",
+      "group": "w10",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"RACI gives the right answer automatically.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ตาราง RACI ให้คำตอบที่ถูกต้องโดยอัตโนมัติ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "RACI is a framework for discussion and alignment, not an automated answer generator.",
+        "th": "RACI เป็นเครื่องมือสื่อสารและตกลงบทบาท ไม่ใช่ตัวสร้างคำตอบอัตโนมัติ"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w10-q4",
+      "group": "w10",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Accountability can be shared by everyone.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"Accountability (ผู้รับผิดชอบหลัก) สามารถแบ่งปันร่วมกันทุกคนได้\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Consulted and Responsible can involve many people; Accountability ('A') must remain single per task.",
+        "th": "บทบาท R, C, I มีหลายคนได้ แต่ Accountable ('A') ต้องมีเพียงคนเดียว"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w10-q5",
+      "group": "w10",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A service owner is Accountable for approving new data fields, granting detailed report access, **and** approving policy exceptions. What concern does this raise?",
+        "th": "เจ้าของบริการเป็น Accountable สำหรับอนุมัติฟิลด์ข้อมูลใหม่ ให้อนุมัติสิทธิ์ดูรายงาน **และ**อนุมัติข้อยกเว้นนโยบาย กรณีนี้สร้างข้อกังวลเรื่องใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "None — one accountable role for everything is efficient and safe",
+            "th": "ไม่มี — บทบาทเดียวรับผิดชอบทุกอย่างมีประสิทธิภาพและปลอดภัยดี"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "It concentrates judgement in one place and removes independent review",
+            "th": "เกิดการรวบอำนาจตัดสินใจไว้ที่เดียวและทำลายการทบทวนที่เป็นอิสระ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "It is required by the one-accountable rule",
+            "th": "เป็นสิ่งที่กฎ 'One A' บังคับไว้"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "It only matters for large organisations",
+            "th": "สำคัญเฉพาะในองค์กรขนาดใหญ่เท่านั้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Concentrating all approvals in one role creates a single point of failure and removes checks and balances.",
+        "th": "การรวบอำนาจอนุมัติทุกอย่างไว้ที่คนเดียว ทำลายระบบตรวจสอบและถ่วงดุล (Checks & Balances)"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/04-not-one-role-decides-everything.md"
+    },
+    {
+      "id": "316332-w11-q1",
+      "group": "w11",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Evidence that does not help a role decide, learn, or verify something, but exists only because it was easy to collect, is best described as:",
+        "th": "หลักฐานที่ไม่ได้ช่วยในการตัดสินใจ เรียนรู้ หรือตรวจสอบใดๆ แต่อยู่เพราะเก็บง่าย อธิบายได้ดีที่สุดด้วยคำว่า?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Proportionate evidence",
+            "th": "Proportionate evidence (หลักฐานที่สมรูปสมส่วน)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "A compensating control",
+            "th": "A compensating control (มาตรการทดแทน)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Compliance theatre",
+            "th": "Compliance theatre (การปฏิบัติตามแบบปาหี่)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "A residual risk",
+            "th": "A residual risk (ความเสี่ยงคงเหลือ)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Collecting evidence solely for ceremonial appearance is compliance theatre.",
+        "th": "การเก็บหลักฐานเป็นพิธีการโดยไม่ใช้ตัดสินใจ คือ Compliance theatre"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/10-avoiding-compliance-theatre.md"
+    },
+    {
+      "id": "316332-w11-q2",
+      "group": "w11",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "In a policy gap analysis, which is **not** one of the five diagnostic questions?",
+        "th": "ในการวิเคราะห์ช่องโหว่นโยบาย (Policy Gap Analysis) ข้อใด**ไม่ใช่**หนึ่งในคำถามวินิจฉัย 5 ประการ?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Is the required action clear?",
+            "th": "ขั้นตอนปฏิบัติที่ต้องทำมีความชัดเจนหรือไม่?"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Who owns it?",
+            "th": "ใครเป็นเจ้าของความรับผิดชอบ?"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Is the policy longer than 10 pages?",
+            "th": "เอกสารนโยบายมีความยาวเกิน 10 หน้าหรือไม่?"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "What evidence would show it happened?",
+            "th": "หลักฐานใดที่จะแสดงว่าเกิดการปฏิบัติขึ้นจริง?"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Document length is irrelevant to gap diagnosis.",
+        "th": "ความยาวของเอกสารไม่ใช่คำถามวินิจฉัยช่องโหว่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/08-finding-the-gap.md"
+    },
+    {
+      "id": "316332-w11-q3",
+      "group": "w11",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Evidence means collecting every possible log.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"หลักฐาน (Evidence) หมายถึงการจัดเก็บ Log ทุกอย่างเท่าที่เป็นไปได้\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Evidence must be relevant, proportionate, and reviewable — not exhaustive log hoarding.",
+        "th": "หลักฐานที่ดีต้องตรงประเด็นและสมรูปสมส่วน ไม่ใช่เก็บขยะ Log ทุกอย่าง"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w11-q4",
+      "group": "w11",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"An exception is permission to ignore the policy.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ข้อยกเว้น (Exception) คือการอนุญาตให้ฝ่าฝืนนโยบายได้ตามใจ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "An exception is a formal, time-bound risk decision with compensating safeguards.",
+        "th": "ข้อยกเว้นคือการตัดสินใจทางความเสี่ยงที่ได้รับการอนุมัติ มีกำหนดเวลา และมีมาตรการชั่วคราวรองรับ"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w11-q5",
+      "group": "w11",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "The same urgent, unapproved override recurs at every incident for a whole term. This pattern most likely indicates:",
+        "th": "มีการยกเว้นสิทธิ์ฉุกเฉินที่ไม่ได้อนุมัติเกิดขึ้นซ้ำๆ ในทุกเหตุการณ์ตลอดทั้งเทอม รูปแบบนี้บ่งชี้เรื่องใดมากที่สุด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Nothing — recurring exceptions are normal and need no action",
+            "th": "ไม่มีความหมายอะไร — ข้อยกเว้นที่เกิดขึ้นซ้ำเป็นเรื่องปกติ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "The normal policy or workflow needs redesign",
+            "th": "นโยบายหรือเวิร์กโฟลว์ปกติจำเป็นต้องได้รับการออกแบบใหม่"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "The exception process is working exactly as intended",
+            "th": "กระบวนการข้อยกเว้นกำลังทำงานตรงตามวัตถุประสงค์เป๊ะ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "The responsible person should be replaced",
+            "th": "ควรเปลี่ยนตัวผู้รับผิดชอบใหม่"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A recurring exception signals that the baseline policy or workflow no longer fits operational reality.",
+        "th": "ข้อยกเว้นที่เกิดซ้ำซ้อนบ่งบอกว่ากฎหรือกระบวนการเดิมล้าสมัยและต้องได้รับการออกแบบใหม่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m7-governance-and-policy/09-exceptions-as-controlled-choices.md"
+    },
+    {
+      "id": "316332-w12-q1",
+      "group": "w12",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "When someone takes an unsafe shortcut, the recommended first response is to:",
+        "th": "เมื่อพบว่ามีใครบางคนทำผิดนโยบายหรือลัดขั้นตอนที่ไม่ปลอดภัย การตอบสนองแรกที่แนะนำคือข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Assume bad intent and assign blame",
+            "th": "สรุปว่ามีเจตนาร้ายและต่อว่าผู้ทำผิด"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Ask what the system made difficult",
+            "th": "ตั้งคำถามว่าระบบทำให้ทางเลือกที่ปลอดภัยทำได้ยากอย่างไร"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Ignore it unless it happens twice",
+            "th": "เพิกเฉยจนกว่าจะเกิดขึ้นเป็นครั้งที่สอง"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Send a general reminder email to everyone",
+            "th": "ส่งอีเมลเตือนความจำทั่วไปถึงทุกคน"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Treat human behaviour as a system design problem; inquire before blaming.",
+        "th": "มนุษย์คือส่วนหนึ่งของระบบ socio-technical ต้องถามหาอุปสรรคเชิงระบบก่อนด่วนตัดสิน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m8-security-culture/01-people-are-part-of-the-system.md"
+    },
+    {
+      "id": "316332-w12-q2",
+      "group": "w12",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"100 staff attended a training session\" is an example of:",
+        "th": "ประโยคที่ว่า \"พนักงาน 100 คนเข้าฟังการอบรม\" เป็นตัวอย่างของข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "An outcome-oriented indicator",
+            "th": "ตัวชี้วัดที่เน้นผลลัพธ์พฤติกรรม (Outcome indicator)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "An activity measure, not an outcome measure",
+            "th": "การวัดผลเชิงกิจกรรม (Activity measure) ไม่ใช่การวัดผลลัพธ์พฤติกรรม"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "A validated safeguard",
+            "th": "มาตรการป้องกันที่ผ่านการประเมินผลจริงแล้ว"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "A well-formed risk scenario",
+            "th": "สถานการณ์ความเสี่ยงที่สมบูรณ์"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Attendance is an activity count, not evidence of actual risk reduction or behavioral change.",
+        "th": "จำนวนผู้เข้าฟังคือ Activity measure ไม่สามารถพิสูจน์การลดความเสี่ยงหรือการเปลี่ยนพฤติกรรมจริงได้"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m8-security-culture/06-measure-outcomes-not-activity.md"
+    },
+    {
+      "id": "316332-w12-q3",
+      "group": "w12",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Security culture means posters and slogans.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"วัฒนธรรมความปลอดภัยไซเบอร์หมายถึงโปสเตอร์รณรงค์และคำขวัญ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Culture appears in actual decisions, incentives, workflows, and responses — not slogans.",
+        "th": "วัฒนธรรมความปลอดภัยปรากฏในการปฏิบัติงาน แรงจูงใจ เวิร์กโฟลว์ ไม่ใช่แค่สโลแกน"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w12-q4",
+      "group": "w12",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"A metric proves success.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ตัวชี้วัด (Metric) คือสิ่งที่พิสูจน์ความสำเร็จเสมอ\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Metrics require context; naive targets can create perverse incentives.",
+        "th": "ตัวชี้วัดต้องมีบริบทกำกับ หากตั้งเป้าผิดอาจสร้างพฤติกรรมเบี่ยงเบนได้"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w12-q5",
+      "group": "w12",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "An intervention brief proposes pre-issuing individual staff logins before an exam-period rush. Which element is most often missing from a first draft?",
+        "th": "เอกสารข้อเสนอปรับเปลี่ยนพฤติกรรมเสนอให้แจกบัญชีผู้ใช้รายบุคคลแก่อาสาสมัครล่วงหน้าก่อนช่วงสอบ องค์ประกอบใดมักหลุดหายไปในการยกร่างฉบับแรก?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Audience",
+            "th": "กลุ่มเป้าหมายผู้รับผลกระทบ (Audience)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Desired behaviour",
+            "th": "พฤติกรรมเป้าหมายที่ต้องการ (Desired behaviour)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "The unintended consequence (e.g. added setup workload)",
+            "th": "ผลกระทบข้างเคียงที่ไม่คาดคิด (Unintended consequence เช่น ภาระงานเตรียมระบบที่เพิ่มขึ้น)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Owner",
+            "th": "ผู้รับผิดชอบ (Owner)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Every intervention carries trade-offs or unintended consequences; naming them in advance is crucial.",
+        "th": "การออกแบบมาตรการที่ดีต้องระบุ Trade-offs และผลกระทบข้างเคียงเชิงระบบไว้อย่างเปิดเผย"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m8-security-culture/04-designing-an-intervention.md"
+    },
+    {
+      "id": "316332-w13-q1",
+      "group": "w13",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Which statement type is \"we assume role reviews occur only after elections\"?",
+        "th": "ประโยคที่ว่า \"เราสมมติว่าการทบทวนสิทธิ์บทบาทเกิดขึ้นเฉพาะหลังการเลือกตั้งเท่านั้น\" จัดเป็นประเภทของประโยคข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Fact",
+            "th": "Fact (ข้อเท็จจริง)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Assumption",
+            "th": "Assumption (ข้อสมมติฐาน)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Inference",
+            "th": "Inference (การสรุปความ)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Recommendation",
+            "th": "Recommendation (ข้อเสนอแนะ)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "An assumption is an explicit premise used when full facts are unobserved.",
+        "th": "Assumption คือประโยคสมมติฐานที่ระบุไว้อย่างเปิดเผยเมื่อขาดข้อเท็จจริงบางส่วน"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/03-four-statement-types.md"
+    },
+    {
+      "id": "316332-w13-q2",
+      "group": "w13",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "The evidence-traceability chain is best written as:",
+        "th": "ห่วงโซ่การสืบย้อนหลักฐาน (Evidence-traceability chain) เขียนได้ถูกต้องที่สุดตามข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Recommendation → context → owner",
+            "th": "ข้อเสนอแนะ $\\rightarrow$ บริบท $\\rightarrow$ ผู้รับผิดชอบ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Context → evidence → risk/impact → recommendation → owner → action/control → verification",
+            "th": "บริบท $\\rightarrow$ หลักฐาน $\\rightarrow$ ความเสี่ยง/ผลกระทบ $\\rightarrow$ ข้อเสนอแนะ $\\rightarrow$ ผู้รับผิดชอบ $\\rightarrow$ มาตรการควบคุม $\\rightarrow$ การตรวจสอบ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Owner → verification → context",
+            "th": "ผู้รับผิดชอบ $\\rightarrow$ การตรวจสอบ $\\rightarrow$ บริบท"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Evidence → recommendation only, with no other links",
+            "th": "หลักฐาน $\\rightarrow$ ข้อเสนอแนะ เท่านั้น โดยไม่มีการเชื่อมโยงอื่น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Complete traceability links context to evidence, risk, recommendation, owner, action, and verification.",
+        "th": "ห่วงโซ่สืบย้อน 7 ขั้นร้อยเรียงสมบูรณ์จากบริบทสู่การตรวจสอบ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/02-evidence-traceability-chain.md"
+    },
+    {
+      "id": "316332-w13-q3",
+      "group": "w13",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"More recommendations make a better project.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การเสนอข้อเสนอแนะจำนวนยิ่งมาก หมายถึงโครงงานที่ดียิ่งขึ้น\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Fewer, fully supported, prioritized recommendations are far stronger than a long unfeasible list.",
+        "th": "ข้อเสนอแนะที่มีหลักฐานรองรับและทำได้จริงจำนวนน้อยข้อ ทรงพลังกว่ารายการข้อเสนอกว้างๆ ที่ทำจริงไม่ได้"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w13-q4",
+      "group": "w13",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"An assumption is a flaw.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"ข้อสมมติฐาน (Assumption) คือจุดบกพร่องของรายงาน\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Stated assumptions allow transparent review; unstated implicit assumptions are the actual flaw.",
+        "th": "การระบุข้อสมมติฐานอย่างชัดเจนช่วยเพิ่มความโปร่งใส ข้อสมมติฐานที่แอบซ่อนต่างหากคือจุดบกพร่อง"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w13-q5",
+      "group": "w13",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "A recommendation reads: \"The service must improve cybersecurity.\" What is the strongest single fix?",
+        "th": "ข้อเสนอแนะเขียนว่า \"บริการนี้ต้องปรับปรุงความปลอดภัยไซเบอร์\" การปรับแก้ข้อความนี้ให้มีความน่าเชื่อถือทางวิชาชีพสูงสุดคือข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Add more exclamation marks for emphasis",
+            "th": "ใส่ เครื่องหมายตกใจ (!) เพิ่มเพื่อเน้นย้ำความสำคัญ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Name a specific condition, owner, control, and evidence/review",
+            "th": "ระบุเงื่อนไขเฉพาะ ชื่อผู้รับผิดชอบ มาตรการควบคุม และหลักฐาน/การทบทวน"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Nothing — the statement is already sufficient",
+            "th": "ไม่ต้องทำอะไร — ข้อความสมบูรณ์เพียงพอแล้ว"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Replace it with a longer list of similarly broad statements",
+            "th": "เปลี่ยนเป็นรายการประโยคกว้างๆ ที่ยาวขึ้น"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Transform vague claims into supported recommendations by specifying condition, owner, control, and review.",
+        "th": "แปลงข้อความลอยๆ ให้กลายเป็นข้อเสนอแนะที่สืบย้อนได้โดยระบุเงื่อนไข ผู้รับผิดชอบ มาตรการ และเกณฑ์ตรวจสอบ"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/05-weak-versus-supported-claims.md"
+    },
+    {
+      "id": "316332-w14-q1",
+      "group": "w14",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "\"Was the role review completed and recorded on schedule?\" is an example of:",
+        "th": "คำถามที่ว่า \"การทบทวนสิทธิ์บทบาทเสร็จสิ้นและลงบันทึกไว้ตามกำหนดการหรือไม่?\" เป็นตัวอย่างของเรื่องใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Validation",
+            "th": "Validation (การพิสูจน์ผลลัพธ์จริง)"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Verification",
+            "th": "Verification (การตรวจสอบตามสเปก)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "An assumption",
+            "th": "An assumption (ข้อสมมติฐาน)"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Compliance theatre",
+            "th": "Compliance theatre (การทำปาหี่)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Verification checks whether a procedure was carried out as specified.",
+        "th": "Verification คือการตรวจสอบว่าได้ดำเนินการตามขั้นตอนสเปกที่ระบุไว้หรือไม่"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/07-verification-vs-validation.md"
+    },
+    {
+      "id": "316332-w14-q2",
+      "group": "w14",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Useful peer-review feedback should:",
+        "th": "ข้อเสนอแนะในการทำ Peer-review ที่มีประโยชน์ควรเป็นอย่างไร?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Say \"looks good\" or \"this is wrong\" and nothing more",
+            "th": "พูดแค่ว่า \"ดูดีแล้ว\" หรือ \"ตรงนี้ผิด\" โดยไม่ขยายความอื่น"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Identify the claim, missing evidence, consequence, and suggest an improvement",
+            "th": "ระบุข้อกล่าวอ้าง หลักฐานที่ขาดหาย ผลกระทบ และเสนอแนวทางปรับปรุง"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Avoid specifics so as not to seem harsh",
+            "th": "หลีกเลี่ยงรายละเอียดเจาะลึกเพราะเกรงใจเพื่อน"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Focus only on grammar and formatting",
+            "th": "เน้นเฉพาะไวยากรณ์และการจัดรูปแบบหน้ากระดาษ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Effective peer review points to specific claims, evidence gaps, and concrete fixes.",
+        "th": "Peer review ที่มีประสิทธิภาพต้องระบุหลักฐานที่ขาดหาย ผลกระทบ และข้อเสนอแนะปรับปรุง"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/09-peer-review-as-evidence.md"
+    },
+    {
+      "id": "316332-w14-q3",
+      "group": "w14",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Verification proves the outcome is good.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"Verification (การตรวจสเปก) พิสูจน์ว่าผลลัพธ์ที่ได้ดีและแก้ปัญหาได้จริง\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Verification confirms execution; validation measures whether it actually solves the underlying risk.",
+        "th": "Verification ยืนยันการลงมือทำตามสเปก ส่วน Validation ประเมินว่าแก้ปัญหาได้จริงหรือไม่"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w14-q4",
+      "group": "w14",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Peer review means finding faults.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"Peer review คือการจับผิด\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Peer review strengthens a proposal's evidence and defensibility, not just fault-finding.",
+        "th": "Peer review คือการช่วยเสริมให้รายงานของเพื่อนมีความน่าเชื่อถือและตอบคำถามได้ ไม่ใช่แค่การจับผิด"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w14-q5",
+      "group": "w14",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "An indicator tracks \"overdue role reviews.\" What makes this a *useful* indicator, per this week's lesson?",
+        "th": "ตัวชี้วัดหนึ่งติดตาม \"จำนวนการทบทวนสิทธิ์บทบาทที่เกินกำหนด\" อะไรที่ทำให้ตัวชี้วัดนี้มีประโยชน์ตามบทเรียนสัปดาห์นี้?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "It is easy to count",
+            "th": "มันนับได้ง่าย"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "It pairs a signal with a specific decision or action (e.g. trigger follow-up by the service owner)",
+            "th": "มันจับคู่สัญญาณเตือนกับการตัดสินใจหรือการปฏิบัติเฉพาะ (เช่น กระตุ้นให้เจ้าของบริการตามเรื่อง)"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "It requires no owner",
+            "th": "มันไม่ต้องมีเจ้าของ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "It is numerical, which is all that matters",
+            "th": "มันเป็นตัวเลข ซึ่งเป็นสิ่งเดียวที่สำคัญ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Indicators are justified when they trigger a clear decision or remediation action.",
+        "th": "ตัวชี้วัดจะมีประโยชน์ก็ต่อเมื่อมันเชื่อมโยงกับการตัดสินใจหรือการดำเนินการปรับปรุงแก้ไข"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/08-indicators-need-a-decision-use.md"
+    },
+    {
+      "id": "316332-w15-q1",
+      "group": "w15",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Why does clarity about limits (residual risk, assumptions) tend to *increase* trust in a proposal?",
+        "th": "เหตุใดความชัดเจนเกี่ยวกับข้อจำกัด (ความเสี่ยงคงเหลือ, ข้อสมมติฐาน) จึงมักช่วย**เพิ่ม**ความไว้วางใจต่อข้อเสนอแนะ?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "It makes the proposal sound longer",
+            "th": "มันทำให้ข้อเสนอดูมีความยาวมากขึ้น"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Overconfident claims collapse the moment reality proves them wrong, while honest limits hold up",
+            "th": "ข้อกล่าวอ้างที่เกินจริงจะพังทลายทันทีเมื่อเผชิญความจริง ในขณะที่ความซื่อสัตย์ต่อข้อจำกัดสร้างความน่าเชื่อถือ"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Audiences prefer vague answers",
+            "th": "ผู้ฟังชอบคำตอบที่คลุมเครือ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "It is required by law",
+            "th": "มันเป็นข้อบังคับตามกฎหมาย"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Transparent evaluation of limits builds executive trust and avoids overpromising.",
+        "th": "ความซื่อสัตย์ต่อข้อจำกัดช่วยเพิ่มความน่าเชื่อถือทางวิชาชีพและป้องกันการอ้างเกินจริง"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/12-clarity-about-limits.md"
+    },
+    {
+      "id": "316332-w15-q2",
+      "group": "w15",
+      "type": "mcq",
+      "cognitive": "concept",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "Adapting a message for different audiences (service owner vs. affected user) means:",
+        "th": "การปรับแต่งข้อความสำหรับผู้ฟังที่ต่างกัน (เจ้าของบริการ vs. ผู้ใช้งานที่ได้รับผลกระทบ) หมายถึงข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "Changing the underlying facts for each audience",
+            "th": "การเปลี่ยนข้อเท็จจริงพื้นฐานให้ไม่เหมือนกันในแต่ละกลุ่ม"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Keeping the facts constant while changing the level of detail and the decision asked of them",
+            "th": "การรักษาข้อเท็จจริงให้คงเดิม แต่ปรับระดับรายละเอียดและการตัดสินใจที่ขอจากพวกเขา"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Only presenting to the service owner",
+            "th": "การนำเสนอเฉพาะเจ้าของบริการเท่านั้น"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Avoiding audience-specific framing entirely",
+            "th": "การหลีกเลี่ยงการปรับแต่งสารตามกลุ่มเป้าหมาย"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Tailor detail and calls-to-action while maintaining factual consistency.",
+        "th": "ปรับระดับรายละเอียดและคำขอการตัดสินใจ โดยคงความถูกต้องของข้อเท็จจริงหลักไว้"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/14-adapting-to-the-audience.md"
+    },
+    {
+      "id": "316332-w15-q3",
+      "group": "w15",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"A confident presentation means no uncertainty.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การนำเสนอที่มั่นใจหมายถึงการไม่มีความไม่แน่นอนเลย\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Professional confidence includes honest acknowledgment of uncertainty and clear risk management.",
+        "th": "ความมั่นใจในวิชาชีพรวมถึงการยอมรับความไม่แน่นอนอย่างตรงไปตรงมาและระบุแนวทางรับมือ"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w15-q4",
+      "group": "w15",
+      "type": "true_false",
+      "cognitive": "misconception",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "True or False, and correct if false: *\"Team work removes individual responsibility.\"*",
+        "th": "True หรือ False และแก้ไขหากเป็น False: *\"การทำงานเป็นทีมช่วยลบล้างความรับผิดชอบรายบุคคลออกไป\"*"
+      },
+      "choices": [
+        {
+          "key": "True",
+          "text": {
+            "en": "True",
+            "th": "จริง"
+          }
+        },
+        {
+          "key": "False",
+          "text": {
+            "en": "False",
+            "th": "เท็จ"
+          }
+        }
+      ],
+      "answer": "False",
+      "explanation": {
+        "en": "Each team member remains individually accountable for understanding and defending their contribution.",
+        "th": "สมาชิกในทีมทุกคนยังคงต้องรับผิดชอบในการเข้าใจและปกป้องส่วนงานของตนเองในการสอบรายบุคคล"
+      },
+      "source": null
+    },
+    {
+      "id": "316332-w15-q5",
+      "group": "w15",
+      "type": "mcq",
+      "cognitive": "applied",
+      "clo": [
+        "CLO1",
+        "CLO2"
+      ],
+      "stem": {
+        "en": "During an individual defence question, a student is asked \"what assumption could change your conclusion?\" The strongest kind of answer:",
+        "th": "ระหว่างการสอบปากเปล่า Individual Defence นิสิตถูกถามว่า \"ข้อสมมติฐานใดที่หากเปลี่ยนไป จะส่งผลให้ข้อสรุปของคุณเปลี่ยน?\" คำตอบที่เข้มแข็งที่สุดคือข้อใด?"
+      },
+      "choices": [
+        {
+          "key": "A",
+          "text": {
+            "en": "States there are no assumptions in their work",
+            "th": "ตอบว่างานของตนเองไม่มีข้อสมมติฐานใดๆ"
+          }
+        },
+        {
+          "key": "B",
+          "text": {
+            "en": "Names a specific assumption and explains how a different fact would change the recommendation",
+            "th": "ระบุข้อสมมติฐานเฉพาะและอธิบายว่าหากข้อเท็จจริงเปลี่ยนไปจะกระทบข้อเสนอแนะอย่างไร"
+          }
+        },
+        {
+          "key": "C",
+          "text": {
+            "en": "Repeats the project's summary",
+            "th": "พูดสรุปภาพรวมโครงงานซ้ำอีกรอบ"
+          }
+        },
+        {
+          "key": "D",
+          "text": {
+            "en": "Defers the question to a teammate",
+            "th": "โยนคำถามให้เพื่อนร่วมทีมตอบแทน"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Demonstrating critical awareness of assumptions and their impacts proves individual mastery.",
+        "th": "การระบุข้อสมมติฐานเฉพาะพร้อมผลกระทบอย่างตรงไปตรงมาแสดงถึงความเข้าใจเชิงลึกรายบุคคล"
+      },
+      "source": "50_Actions/Teaching/courses/NU/_shared/cybersecurity/lecture-notes/modules/m9-capstone/16-individual-defence.md"
+    }
+  ]
+}

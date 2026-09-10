@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Quiz Arena">
+  <rect width="512" height="512" rx="96" fill="#1d4ed8"/>
+  <!-- Maskable safe zone is the centre 80%; the mark stays well inside it. -->
+  <g fill="#ffffff">
+    <path d="M256 128a96 96 0 1 0 0 192 96 96 0 0 0 0-192zm0 48a48 48 0 1 1 0 96 48 48 0 0 1 0-96z"/>
+    <rect x="300" y="300" width="48" height="88" rx="24" transform="rotate(-45 324 344)"/>
+  </g>
+</svg>

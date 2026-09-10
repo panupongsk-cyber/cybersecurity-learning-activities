@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sim 01 — Identity Management | Club Portal (305332)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ ธีมห้องเรียนสว่าง · จอ 4:3 (1024x768 logical) ============ */
+:root {
+  --bg-canvas: #0F172A;
+  --bg: #FFFFFF;
+  --ink: #0F172A;
+  --muted: #475569;
+  --line: #E2E8F0;
+  --accent: #1D4ED8;
+  --accent-light: #EFF6FF;
+  --accent-hover: #1E40AF;
+  --warn: #D97706;
+  --warn-bg: #FEF3C7;
+  --danger: #DC2626;
+  --danger-bg: #FEE2E2;
+  --safe: #16A34A;
+  --safe-bg: #DCFCE7;
+  --soft: #F8FAFC;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: var(--bg-canvas);
+  overflow: hidden;
+  font-family: "Inter", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, "Leelawadee UI", "Segoe UI", sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+#stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1024px;
+  height: 768px;
+  background: var(--bg);
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+/* ---- แถบบน ---- */
+#top {
+  height: 68px;
+  flex: 0 0 68px;
+  border-bottom: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  background: var(--soft);
+}
+#tag {
+  font-weight: 800;
+  font-size: 20px;
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+#title {
+  font-size: 25px;
+  font-weight: 700;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink);
+  padding: 0 4px;
+}
+#sceneNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+.scene-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.scene-dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--accent);
+}
+.pill-btn {
+  font-size: 17px;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  background: #fff;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.pill-btn:hover { background: var(--accent); color: #fff; }
+.pill-btn.active { background: var(--accent); color: #fff; }
+
+/* ---- ส่วนเนื้อหา ---- */
+#main {
+  flex: 1;
+  padding: 24px 38px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+h1 { font-size: 42px; line-height: 1.25; margin-bottom: 16px; font-weight: 800; }
+h2 { font-size: 32px; line-height: 1.3; margin-bottom: 14px; font-weight: 700; color: var(--ink); }
+p, li, td, th { font-size: 26px; line-height: 1.45; }
+.small { font-size: 22px; color: var(--muted); }
+ul { padding-left: 32px; }
+li { margin-bottom: 10px; }
+.center { text-align: center; }
+.dark {
+  background: #0B132B;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+.dark h1 { color: #fff; }
+.big { font-size: 110px; font-weight: 800; color: var(--danger); line-height: 1; letter-spacing: -2px; }
+.blink { animation: bl 1s steps(2,end) infinite; }
+@keyframes bl { 50% { opacity: .25; } }
+
+/* ---- การ์ดตัวเลือก ---- */
+.opt {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  margin-bottom: 10px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.opt:hover { border-color: #93C5FD; transform: translateY(-1px); }
+.opt .n {
+  flex: 0 0 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--soft);
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.opt .lb { flex: 1; font-size: 25px; line-height: 1.35; font-weight: 600; }
+.opt .meta {
+  font-size: 20px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 500;
+  background: var(--soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.opt.picked { border-color: var(--accent); background: #EFF6FF; }
+.opt.picked .n { background: var(--accent); color: #fff; border-color: var(--accent); }
+.opt.dead { border-color: #F87171; background: #FEF2F2; opacity: 0.85; }
+.opt.dead .n { background: #EF4444; color: #fff; border-color: #DC2626; }
+.opt.alive { border-color: #4ADE80; background: #F0FDF4; font-weight: 700; }
+.opt.alive .n { background: #22C55E; color: #fff; border-color: #16A34A; }
+
+/* ---- ตาราง ---- */
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: center; font-size: 23px; }
+th { background: var(--soft); font-weight: 700; color: var(--ink); }
+td.rowh, th.rowh { text-align: left; font-weight: 700; background: #FAFAFA; }
+td.cell { cursor: pointer; user-select: none; font-size: 25px; transition: background 0.15s; }
+td.cell:hover { background: #E0E7FF; }
+td.on { background: #DCFCE7; color: var(--safe); font-weight: 800; }
+td.over { background: #FEE2E2; color: var(--danger); font-weight: 800; }
+.ok { color: var(--safe); font-weight: 800; }
+.no { color: var(--danger); font-weight: 800; }
+
+/* ---- กล่องเน้น (Highlight Boxes) ---- */
+.box {
+  border-left: 6px solid var(--accent);
+  background: var(--accent-light);
+  padding: 12px 18px;
+  margin-top: 14px;
+  font-size: 25px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  line-height: 1.4;
+}
+.box.w { border-color: var(--warn); background: var(--warn-bg); }
+.box.d { border-color: var(--danger); background: var(--danger-bg); }
+.box.s { border-color: var(--safe); background: var(--safe-bg); }
+
+/* ---- Passkey Animation (S1b) ---- */
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 18px 0;
+  position: relative;
+}
+.node {
+  flex: 0 0 250px;
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  text-align: center;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+.node.highlight-node {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.15);
+}
+.node .ic { font-size: 54px; line-height: 1.1; }
+.node .nm { font-size: 22px; font-weight: 700; margin-top: 4px; }
+.node .sub-tag { font-size: 15px; color: var(--muted); font-weight: 500; }
+.arrow-container {
+  flex: 1;
+  text-align: center;
+  font-size: 22px;
+  color: var(--accent);
+  font-weight: 700;
+  position: relative;
+  padding: 10px 0;
+}
+.arrow-line {
+  height: 6px;
+  background: #CBD5E1;
+  border-radius: 3px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.arrow-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+  animation: stream 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes stream {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.key {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 2px 4px;
+}
+.key.priv { background: var(--danger-bg); color: var(--danger); border: 2px solid var(--danger); }
+.key.pub { background: var(--safe-bg); color: var(--safe); border: 2px solid var(--safe); }
+.fade { animation: fi .35s ease-out; }
+@keyframes fi { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---- แถบล่าง & Touch Controls ---- */
+#bot {
+  height: 54px;
+  flex: 0 0 54px;
+  border-top: 2px solid var(--line);
+  background: var(--soft);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  font-size: 18px;
+  color: var(--muted);
+  user-select: none;
+}
+#bot.hide { display: none; }
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.nav-btn:hover { background: #F1F5F9; border-color: #94A3B8; }
+.nav-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nav-btn.primary:hover { background: var(--accent-hover); }
+
+/* ---- โมดัล CSF ---- */
+#modal {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  z-index: 100;
+}
+#modal.on { display: flex; }
+#modal .card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 30px 36px;
+  max-width: 840px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+#modal h2 { color: var(--accent); margin-bottom: 16px; font-size: 28px; }
+#modal li { font-size: 23px; margin-bottom: 12px; }
+.badge-csf {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid #BFDBFE;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  margin-right: 6px;
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="top">
+    <span id="tag">S0</span>
+    <span id="title"></span>
+    <button class="pill-btn" id="csf" onclick="toggleModal()">NIST CSF</button>
+  </div>
+  <div id="main"></div>
+  <div id="bot">
+    <button class="nav-btn" onclick="prev()"><b>←</b> <span id="lblPrev">ย้อน</span></button>
+    <button class="nav-btn primary" onclick="next()"><span id="lblNext">ต่อ</span> <b>Space/→</b></button>
+    <div id="sceneNav"></div>
+    <button class="nav-btn" onclick="actionKey('r')"><b>R</b> <span id="lblReveal">เฉลย</span></button>
+    <button class="nav-btn" onclick="actionKey('a')"><b>A</b> <span id="lblAll">ทุกข้อ</span></button>
+    <button class="nav-btn" onclick="actionKey('s')"><b>S</b> <span id="lblSkip">ข้ามฉาก</span></button>
+  </div>
+  <div id="modal" onclick="toggleModal()"><div class="card" id="modalBody"></div></div>
+</div>
+
+<script>
+/* =====================================================================
+   ★★★ บล็อกเนื้อหา (305332 Chapter 2: Identity Management) ★★★
+   ทุกข้อความเป็น {th:"ไทย", en:"English (CEFR B1)"}
+   ===================================================================== */
+const CSF_DICT = {
+ "PR.AA-01":{th:"จัดการ identity และ credential ของผู้ใช้ บริการ และอุปกรณ์",en:"Identities and credentials for users, services, and hardware are managed"},
+ "PR.AA-02":{th:"ผูก identity กับ credential ตามระดับความเสี่ยงของบริบท (SP 800-63-4 IAL/AAL)",en:"Identities are proofed and bound to credentials (SP 800-63-4 IAL/AAL)"},
+ "PR.AA-03":{th:"ยืนยันตัวตนของผู้ใช้ บริการ และอุปกรณ์",en:"Users, services, and hardware are authenticated"},
+ "PR.AA-04":{th:"ปกป้อง ส่ง และตรวจสอบ identity assertion",en:"Identity assertions are protected, conveyed, and verified"},
+ "PR.AA-05":{th:"กำหนดและทบทวนสิทธิ์ตามหลัก least privilege และ separation of duties",en:"Access permissions follow least privilege and separation of duties"},
+ "GV.SC-04":{th:"ระบุและจัดลำดับความสำคัญของ supplier / third party",en:"Suppliers and third parties are known and prioritized by risk"},
+ "GV.SC-07":{th:"ติดตามความเสี่ยงของ supplier ตลอดความสัมพันธ์",en:"Supplier risk is monitored over the whole relationship"},
+ "ID.AM-01":{th:"มีรายการ asset ที่องค์กรดูแล",en:"Inventories of hardware are maintained"},
+ "ID.AM-04":{th:"มีรายการบริการภายนอกที่เชื่อมต่ออยู่",en:"Inventories of external services are maintained"},
+ "ID.RA-05":{th:"ประเมินภัยคุกคามและช่องโหว่เพื่อจัดลำดับการรับมือ",en:"Threats and vulnerabilities are used to prioritize response"}
+};
+
+const CONTENT = {
+ meta:{ id:"sim01-identity", ratio:"4:3",
+   course:{th:"305332 ความมั่นคงปลอดภัยไซเบอร์ (บทที่ 2)",en:"305332 Cybersecurity (Chapter 2)"},
+   org:{th:"ชมรมพัฒนาเว็บและเทคโนโลยี",en:"Web & Tech Club"} },
+ scenes:[
+
+ /* ---------------- S0 HOOK ---------------- */
+ { id:"S0", type:"hook", budget:4, csf:[],
+   title:{th:"บัญชีเดียว = 850 ชีวิต",en:"One account = 850 people"},
+   beats:[
+    { dark:true, big:{th:"เช้าวันจันทร์ เว็บชมรมขึ้นข้อความว่า —<br>“ข้อมูลสมาชิก 850 คน ถูกขายแล้ว”",
+                      en:"Monday morning. The club website says —<br>“Data of 850 members is now for sale.”"} },
+    { stats:true, head:{th:"Club Portal มีอะไรอยู่ข้างใน",en:"What the Club Portal holds"} },
+    { q:{th:"ผู้โจมตีต้องเจาะกี่อย่าง ถึงจะได้ทั้งหมดนี้?",en:"How many things must an attacker break to get all of this?"},
+      hint:{th:"รับคำตอบ 2–3 คน ก่อนกด Space หรือปุ่ม ต่อ",en:"Take 2–3 answers before pressing Space or Next"} },
+    { answer:"1", line:{th:"หนึ่ง. บัญชีเดียว.",en:"One. A single account."},
+      sub:{th:"Identity is the new perimeter — ตัวตนคือด่านหน้าใหม่ของระบบ",en:"Identity is the new perimeter — the frontline of security."} }
+   ],
+   ask:{th:"ถาม: ผู้โจมตีต้องเจาะกี่อย่าง?",en:"Ask: how many things must be broken?"} },
+
+ /* ---------------- S1 MFA CHOICE ---------------- */
+ { id:"S1", type:"choice", budget:10, csf:["PR.AA-03","PR.AA-01","ID.RA-05"],
+   title:{th:"เลือกวิธียืนยันตัวตนให้บัญชีประธานชมรม",en:"Choose the login protection for the club president"},
+   brief:{th:"มีน่าเป็นประธานชมรม บัญชีของเธอเข้าถึงได้ทุกอย่าง งบชมรมมีจำกัด และสมาชิกบางคนใช้มือถือรุ่นเก่า — ห้องนี้จะเลือกวิธีไหน?",
+          en:"Meena is the club president. Her account can reach everything. The club budget is small and some members use old phones. What does this room choose?"},
+   options:[
+    {n:1,label:{th:"รหัสผ่านยาว 16 ตัว ไม่ซ้ำใคร (ไม่มี MFA)",en:"A long unique 16-character password (no MFA)"},cost:"ฟรี",ux:5},
+    {n:2,label:{th:"SMS OTP ส่งเข้ามือถือ",en:"SMS OTP sent to a phone"},cost:"ฟรี",ux:4},
+    {n:3,label:{th:"Authenticator App แบบกด Approve (push)",en:"Authenticator app with push approval"},cost:"ฟรี",ux:4},
+    {n:4,label:{th:"Passkey / Security Key (FIDO2 / AAL3)",en:"Passkey / Security key (FIDO2 / AAL3)"},cost:"฿0–900",ux:3}
+   ],
+   replays:[
+    {name:{th:"SIM Swap Attack",en:"SIM Swap Attack"},
+     story:{th:"คนร้ายไม่ได้แฮกมือถือมีน่า เขาเดินเข้าร้านค่ายมือถือพร้อมเอกสารปลอม ขอซิมใหม่ แล้วดักรับ OTP ของเธอไป",
+            en:"The attacker did not hack the phone. He walked into a carrier shop with fake papers, requested a new SIM, and hijacked her OTP."},
+     survives:[3,4]},
+    {name:{th:"MFA Fatigue (Push Spam)",en:"MFA Fatigue (Push Spam)"},
+     story:{th:"ตีสอง มีการส่ง push แจ้งเตือนรัว 40 ครั้งติดกัน มีน่ากดผ่านเพราะง่วงและรำคาญจนเผลอ approve ให้คนร้าย",
+            en:"2 a.m. The attacker triggers 40 push notifications in a row. Meena taps “approve” half-asleep just to stop the buzzing."},
+     survives:[4]},
+    {name:{th:"AiTM Phishing (Adversary-in-the-Middle)",en:"AiTM Phishing (Adversary-in-the-Middle)"},
+     story:{th:"เว็บปลอม club-portal.co หน้าตาเหมือนจริง ดักทั้งรหัสผ่านและ OTP แบบเรียลไทม์ แล้วนำ session token ไปสวมรอย",
+            en:"A proxy reverse-phishing site club-portal.co steals password and OTP live, relaying them to the real site to steal the session token."},
+     survives:[4]}
+   ],
+   reveal:{th:"ข้อ 2 และ 3 ยังดีกว่าไม่มีอะไรมาก — แต่มีแค่ข้อ 4 (Passkey) ที่กัน phishing ได้ด้วยการออกแบบทางคณิตศาสตร์ (Origin Binding) ไม่ใช่หวังพึ่งความระวังของมนุษย์",
+           en:"Options 2 and 3 are better than nothing. But only option 4 (Passkey) stops phishing mathematically by design (Origin Binding), not by relying on human vigilance."},
+   ask:{th:"ถามสะพาน: ทำไม Passkey จึงทนทานต่อ phishing?",en:"Bridge: why is Passkey phishing-resistant?"} },
+
+ /* ---------------- S1b PASSKEY ANIMATION ---------------- */
+ { id:"S1b", type:"animation", budget:5, csf:["PR.AA-03","PR.AA-04"],
+   title:{th:"Passkey / FIDO2 ทำงานอย่างไร (Asymmetric Flow)",en:"How Passkey / FIDO2 works (Asymmetric Flow)"},
+   beats:[
+    {head:{th:"บีต 1 — ตอนสมัคร: สร้างคู่กุญแจ (Keypair Generation)",en:"Beat 1 — Sign-up: key pair generation"},
+     left:{ic:"📱",nm:{th:"อุปกรณ์ของผู้ใช้ (Secure Enclave)",en:"User Device (Secure Enclave)"}},
+     right:{ic:"🖥️",nm:{th:"เซิร์ฟเวอร์ Club Portal",en:"Club Portal Server"}},
+     arrow:{th:"ส่งเฉพาะ Public Key ไปบันทึก →",en:"Send Public Key only →"},
+     bullets:[
+      {th:"อุปกรณ์สร้างคู่กุญแจใหม่ 1 คู่ <b>ผูกกับโดเมนเว็บนี้เท่านั้น (Origin Bound)</b>",en:"The device generates a key pair <b>bound exclusively to this origin</b>"},
+      {th:"<span class='key priv'>Private key</span> ถูกกักในชิปปลอดภัย (TPM / Secure Enclave) — <b>ออกจากเครื่องไม่ได้เด็ดขาด</b>",en:"<span class='key priv'>Private key</span> is locked in secure hardware — <b>it never leaves the device</b>"},
+      {th:"<span class='key pub'>Public key</span> ส่งไปเก็บที่เซิร์ฟเวอร์ — หลุดออกไปก็ใช้ล็อกอินแทนไม่ได้",en:"<span class='key pub'>Public key</span> is registered on the server — completely harmless if leaked"}]},
+    {head:{th:"บีต 2 — ล็อกอิน: เซิร์ฟเวอร์ส่งโจทย์ (Challenge-Response)",en:"Beat 2 — Login: server issues a challenge"},
+     left:{ic:"📱",nm:{th:"อุปกรณ์ของผู้ใช้",en:"User Device"}},
+     right:{ic:"🖥️",nm:{th:"เซิร์ฟเวอร์ Club Portal",en:"Club Portal Server"}},
+     arrow:{th:"← ส่ง Nonce Challenge สุ่มสด",en:"← Sends random fresh Challenge"},
+     bullets:[
+      {th:"เซิร์ฟเวอร์สุ่มตัวเลขความยาวสูง เรียกว่า <b>Cryptographic Challenge</b>",en:"The server creates a high-entropy random number called a <b>challenge</b>"},
+      {th:"ใช้ได้ <b>ครั้งเดียวแล้วทิ้ง (Replay Protection)</b> ดักซ้ำไม่ได้",en:"It is <b>strictly one-time use</b> — replay attacks are impossible"}]},
+    {head:{th:"บีต 3 — เครื่องเซ็นชื่อ: ปลดล็อกด้วยไบโอเมตริก",en:"Beat 3 — Device signs: biometric unlocks key"},
+     left:{ic:"👆",nm:{th:"ลายนิ้วมือ / FaceID / PIN",en:"Biometric / PIN"},highlight:true},
+     right:{ic:"✍️",nm:{th:"ชิปเซ็นรับรอง (Signature)",en:"Chip Signs Challenge"}},
+     arrow:{th:"ส่ง Signature กลับไปยังเซิร์ฟเวอร์ →",en:"Send cryptographic signature back →"},
+     bullets:[
+      {th:"ลายนิ้วมือหรือใบหน้าทำหน้าที่ <b>ปลดล็อกสิทธิ์ใช้งานกุญแจในเครื่อง</b> — ไม่เคยถูกส่งผ่านเน็ต",en:"Biometrics only <b>authorise local key usage</b> — biometric data never travels over the network"},
+      {th:"ส่งกลับเฉพาะ Signature ที่คำนวณจาก Private Key — <b>ไม่มี Shared Secret ให้ดักขโมย</b>",en:"Only the digital signature travels over the wire — <b>zero shared secret to sniff</b>"}]},
+    {head:{th:"บีต 4 — เซิร์ฟเวอร์ตรวจรับรอง (Signature Verification)",en:"Beat 4 — Server verifies signature"},
+     left:{ic:"✍️",nm:{th:"Signature + Challenge",en:"Signature + Challenge"}},
+     right:{ic:"🔓",nm:{th:"ตรวจคู่กับ Public Key",en:"Verify with stored Public Key"}},
+     arrow:{th:"ถอดรหัสตรงกัน = ผ่าน ✔",en:"Mathematical match = Authenticated ✔"},
+     bullets:[
+      {th:"เซิร์ฟเวอร์นำ Public Key ที่บันทึกไว้มาตรวจ — ยืนยันตัวตนสำเร็จโดยไม่มีการส่งรหัสผ่าน",en:"The server verifies the math with the stored public key — login succeeds with zero shared secret"},
+      {th:"Challenge ถูกทำลายทิ้งทันที — ผู้ดักฟังนำผลลัพธ์ไปใช้ซ้ำไม่ได้",en:"Challenge is immediately invalidated — complete replay resistance"}]},
+    {head:{th:"บีต 5 — ทำไม Phishing ถึงพังพินาศ ⭐",en:"Beat 5 — Why phishing fails completely ⭐"},
+     left:{ic:"🎣",nm:{th:"club-portal.co (เว็บปลอม)",en:"club-portal.co (Phishing Site)"}},
+     right:{ic:"⛔",nm:{th:"เบราว์เซอร์ปฏิเสธคำขอ",en:"Browser Refuses Challenge"}},
+     arrow:{th:"Origin ไม่ตรง — เบราว์เซอร์บล็อกทันที",en:"Origin mismatch — blocked automatically"},
+     bullets:[
+      {th:"เบราว์เซอร์ตรวจสอบโดเมนในระดับ Client: <code>club-portal.co</code> ≠ <code>club-portal.ac.th</code>",en:"The browser checks the origin natively: <code>club-portal.co</code> ≠ <code>club-portal.ac.th</code>"},
+      {th:"เบราว์เซอร์ปฏิเสธไม่ส่งคู่กุญแจเด็ดขาด <b>ผู้ใช้กดพลาดแค่ไหน ระบบก็ป้องกันให้เอง</b>",en:"The browser refuses to sign. <b>Even if the user is completely tricked, authentication fails safely</b>"},
+      {th:"สอดคล้องกับมาตรฐาน <b>NIST SP 800-63B ระดับ AAL3 (Phishing Resistance)</b>",en:"Complies with <b>NIST SP 800-63B AAL3 (Phishing-Resistant Authenticator)</b>"}]}
+   ],
+   terms:[
+    {t:"Asymmetric Cryptography",d:{th:"ระบบกุญแจสาธารณะ-กุญแจส่วนตัว (Public/Private Key)",en:"Public/Private key cryptography for decoupled validation"}},
+    {t:"Challenge–Response",d:{th:"พิสูจน์การถือกุญแจลับโดยไม่ต้องส่งกุญแจลับข้ามเครือข่าย",en:"Prove knowledge of a secret without transmitting the secret"}},
+    {t:"Origin Binding",d:{th:"credential ผูกติดกับ Domain Name แท้จริง เบราว์เซอร์บล็อกเว็บปลอมเอง",en:"Credential is cryptographically bound to the real domain origin"}},
+    {t:"No Shared Secret",d:{th:"ไม่มีรหัสผ่านหรือตัวเลขลับบนเซิร์ฟเวอร์ ฐานข้อมูลหลุดก็ไม่มีความลับให้ใช้",en:"No shared secret stored on the server — server compromise yields no passwords"}},
+    {t:"NIST SP 800-63B (AAL3)",d:{th:"เกณฑ์การยืนยันตัวตนระดับสูงสุดที่ทนทานต่อ phishing ทุกรูปแบบ",en:"Highest authentication assurance level with mandatory phishing resistance"}}
+   ],
+   ask:{th:"ถาม: ลายนิ้วมือถูกส่งเข้าเซิร์ฟเวอร์ไหม? · หากโทรศัพท์หายต้องทำอย่างไร?",en:"Ask: is biometric data sent? · What happens if the device is lost?"} },
+
+ /* ---------------- S2 OAUTH CONSENT ---------------- */
+ { id:"S2", type:"consent", budget:8, csf:["GV.SC-04","GV.SC-07","PR.AA-05","ID.AM-04"],
+   title:{th:"OAuth Consent Trap — แอปช่วยคัดรูปกิจกรรม",en:"OAuth consent trap — the event photo app"},
+   brief:{th:"ปาล์ม (เว็บแอดมิน) พบแอป <b>ClubPhoto AI</b> ที่คัดแยกรูปกิจกรรมให้อัตโนมัติ รีวิว 4.8 ดาว มีผู้ใช้ 50,000 คน จึงกด “เชื่อมต่อกับบัญชี Google Workspace ของชมรม”",
+          en:"Palm (web admin) finds <b>ClubPhoto AI</b>. It sorts event photos automatically. Rated 4.8 with 50,000 users. He clicks “Connect with Club Google Account”."},
+   perms:[
+    {th:"ดู คัดลอก และจัดการ <b>ไฟล์ทั้งหมด</b> ใน Google Drive",en:"See, copy, and manage <b>all files</b> in Google Drive"},
+    {th:"<b>ส่งอีเมลในนามบัญชีของคุณ</b> (Send email on your behalf)",en:"<b>Send email on your behalf</b>"},
+    {th:"เข้าถึงรายชื่อผู้ติดต่อและข้อมูลสมาชิกทั้งหมด",en:"Access all contacts and membership directory"},
+    {th:"เข้าถึงข้อมูลตลอดเวลา แม้คุณจะไม่ได้เปิดใช้งาน (Offline access / Refresh Token)",en:"Access data continuously even when you are offline (Refresh Token)"}
+   ],
+   options:[
+    {n:1,label:{th:"อนุมัติทั้งหมด — รีวิวดีตั้ง 4.8 ดาว มีผู้ใช้หลายหมื่นคน",en:"Approve all — rated 4.8 stars with tens of thousands of users"}},
+    {n:2,label:{th:"ปฏิเสธ — ยกเลิกการใช้แอปตัวนี้ไปเลย",en:"Deny — reject using this third-party app entirely"}},
+    {n:3,label:{th:"อนุมัติแบบจำกัดสิทธิ์ (Narrow Scope) — อ่านอย่างเดียว เฉพาะโฟลเดอร์รูป",en:"Approve narrow scope — read-only access limited to photo folder"}},
+    {n:4,label:{th:"อนุมัติด้วย <b>Service Account แยกเฉพาะ</b> ที่ไม่มีไฟล์สำคัญอื่นเลย",en:"Approve via a <b>dedicated service account</b> with isolated blast radius"}}
+   ],
+   outcomes:[
+    {n:1,ok:false,text:{th:"3 สัปดาห์ต่อมา แอปถูกขายให้บุคคลภายนอก ผู้ซื้อนำ Refresh Token ที่ฝังอยู่ในระบบไปดาวน์โหลดไฟล์งบประมาณ และส่งอีเมลหลอกลวงสมาชิก 850 คน",
+                        en:"Three weeks later the app is acquired. The new owner leverages existing refresh tokens to exfiltrate budget spreadsheets and email phishing lures to all 850 members."}},
+    {n:2,ok:true,text:{th:"ปลอดภัยสูงสุด แต่ปาล์มต้องนั่งคัดรูปด้วยตนเอง 6 ชั่วโมง — ความปลอดภัยมักมี trade-off ด้านภาระงาน",
+                        en:"Maximum security, but Palm spends 6 manual hours sorting photos. Security involves real operational trade-offs."}},
+    {n:3,ok:true,text:{th:"ทางเลือกที่ได้สัดส่วน — ได้ใช้ฟีเจอร์ AI และหากเกิดเหตุรั่วไหล ความเสียหายจะจำกัดอยู่แค่โฟลเดอร์รูปภาพงานเดียว",
+                        en:"Proportionate choice. Benefit achieved while containment restricts damage strictly to the photo folder."}},
+    {n:4,ok:true,text:{th:"ยอดเยี่ยมตามหลักสถาปัตยกรรม — จำกัด Blast Radius ชัดเจน แม้แอปถูกเจาะ ข้อมูลชมรมส่วนอื่นก็ไม่ถูกกระทบเลย",
+                        en:"Architectural best practice — enforces strict blast radius containment. Even if compromised, main club assets remain untouched."}}
+   ],
+   reveal:{th:"การกด Approve ใน OAuth คือการมอบ กุญแจยาวนาน (Delegated Authority) ไม่ใช่การอนุญาตชั่วคราว · Token ไม่หมดอายุจนกว่าจะ revoke · องค์กรต้องมี “Inventory of Connected Apps” และทบทวนสม่ำเสมอ (GV.SC-07)",
+           en:"An OAuth Approve click delegates long-term authority, not a temporary peek. Refresh tokens persist until explicitly revoked. Regular app audits are vital (GV.SC-07)."},
+   ask:{th:"ถาม: มีใครเคยตรวจหน้า “แอปที่เชื่อมต่ออยู่” ในบัญชีตนเองบ้าง?",en:"Ask: when did you last audit your connected apps?"} },
+
+ /* ---------------- S3 RBAC MATRIX ---------------- */
+ { id:"S3", type:"matrix", budget:10, csf:["PR.AA-05"],
+   title:{th:"RBAC & Least Privilege — ใครควรได้สิทธิ์อะไร",en:"RBAC & least privilege — who gets what"},
+   roles:[{th:"ประธาน",en:"President"},{th:"เหรัญญิก",en:"Treasurer"},{th:"เว็บแอดมิน",en:"Web admin"},
+          {th:"ฝ่ายกิจกรรม",en:"Events team"},{th:"สมาชิกทั่วไป",en:"Member"},{th:"ศิษย์เก่า",en:"Alumni"}],
+   perms:[{th:"ดูรายชื่อ",en:"View list"},{th:"แก้ข้อมูลสมาชิก",en:"Edit member"},{th:"ดูบัญชีเงิน",en:"View finance"},
+          {th:"อนุมัติจ่าย",en:"Approve pay"},{th:"โพสต์หน้าเว็บ",en:"Post to site"},{th:"Export ทั้งหมด",en:"Export all"}],
+   /* 1 = ต้องใช้จริงตามหน้าที่งาน (needed) */
+   needed:[[1,0,1,1,0,0],[0,0,1,1,0,0],[0,0,0,0,1,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]],
+   plans:[
+    {k:"A",name:{th:"แผน A — ให้ง่ายไว้ก่อน (Flat Permissions)",en:"Plan A — make it easy (Flat Permissions)"},
+     desc:{th:"กรรมการทุกคนได้สิทธิ์เท่ากันหมด ทำงานคล่อง ไม่ต้องรออนุมัติ",en:"Every committee member gets full rights. Zero bottlenecks."},
+     grant:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,0,0,0,0,0],[1,0,0,0,0,0]]},
+    {k:"B",name:{th:"แผน B — ให้ตามชื่อตำแหน่ง (Role-by-Title)",en:"Plan B — grant by job title"},
+     desc:{th:"ประธานได้สิทธิ์เต็ม เหรัญญิกได้เรื่องเงิน แอดมินได้ระบบ",en:"President gets all, treasurer gets finance, admin gets site."},
+     grant:[[1,1,1,1,1,1],[1,0,1,1,0,1],[1,1,0,0,1,1],[1,1,0,0,1,0],[1,0,0,0,0,0],[1,0,0,0,0,0]]},
+    {k:"C",name:{th:"แผน C — สิทธิ์ตามภารกิจจริง + Dual Control",en:"Plan C — task-based least privilege"},
+     desc:{th:"ให้เฉพาะงานที่ทำจริง + การ Export ข้อมูลต้องใช้ 2 คนอนุมัติ (Separation of Duties)",en:"Grant only task-critical rights; full export requires two-party approval (Separation of Duties)."},
+     grant:[[1,0,1,1,0,1],[0,0,1,1,0,0],[0,0,0,0,1,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]}
+   ],
+   reveal:{th:"Least Privilege ไม่ได้แปลว่าเราไม่ไว้ใจเพื่อนร่วมงาน — แต่มันคือการคำนวณว่า “หากบัญชีของเพื่อนถูกยึด ความเสียหายจะถูกกักไว้ได้แค่ไหน” (Blast Radius Containment)",
+           en:"Least privilege does not imply distrust — it limits the blast radius should any credential fall into adversary hands."},
+   ask:{th:"ถาม: ทำไมศิษย์เก่าจึงไม่ควรมีสิทธิ์ดูรายชื่อสมาชิก?",en:"Ask: why should alumni lose directory access?"} },
+
+ /* ---------------- S4 LEAVER + DEVICE ---------------- */
+ { id:"S4", type:"order", budget:8, csf:["PR.AA-01","PR.AA-02","ID.AM-01"], optional:true,
+   title:{th:"Offboarding & Machine Identity (ข้ามได้ด้วย S)",en:"Offboarding & machine identity (press S to skip)"},
+   brief:{th:"มีน่าเรียนจบแล้วและส่งมอบงานให้ประธานคนใหม่เรียบร้อย — <b>กระบวนการจัดการตัวตนดิจิทัลของเธอต้องทำอะไรบ้าง และเรียงลำดับอย่างไร?</b>",
+          en:"Meena has graduated and handed over duties. <b>What must happen to her digital identity, and in what precise order?</b>"},
+   shuffled:[
+    {th:"ปิดบัญชี (Disable) แต่ <b>ยังเก็บ Log และประวัติไว้</b> (ห้ามลบทิ้ง)",en:"Disable account but <b>preserve audit logs</b> (do not delete)"},
+    {th:"Revoke และตัด Active Session ที่เปิดค้างอยู่ทุกอุปกรณ์ทันที",en:"Immediately revoke and terminate active sessions across all devices"},
+    {th:"ตรวจสอบและเพิกถอนสิทธิ์ภายนอก: LINE กลุ่มแอดมิน, Instagram, บัญชีธนาคาร",en:"Audit & revoke external access: admin chat groups, social channels, banking"},
+    {th:"ถอดถอน Passkey และอุปกรณ์ MFA Hardware ที่ผูกกับบัญชีออก",en:"De-register hardware passkeys and enrolled MFA authenticators"},
+    {th:"โอนถ่ายสิทธิ์ความเป็นเจ้าของ (Ownership) ของเอกสารและไดรฟ์ไปยังประธานคนใหม่",en:"Transfer document and directory ownership to the incoming president"}
+   ],
+   correct:[1,3,4,0,2],
+   device:{head:{th:"จุดพลิกสถานการณ์ — ตัวตนที่ไม่ใช่มนุษย์ (Machine Identities)",en:"Plot Twist — Non-Person Entities (Machine Identities)"},
+     bullets:[
+      {th:"แท็บเล็ตลงทะเบียนงาน <b>25 เครื่อง</b> ทุกเครื่องล็อกอินด้วยบัญชีเดียวกัน <code>checkin@club</code> รหัสผ่าน <code>Club2026</code>",en:"<b>25 borrowed registration tablets</b> share a single account <code>checkin@club</code>, password <code>Club2026</code>"},
+      {th:"เครื่องอ่านบัตร RFID หน้าห้องชมรมยังคงใช้รหัสผู้ดูแล <b>Default จากโรงงาน</b>",en:"The door RFID controller still runs the <b>factory default administrator credential</b>"}],
+     q:{th:"หากมีข้อมูลรั่วไหลจากระบบ check-in เราจะระบุตัวผู้กระทำได้หรือไม่?",en:"If a check-in record is breached, can we identify who did it?"},
+     a:{th:"ไม่มีทางรู้ได้เลย — บัญชีรวมทำให้ Log ระบุได้เพียง “checkin@club ทำ” แต่ไม่รู้ว่าใครเป็นคนถือเครื่อง <b>ความรับผิดชอบ (Accountability Trace) สูญสลายไปทั้งหมด</b>",
+        en:"Impossible. Shared accounts leave logs saying only 'checkin@club acted' — identity attribution and accountability are completely destroyed."}},
+   reveal:{th:"Machine Identities (ระบบอัตโนมัติ, อุปกรณ์ IoT, Service Accounts) ต้องมีเจ้าของที่ชัดเจน, หมุนเวียนรหัสสม่ำเสมอ, และมี Log เฉพาะเครื่อง เช่นเดียวกับมนุษย์",
+           en:"Machine identities (APIs, IoT, service accounts) require assigned owners, credential rotation, and distinct accountability just like human users."},
+   ask:{th:"ถาม: ทำไมการลบบัญชีทันทีจึงเป็นข้อผิดพลาดร้ายแรง? (สูญเสีย Audit Log)",en:"Ask: why is immediate account deletion dangerous? (Loss of forensic logs)"} },
+
+ /* ---------------- S5 WRAP ---------------- */
+ { id:"S5", type:"wrap", budget:6, csf:["PR.AA-01","PR.AA-03","PR.AA-05","GV.SC-04"],
+   title:{th:"สรุปบทเรียน + แผนที่ NIST CSF 2.0",en:"Summary + NIST CSF 2.0 map"},
+   lessons:[
+    {th:"ตัวตนคือด่านหน้าใหม่ — <b>เจาะได้หนึ่งบัญชี ผู้โจมตีอาจยึดได้ทั้งระบบ</b>",en:"Identity is the perimeter — <b>one compromised credential can bring down the entire system</b>"},
+    {th:"<b>Phishing-Resistant MFA</b> (Passkey/FIDO2 / AAL3) ป้องกันภัยคุกคามที่รากฐาน แตกต่างจาก MFA ทั่วไป",en:"<b>Phishing-resistant MFA</b> (Passkey/FIDO2 / AAL3) solves the threat architecturally, unlike legacy MFA"},
+    {th:"<b>ให้สิทธิ์เท่าที่จำเป็น (Least Privilege)</b> และ <b>เพิกถอนทันทีเมื่อหมดหน้าที่</b> ทั้งคนและเครื่องจักร",en:"<b>Enforce least privilege</b> and <b>reclaim access upon departure</b> for both humans and non-person entities"}
+   ],
+   coverage:[
+    {f:"GV",n:{th:"Govern (การกำกับดูแล)",en:"Govern"},lv:2,next:{th:"Governance & Policies",en:"Governance & Policies"}},
+    {f:"ID",n:{th:"Identify (การระบุและชี้ชัด)",en:"Identify"},lv:2,next:{th:"Risk Management",en:"Risk Management"}},
+    {f:"PR",n:{th:"Protect (การป้องกัน)",en:"Protect"},lv:3,next:{th:"← บทที่ 2 ในคาบนี้",en:"← Chapter 2 today"}},
+    {f:"DE",n:{th:"Detect (การตรวจจับ)",en:"Detect"},lv:1,next:{th:"Monitoring & Logging",en:"Monitoring & Logging"}},
+    {f:"RS",n:{th:"Respond (การตอบสนอง)",en:"Respond"},lv:1,next:{th:"Incident Handling",en:"Incident Handling"}},
+    {f:"RC",n:{th:"Recover (การฟื้นฟู)",en:"Recover"},lv:0,next:{th:"Business Continuity",en:"Business Continuity"}}
+   ],
+   close:{th:"ภารกิจสำรวจตนเอง: คืนนี้ลองเปิดหน้า 'แอปของบุคคลภายนอกที่เชื่อมต่ออยู่' ใน Google / Apple / Facebook ของตนเอง แล้วลบแอปที่ไม่ได้ใช้ออกไป",
+          en:"Self-audit mission: Check your connected third-party apps in your personal Google/Apple/social accounts tonight and revoke unused tokens."},
+   ask:{th:"ตาราง NIST CSF 2.0 นี้จะค่อย ๆ ถูกเติมเต็มในบทถัดไปของวิชา 305332",en:"This NIST CSF 2.0 map will be populated across upcoming 305332 chapters"} }
+ ]
+};
+/* ===================== จบบล็อกเนื้อหา ===================== */
+
+/* ============ ENGINE ============ */
+const $ = id => document.getElementById(id);
+const S = {
+  i: 0, step: 0, lang: 'th', pick: {}, rev: {}, all: {}, plan: {}, grid: null, hide: false
+};
+const T = o => !o ? '' : (o[S.lang] || o.th || '');
+const sc = () => CONTENT.scenes[S.i];
+
+function steps(s) {
+  switch(s.type) {
+    case 'hook': return s.beats.length;
+    case 'choice': return 2 + s.replays.length + 1;
+    case 'animation': return s.beats.length + 1;
+    case 'consent': return 5;
+    case 'matrix': return 4;
+    case 'order': return 4;
+    case 'wrap': return 3;
+  }
+  return 1;
+}
+
+function fit() {
+  const k = Math.min(innerWidth / 1024, innerHeight / 768);
+  $('stage').style.transform = `translate(-50%,-50%) scale(${k})`;
+}
+addEventListener('resize', fit);
+
+function save() {
+  try { localStorage.setItem('sim01', JSON.stringify({ i: S.i, step: S.step, lang: S.lang })); } catch(e){}
+}
+function load() {
+  try {
+    const d = JSON.parse(localStorage.getItem('sim01'));
+    if (d) { S.i = d.i || 0; S.step = d.step || 0; S.lang = d.lang || 'th'; }
+  } catch(e){}
+}
+
+/* ---- Helpers ---- */
+function optRow(o, cls, onclickStr) {
+  return `<div class="opt ${cls || ''}" ${onclickStr ? `onclick="${onclickStr}"` : ''}>
+    <div class="n">${o.n}</div>
+    <div class="lb">${T(o.label)}</div>
+    ${o.cost ? `<div class="meta">${o.cost} · UX ${'●'.repeat(o.ux)}${'○'.repeat(5-o.ux)}</div>` : ''}
+  </div>`;
+}
+
+function pickBanner() {
+  const p = S.pick[sc().id];
+  return p ? `<div class="box"><b>${S.lang === 'th' ? 'ห้องเลือกข้อ' : 'The room chose option'} ${p}</b></div>` : '';
+}
+
+function updateSceneDots() {
+  const c = $('sceneNav');
+  c.innerHTML = CONTENT.scenes.map((s, idx) =>
+    `<div class="scene-dot ${idx === S.i ? 'active' : ''}" title="${s.id}: ${T(s.title)}" onclick="goScene(${idx})"></div>`
+  ).join('');
+}
+
+function updateLabels() {
+  $('lblPrev').textContent = S.lang === 'th' ? 'ย้อน' : 'Back';
+  $('lblNext').textContent = S.lang === 'th' ? 'ต่อ' : 'Next';
+  $('lblReveal').textContent = S.lang === 'th' ? 'เฉลย' : 'Reveal';
+  $('lblAll').textContent = S.lang === 'th' ? 'ทุกข้อ' : 'All';
+  $('lblSkip').textContent = S.lang === 'th' ? 'ข้ามฉาก' : 'Skip';
+}
+
+/* ---- Render Engine ---- */
+function render() {
+  const s = sc(), st = S.step, m = $('main');
+  m.className = '';
+  let h = '';
+
+  $('tag').textContent = s.id;
+  $('title').textContent = T(s.title);
+  $('csf').textContent = s.csf.length ? s.csf[0] : '—';
+  $('csf').style.visibility = s.csf.length ? 'visible' : 'hidden';
+  updateSceneDots();
+  updateLabels();
+
+  if (s.type === 'hook') {
+    const b = s.beats[st];
+    if (b.dark) {
+      m.className = 'dark center';
+      h = `
+        <div class="fade" style="margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:12px;">
+          <span style="font-size:21px;color:#94A3B8;font-weight:600">🌐 เลือกภาษา / Language:</span>
+          <button class="pill-btn ${S.lang === 'th' ? 'active' : ''}" onclick="setLang('th')" style="font-size:19px;padding:6px 18px;cursor:pointer">🇹🇭 ภาษาไทย</button>
+          <button class="pill-btn ${S.lang === 'en' ? 'active' : ''}" onclick="setLang('en')" style="font-size:19px;padding:6px 18px;cursor:pointer">🇬🇧 English</button>
+        </div>
+        <h1 class="fade" style="font-size:44px;max-width:880px;margin:0 auto">${T(b.big)}</h1>
+        <p class="small" style="color:#94A3B8;margin-top:28px">
+          ${S.lang === 'th' ? 'กด Space หรือคลิกปุ่ม ต่อ เพื่อเริ่มการจำลอง' : 'Press Space or click Next to begin simulation'}
+        </p>`;
+    } else if (b.stats) {
+      h = `<h2>${T(b.head)}</h2>
+        <table>
+          <tr>
+            <th>${S.lang === 'th' ? 'สมาชิกทั้งหมด' : 'Total Members'}</th>
+            <th>${S.lang === 'th' ? 'งบประมาณชมรม' : 'Club Funds'}</th>
+            <th>${S.lang === 'th' ? 'รูปกิจกรรม' : 'Event Photos'}</th>
+            <th>${S.lang === 'th' ? 'บัญชี Root Admin' : 'Admin Accounts'}</th>
+          </tr>
+          <tr>
+            <td>850 คน</td>
+            <td>฿180,000</td>
+            <td>12,000 ภาพ</td>
+            <td class="big blink" style="font-size:52px;font-weight:800;color:var(--danger)">1 บัญชี</td>
+          </tr>
+        </table>
+        <div class="box w" style="font-weight:600">${S.lang === 'th' ? 'ทั้งหมดนี้ถูกดูแลอยู่หลังระบบยืนยันตัวตนเพียงประตูเดียว' : 'All of these assets sit behind a single authentication gate.'}</div>`;
+    } else if (b.q) {
+      h = `<h1 class="center fade" style="font-size:44px">${T(b.q)}</h1>
+           <p class="center small" style="margin-top:20px">${T(b.hint)}</p>`;
+    } else {
+      m.className = 'center';
+      h = `<div class="big fade">${b.answer}</div>
+           <h1 style="font-size:48px">${T(b.line)}</h1>
+           <div class="box s center" style="display:inline-block;padding:12px 30px;font-weight:700">${T(b.sub)}</div>`;
+    }
+  }
+
+  else if (s.type === 'choice') {
+    if (st === 0) {
+      h = `<h2>${S.lang === 'th' ? 'สถานการณ์ปัญหา' : 'The Situation'}</h2>
+           <div class="box" style="font-size:27px;line-height:1.5">${T(s.brief)}</div>
+           <p class="small" style="margin-top:20px">${S.lang === 'th' ? 'กด Space หรือปุ่ม ต่อ เพื่อดูตัวเลือก 4 แบบ' : 'Press Space or Next to see the 4 authentication choices'}</p>`;
+    } else if (st === 1) {
+      h = `<h2>${S.lang === 'th' ? 'ยกมือหรือกดเลือก 1 ตัวเลือก (1–4)' : 'Vote for 1 option (Press 1–4)'}</h2>`
+        + s.options.map(o => optRow(o, S.pick[s.id] === o.n ? 'picked' : '', `pickOption(${o.n})`)).join('')
+        + pickBanner();
+    } else if (st < 2 + s.replays.length) {
+      const r = s.replays[st - 2], rv = S.rev[s.id + '-' + st];
+      h = `<h2 class="fade" style="color:var(--danger)">⚔ ${T(r.name)}</h2>
+           <div class="box d" style="font-size:26px">${T(r.story)}</div>
+           <div style="margin-top:14px">`
+        + (rv ? s.options.map(o => optRow(o, r.survives.includes(o.n) ? 'alive' : 'dead')).join('')
+              : `<div class="box w"><b>${S.lang === 'th' ? 'ถามห้อง: ตัวเลือกข้อไหนจะรอดจากการโจมตีนี้?' : 'Ask class: which option survives?'}</b><br>
+                 <span class="small">${S.lang === 'th' ? 'กด R หรือปุ่ม เฉลย เพื่อดูผล' : 'Press R or Reveal to see result'}</span></div>`)
+        + `</div>`;
+    } else {
+      h = `<h2>${S.lang === 'th' ? 'สรุปการรับมือการโจมตีทั้ง 3 รูปแบบ' : 'Summary: Defence against all 3 attacks'}</h2>
+        <table>
+          <tr>
+            <th class="rowh">${S.lang === 'th' ? 'ตัวเลือกการยืนยันตัวตน' : 'Authentication Method'}</th>
+            ${s.replays.map(r => `<th>${T(r.name)}</th>`).join('')}
+          </tr>
+          ${s.options.map(o => `<tr>
+            <td class="rowh">${o.n}. ${T(o.label)}</td>
+            ${s.replays.map(r => `<td class="${r.survives.includes(o.n) ? 'ok' : 'no'}">${r.survives.includes(o.n) ? '✅ รอด' : '❌ หลุด'}</td>`).join('')}
+          </tr>`).join('')}
+        </table>
+        <div class="box s">${T(s.reveal)}</div>`;
+    }
+  }
+
+  else if (s.type === 'animation') {
+    if (st < s.beats.length) {
+      const b = s.beats[st];
+      h = `<h2 class="fade">${T(b.head)}</h2>
+        <div class="flow fade">
+          <div class="node ${b.left.highlight ? 'highlight-node' : ''}">
+            <div class="ic">${b.left.ic}</div>
+            <div class="nm">${T(b.left.nm)}</div>
+          </div>
+          <div class="arrow-container">
+            <div>${T(b.arrow)}</div>
+            <div class="arrow-line"><div class="arrow-line-fill"></div></div>
+          </div>
+          <div class="node">
+            <div class="ic">${b.right.ic}</div>
+            <div class="nm">${T(b.right.nm)}</div>
+          </div>
+        </div>
+        <ul class="fade">${b.bullets.map(x => `<li>${T(x)}</li>`).join('')}</ul>`;
+    } else {
+      h = `<h2>${S.lang === 'th' ? 'สรุปคำสำคัญตามกรอบ NIST SP 800-63B' : 'NIST SP 800-63B Core Terminology'}</h2>
+        <table>
+          ${s.terms.map(x => `<tr>
+            <td class="rowh" style="width:42%;color:var(--accent)">${x.t}</td>
+            <td style="text-align:left">${T(x.d)}</td>
+          </tr>`).join('')}
+        </table>`;
+    }
+  }
+
+  else if (s.type === 'consent') {
+    if (st === 0) {
+      h = `<h2>${S.lang === 'th' ? 'สถานการณ์: แอปบุคคลภายนอกที่ดูน่าเชื่อถือ' : 'Third-Party Integration Trap'}</h2>
+           <div class="box" style="font-size:27px;line-height:1.5">${T(s.brief)}</div>`;
+    } else if (st === 1) {
+      h = `<h2>🔐 ClubPhoto AI ${S.lang === 'th' ? 'ขอสิทธิ์เข้าถึง (Requested Scopes):' : 'is requesting scopes:'}</h2>
+        <ul>${s.perms.map(p => `<li>⚠️ ${T(p)}</li>`).join('')}</ul>
+        <div class="box w"><b>${S.lang === 'th' ? 'พิจารณาช้า ๆ ทีละบรรทัด — ปุ่ม Approve กำลังมอบอะไรให้แอปนี้บ้าง?' : 'Review carefully: what authority is being delegated?'}</b></div>`;
+    } else if (st === 2) {
+      h = `<h2>${S.lang === 'th' ? 'หากคุณเป็นแอดมิน คุณจะตัดสินใจอย่างไร? (1–4)' : 'As admin, how do you decide? (1–4)'}</h2>`
+        + s.options.map(o => optRow(o, S.pick[s.id] === o.n ? 'picked' : '', `pickOption(${o.n})`)).join('')
+        + pickBanner();
+    } else if (st === 3) {
+      const sa = S.all[s.id], p = S.pick[s.id];
+      h = `<h2>${S.lang === 'th' ? 'สามสัปดาห์ต่อมา… ผลกระทบตามจริง (Consequences)' : 'Three weeks later… Real-world consequences'}</h2>`
+        + s.outcomes.filter(o => sa || o.n === p || !p).map(o =>
+          `<div class="box ${o.ok ? 's' : 'd'} fade">
+             <b>${o.n}. ${T(s.options[o.n - 1].label)}</b><br>
+             <span style="font-size:24px">${T(o.text)}</span>
+           </div>`
+        ).join('')
+        + (!sa ? `<p class="small" style="margin-top:14px">${S.lang === 'th' ? 'กด A หรือปุ่ม ทุกข้อ เพื่อดูผลลัพธ์ของทุกทางเลือก' : 'Press A or All to inspect all outcomes'}</p>` : '');
+    } else {
+      h = `<h2>${S.lang === 'th' ? 'บทเรียนสำคัญด้านการจัดการ Third-Party Risk' : 'Key Lesson: Managing Third-Party Access'}</h2>
+           <div class="box s">${T(s.reveal)}</div>`;
+    }
+  }
+
+  else if (s.type === 'matrix') {
+    if (!S.grid) S.grid = JSON.parse(JSON.stringify(s.plans[0].grant)).map(r => r.map(() => 0));
+    const g = S.grid;
+    const mt = (cellClick) => `<table>
+      <tr>
+        <th class="rowh">บทบาท / สิทธิ์</th>
+        ${s.perms.map(p => `<th>${T(p)}</th>`).join('')}
+      </tr>
+      ${s.roles.map((r, ri) => `<tr>
+        <td class="rowh">${T(r)}</td>
+        ${s.perms.map((_, ci) => {
+          const on = g[ri][ci], need = s.needed[ri][ci];
+          return `<td class="cell ${on ? (need ? 'on' : 'over') : ''}" ${cellClick ? `onclick="tog(${ri},${ci})"` : ''}>
+            ${on ? (need ? '✔' : '✖') : '·'}
+          </td>`;
+        }).join('')}
+      </tr>`).join('')}
+    </table>`;
+
+    if (st === 0) {
+      h = `<h2>${S.lang === 'th' ? '6 บทบาท × 6 สิทธิ์ — ใครควรได้สิทธิ์ใดบ้าง?' : '6 Roles × 6 Permissions — Who should get what?'}</h2>
+        ${mt(false)}
+        <p class="small" style="margin-top:12px">${S.lang === 'th' ? 'ตารางว่างเปล่า — กด Space หรือปุ่ม ต่อ เพื่อดูการเปรียบเทียบ 3 แผน' : 'Blank baseline — press Space or Next to compare 3 plans'}</p>`;
+    } else if (st === 1) {
+      h = `<h2>${S.lang === 'th' ? 'ยกมือโหวตเลือกแผน (กด 1=A, 2=B, 3=C)' : 'Vote for a plan (Press 1=A, 2=B, 3=C)'}</h2>`
+        + s.plans.map((p, i) => `<div class="opt ${S.pick[s.id] === i + 1 ? 'picked' : ''}" onclick="pickPlan(${i + 1})">
+            <div class="n">${i + 1}</div>
+            <div class="lb">
+              <b>${T(p.name)}</b><br>
+              <span style="font-size:22px;color:#4B5563">${T(p.desc)}</span>
+            </div>
+          </div>`).join('');
+    } else if (st === 2) {
+      const rows = s.plans.map(p => {
+        const r = opi(p.grant, s.needed);
+        return { k: p.k, n: T(p.name), o: r.opi, g: r.g, blast: blast(p.grant, s, 2) };
+      });
+      h = `<h2>Over-Privilege Index (OPI) = ${S.lang === 'th' ? 'สิทธิ์เกินจำเป็น ÷ สิทธิ์ที่ให้ทั้งหมด' : 'Excess Rights ÷ Total Granted'}</h2>
+        <table>
+          <tr>
+            <th class="rowh">${S.lang === 'th' ? 'แผนการให้สิทธิ์' : 'Access Plan'}</th>
+            <th>${S.lang === 'th' ? 'สิทธิ์ที่ให้' : 'Granted'}</th>
+            <th>ดัชนี OPI</th>
+            <th>${S.lang === 'th' ? 'หากบัญชีเว็บแอดมินถูกยึด' : 'Blast Radius: Web Admin Stolen'}</th>
+          </tr>
+          ${rows.map(r => `<tr>
+            <td class="rowh">${r.n}</td>
+            <td>${r.g} สิทธิ์</td>
+            <td class="${r.o > 50 ? 'no' : r.o > 20 ? '' : 'ok'}" style="font-weight:800;font-size:26px">${r.o}%</td>
+            <td style="text-align:left;font-size:21px">${r.blast || '—'}</td>
+          </tr>`).join('')}
+        </table>
+        <div class="box">${T(s.reveal)}</div>`;
+    } else {
+      h = `<h2>${S.lang === 'th' ? 'ปรับสิทธิ์สด — คลิกที่ช่องเพื่อเปิด/ปิดสิทธิ์' : 'Live Tuning — Click cells to toggle rights'}</h2>
+        ${mt(true)}
+        <div class="box ${liveOPI(s) > 50 ? 'd' : liveOPI(s) > 20 ? 'w' : 's'}" id="live">
+          <b>Over-Privilege Index (OPI): ${liveOPI(s)}%</b>
+          &nbsp;·&nbsp;<span style="font-size:23px">✔ ${S.lang === 'th' ? 'สีเขียว = จำเป็นตามหน้าที่' : 'Green = task required'} · ✖ ${S.lang === 'th' ? 'สีแดง = สิทธิ์เกินจำเป็น (Over-privileged)' : 'Red = excess risk'}</span>
+        </div>`;
+    }
+  }
+
+  else if (s.type === 'order') {
+    if (st === 0) {
+      h = `<h2>${S.lang === 'th' ? 'มีน่าเรียนจบแล้ว (Offboarding Sequence)' : 'Meena has graduated (Offboarding Sequence)'}</h2>
+           <div class="box" style="font-size:27px;line-height:1.5">${T(s.brief)}</div>`;
+    } else if (st === 1) {
+      const rv = S.rev[s.id];
+      const list = rv ? s.correct.map((idx, i) => ({ i: i + 1, x: s.shuffled[idx] }))
+                      : s.shuffled.map((x, i) => ({ i: '·', x }));
+      h = `<h2>${rv ? (S.lang === 'th' ? 'ลำดับกระบวนการที่ถูกต้อง' : 'Correct De-provisioning Sequence')
+                    : (S.lang === 'th' ? 'ช่วยกันเรียงลำดับขั้นตอน แล้วกด R หรือ เฉลย' : 'Arrange in order, then press R or Reveal')}</h2>`
+        + list.map(o => `<div class="opt ${rv ? 'alive' : ''}">
+            <div class="n">${o.i}</div>
+            <div class="lb">${T(o.x)}</div>
+          </div>`).join('')
+        + (rv ? `<div class="box w">${S.lang === 'th' ? 'จุดที่มักลืม: “ปิดบัญชี แต่ต้องเก็บ Log ไว้” — ลบบัญชีทิ้งทันทีจะทำให้หลักฐานสืบสวนสูญหาย' : 'Critical point: Disable account, but preserve audit logs.'}</div>` : '');
+    } else if (st === 2) {
+      const rv = S.rev[s.id + '-d'];
+      h = `<h2>${T(s.device.head)}</h2>
+        <ul>${s.device.bullets.map(b => `<li>${T(b)}</li>`).join('')}</ul>
+        <div class="box ${rv ? 'd' : 'w'}">
+          <b>${T(s.device.q)}</b>
+          ${rv ? `<br><span style="font-size:24px;margin-top:6px;display:inline-block">${T(s.device.a)}</span>` : ''}
+        </div>`;
+    } else {
+      h = `<h2>${S.lang === 'th' ? 'บทเรียน: Non-Person Entities & Machine Identities' : 'Lesson: Non-Person Entities & Machine Identities'}</h2>
+           <div class="box s">${T(s.reveal)}</div>`;
+    }
+  }
+
+  else if (s.type === 'wrap') {
+    if (st === 0) {
+      h = `<h2>${S.lang === 'th' ? 'สามข้อคิดสำคัญกลับบ้าน' : 'Three Key Takeaways'}</h2>`
+        + s.lessons.map((l, i) => `<div class="box fade" style="margin-top:16px">
+            <b>${i + 1}.</b> ${T(l)}
+          </div>`).join('');
+    } else if (st === 1) {
+      const mark = lv => ['⬜','⬜','🟦','🟩'][lv];
+      const lb = lv => [
+        S.lang === 'th' ? 'ยังไม่แตะ' : 'none',
+        S.lang === 'th' ? 'ระดับต้น' : 'light',
+        S.lang === 'th' ? 'ระดับกลาง' : 'medium',
+        S.lang === 'th' ? 'ระดับเข้มข้น' : 'full'
+      ][lv];
+      h = `<h2>${S.lang === 'th' ? 'ความครอบคลุมบนกรอบ NIST CSF 2.0 วันนี้' : 'NIST CSF 2.0 Coverage Today'}</h2>
+        <table>
+          <tr>
+            <th class="rowh">Function</th>
+            <th>${S.lang === 'th' ? 'คาบนี้' : 'Today'}</th>
+            <th>${S.lang === 'th' ? 'ระดับ' : 'Level'}</th>
+            <th>${S.lang === 'th' ? 'หัวข้อที่เกี่ยวข้องเต็มรูปแบบ' : 'Detailed In'}</th>
+          </tr>
+          ${s.coverage.map(c => `<tr>
+            <td class="rowh">${c.f} ${T(c.n)}</td>
+            <td style="font-size:28px">${mark(c.lv)}</td>
+            <td>${lb(c.lv)}</td>
+            <td style="text-align:left;font-size:22px">${T(c.next)}</td>
+          </tr>`).join('')}
+        </table>
+        <div class="box">${S.lang === 'th' ? 'ตาราง NIST CSF 2.0 จะค่อย ๆ ถูกเติมเต็มอย่างต่อเนื่องในทุกบทของวิชา 305332' : 'This map will gradually be populated across all chapters of 305332.'}</div>`;
+    } else {
+      m.className = 'center';
+      h = `<h1 style="font-size:52px">${S.lang === 'th' ? 'สรุปการเรียนรู้บทที่ 2' : 'Chapter 2 Completed'}</h1>
+           <div class="box" style="display:inline-block;max-width:85%;text-align:left;font-size:26px">${T(s.close)}</div>`;
+    }
+  }
+
+  m.innerHTML = h;
+  save();
+}
+
+/* ---- OPI Calculations ---- */
+function opi(g, n) {
+  let gr = 0, ov = 0;
+  for (let r = 0; r < g.length; r++) {
+    for (let c = 0; c < g[r].length; c++) {
+      if (g[r][c]) {
+        gr++;
+        if (!n[r][c]) ov++;
+      }
+    }
+  }
+  return { g: gr, opi: gr ? Math.round(ov / gr * 100) : 0 };
+}
+function liveOPI(s) { return opi(S.grid, s.needed).opi; }
+function blast(g, s, roleIdx) {
+  const p = [];
+  g[roleIdx].forEach((v, c) => { if (v) p.push(T(s.perms[c])); });
+  return p.length ? p.join(', ') : (S.lang === 'th' ? 'แทบไม่มีสิทธิ์สำคัญ' : 'Almost nothing');
+}
+function tog(r, c) {
+  S.grid[r][c] = S.grid[r][c] ? 0 : 1;
+  render();
+}
+
+/* ---- Navigation & User Actions ---- */
+function next() {
+  if (S.step < steps(sc()) - 1) {
+    S.step++;
+  } else if (S.i < CONTENT.scenes.length - 1) {
+    goScene(S.i + 1);
+    return;
+  }
+  render();
+}
+
+function prev() {
+  if (S.step > 0) {
+    S.step--;
+  } else if (S.i > 0) {
+    S.i--;
+    S.step = steps(sc()) - 1;
+  }
+  render();
+}
+
+function goScene(i) {
+  S.i = i;
+  S.step = 0;
+  S.sceneStart = Date.now();
+  if (sc().type === 'matrix') S.grid = null;
+  render();
+}
+
+function setLang(lang) {
+  S.lang = lang;
+  document.documentElement.lang = S.lang;
+  save();
+  render();
+}
+
+function toggleLang() {
+  setLang(S.lang === 'th' ? 'en' : 'th');
+}
+
+function toggleModal() {
+  const mo = $('modal');
+  if (mo.classList.contains('on')) {
+    mo.classList.remove('on');
+    return;
+  }
+  const s = sc();
+  $('modalBody').innerHTML = `<h2>NIST CSF 2.0 Mapping — Scene ${s.id}</h2>
+    <ul>${s.csf.map(c => `<li><span class="badge-csf">${c}</span> ${T(CSF_DICT[c] || {th:'',en:''})}</li>`).join('') || '<li>ไม่มีหมวดย่อยที่เกี่ยวข้องโดยตรงในฉากนี้</li>'}</ul>
+    <p class="small" style="margin-top:16px">${S.lang === 'th' ? 'NIST CSF 2.0 ประกอบด้วย 6 ฟังก์ชันหลักที่ดำเนินงานต่อเนื่องร่วมกัน' : 'NIST CSF 2.0 comprises 6 core functions operating concurrently.'}</p>`;
+  mo.classList.add('on');
+}
+
+function pickOption(n) {
+  S.pick[sc().id] = n;
+  render();
+}
+
+function pickPlan(n) {
+  const s = sc();
+  S.pick[s.id] = n;
+  if (s.type === 'matrix' && s.plans[n - 1]) {
+    S.grid = JSON.parse(JSON.stringify(s.plans[n - 1].grant));
+  }
+  render();
+}
+
+function actionKey(k) {
+  const s = sc();
+  if (k === 'r') {
+    if (s.type === 'choice') S.rev[s.id + '-' + S.step] = 1;
+    else if (s.type === 'order') S.rev[S.step === 2 ? s.id + '-d' : s.id] = 1;
+    else if (s.type === 'matrix' && S.step < 2) S.step = 2;
+    else S.all[s.id] = 1;
+    render();
+  } else if (k === 'a') {
+    S.all[s.id] = 1;
+    if (s.type === 'choice') S.step = steps(s) - 1;
+    render();
+  } else if (k === 's') {
+    if (S.i < CONTENT.scenes.length - 1) goScene(S.i + 1);
+  }
+}
+
+/* ---- Keyboard Listener ---- */
+addEventListener('keydown', e => {
+  const k = e.key;
+  if (k === ' ' || k === 'ArrowRight') { e.preventDefault(); next(); }
+  else if (k === 'ArrowLeft') prev();
+  else if ('1234'.includes(k)) {
+    const s = sc();
+    if (['choice', 'consent', 'matrix'].includes(s.type)) {
+      if (s.type === 'matrix') pickPlan(+k);
+      else pickOption(+k);
+    }
+  }
+  else if (k === 'r' || k === 'R') actionKey('r');
+  else if (k === 'a' || k === 'A') actionKey('a');
+  else if (k === 's' || k === 'S') actionKey('s');
+  else if (k === 'm' || k === 'M') toggleModal();
+  else if (k === 'l' || k === 'L') toggleLang();
+  else if (k === 'h' || k === 'H') { S.hide = !S.hide; $('bot').classList.toggle('hide', S.hide); }
+  else if (k === 'f' || k === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  else if (k === 'Home') goScene(0);
+});
+
+load(); fit(); render();
+</script>
+</body>
+</html>

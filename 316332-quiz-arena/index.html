@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quiz Arena — 316332 Cybersecurity</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">◆</span>
+    <span class="brand-text" id="brand-title">Quiz Arena</span>
+  </div>
+  <div class="topbar-actions">
+    <button type="button" id="lang-toggle" class="btn btn-ghost" aria-pressed="false">
+      EN / <span lang="th">ไทย</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Screen: pick a week ─────────────────────────────────────────── -->
+  <section id="screen-menu" class="screen">
+    <h1 class="screen-title" id="menu-title"></h1>
+    <p class="screen-lede" id="menu-lede"></p>
+
+    <div class="callout" id="menu-note"></div>
+
+    <h2 class="section-heading" id="menu-mode-heading"></h2>
+    <div id="mode-list" class="mode-grid"></div>
+
+    <div id="mode-detail">
+      <h2 class="section-heading" id="menu-pick-heading"></h2>
+      <p class="screen-lede" id="mode-detail-desc"></p>
+      <div id="group-list" class="group-grid"></div>
+      <button type="button" id="btn-start-mode" class="btn btn-primary is-hidden"></button>
+    </div>
+  </section>
+
+  <!-- ── Screen: playing ────────────────────────────────────────────── -->
+  <section id="screen-play" class="screen is-hidden">
+    <div class="play-head">
+      <div class="play-meta">
+        <span class="pill" id="play-group"></span>
+        <span class="pill pill-quiet" id="play-cognitive"></span>
+        <span class="pill pill-timer is-hidden" id="play-timer" role="timer" aria-live="off"></span>
+      </div>
+      <div class="play-progress">
+        <span id="play-count"></span>
+        <div class="progress-track"><div class="progress-fill" id="play-progress-fill"></div></div>
+      </div>
+    </div>
+
+    <h2 class="stem" id="play-stem"></h2>
+
+    <div id="play-choices" class="choice-list" role="group" aria-labelledby="play-stem"></div>
+
+    <div id="play-reveal" class="reveal is-hidden" role="status" aria-live="polite">
+      <p class="reveal-verdict" id="reveal-verdict"></p>
+      <p class="reveal-explanation" id="reveal-explanation"></p>
+      <p class="reveal-source is-hidden" id="reveal-source"></p>
+      <button type="button" id="btn-next" class="btn btn-primary"></button>
+    </div>
+
+    <button type="button" id="btn-quit" class="btn btn-ghost btn-quit"></button>
+  </section>
+
+  <!-- ── Screen: results ────────────────────────────────────────────── -->
+  <section id="screen-done" class="screen is-hidden">
+    <h1 class="screen-title" id="done-title"></h1>
+    <p class="score-line"><span id="done-score" class="score-big"></span> <span id="done-score-label"></span></p>
+    <p class="screen-lede" id="done-streak"></p>
+
+    <h2 class="section-heading" id="done-breakdown-heading"></h2>
+    <ul id="done-breakdown" class="breakdown"></ul>
+
+    <div class="done-actions">
+      <button type="button" id="btn-again" class="btn btn-primary"></button>
+      <button type="button" id="btn-menu" class="btn btn-ghost"></button>
+    </div>
+  </section>
+
+  <!-- ── Screen: load failure ───────────────────────────────────────── -->
+  <section id="screen-error" class="screen is-hidden">
+    <h1 class="screen-title" id="error-title"></h1>
+    <p class="screen-lede" id="error-detail"></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p id="footer-note"></p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
